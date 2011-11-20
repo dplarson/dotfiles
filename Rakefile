@@ -1,3 +1,6 @@
+# Rake install (taken from Zach Holman's dotfiles)
+#  see more at github.com/holman/dotfiles/
+
 require 'rake'
 
 desc "Hook our dotfiles into system-standard positions."
