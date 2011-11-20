@@ -1,0 +1,2 @@
+# Editor
+export EDITOR=vim
