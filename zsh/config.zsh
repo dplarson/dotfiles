@@ -1,3 +1,8 @@
+# functions
+fpath=($ZSH/zsh/functions $fpath)
+
+autoload -U $ZSH/zsh/functions/*(:t)
+
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

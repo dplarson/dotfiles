@@ -2,14 +2,13 @@
 # Heavily inspired by Holman's dotfiles: https://github.com/holman/dotfiles/
 #
 
-# Shortcut tothis dotfiles path is $ZSH
+# Shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
 # Source every .zsh file in this rep
 for config_file in $ZSH/**/*.zsh; do source $config_file; done
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
+# Private data stored outside .dotfiles in .localrc
 if [[ -a ~/.localrc ]]
 then
    source ~/.localrc
@@ -18,6 +17,3 @@ fi
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
-
-# load every completion after autocomplete loads
-#for config_file in $ZSH/**/completion.sh; do source $config_file; done
