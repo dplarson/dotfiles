@@ -3,6 +3,10 @@ fpath=($ZSH/zsh/functions $fpath)
 
 autoload -U $ZSH/zsh/functions/*(:t)
 
+# colors
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export CLICOLOR=true
+
 # options
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
