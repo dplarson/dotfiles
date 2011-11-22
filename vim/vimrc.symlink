@@ -7,6 +7,10 @@ set incsearch
 set number
 set ruler
 
+if has("gui_running")
+	colorscheme molokai 
+endif
+
 " Plugins
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -14,6 +18,9 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
+
+" Snippets
+Bundle 'gmarik/snipmate.vim'
 
 " Syntax
 Bundle "Markdown"
