@@ -1,15 +1,51 @@
 set nocompatible 	" be iMproved
 filetype off 		" required
 
-" UI
 set cursorline
 set incsearch
 set number
 set ruler
 
+
+" GUI specific settings
 if has("gui_running")
-	colorscheme molokai 
+	colorscheme molokai	" color theme
+	set guifont=Monaco:h12 	" font
 endif
+
+if has ("gui_macvim")
+	" Fullscreen takes up entire screen
+	set fuoptions=maxhorz,maxvert
+
+ 	" Don't beep
+	set visualbell
+	
+	" Start without the toolbar
+	set guioptions-=T
+endif
+
+set nofoldenable        " dont fold by default
+
+
+"--------------------------------------------------------------
+" LATEX
+"--------------------------------------------------------------
+let g:Tex_Flavor='latex' 							" 
+let g:Tex_ViewRule_pdf='TexShop' 						" view PDFs with TexShop
+let g:Tex_MultipleCompileFormats='pdf' 						" compile with bibtex
+let g:Tex_CompileRule_pdf='pdflatex -synctex=1 --interaction=nonstopmode $*' 	" pdflatex compile nonstopmode
+let g:Tex_MakeIndexFlavor = 'makeindex $*.idx' 					" MakeIndex setting
+
+let g:Tex_IgnoredWarnings ='
+       \"Underfull\n".
+       \"Overfull\n".
+       \"specifier changed to\n".
+       \"You have requested\n".
+       \"Missing number, treated as zero.\n".
+       \"There were undefined references\n".
+       \"Citation %.%# undefined\n".
+       \"\oval, \circle, or \line size unavailable\n"'
+
 
 " Plugins
 set rtp+=~/.vim/bundle/vundle/
