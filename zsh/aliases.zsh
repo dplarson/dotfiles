@@ -23,7 +23,7 @@ alias l.='ls -ld .*'    # list dot files
 alias ..='cd ..'
 alias ...='cd ..; cd ..'
 
-# file functions
+# File functions
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -34,7 +34,7 @@ alias df='df -kTh'
 alias path='echo -e ${PATH//:/\\n}'
 alias o='open .'
 
-# misc
+# Misc
 alias reload='source ~/.zshrc'                                  # reload zsh settings
 alias showcal='cal | sed "s/.*/ & /;s/ $(date +%e) / [] /"'     # show calendar
 
