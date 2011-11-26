@@ -1,2 +1,2 @@
 # Editor
-export EDITOR=vim
+export EDITOR='mvim'
