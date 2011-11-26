@@ -8,8 +8,9 @@
 # -cyan:     0,146,209
 # -white:    242,242,242
 
+
 # function to change prompt character depending whether inside a git branch
-# 	-adaptaed from Steve Losh's zsh prompt (stevelosh.com)
+# 	-adapted from Steve Losh's zsh prompt (stevelosh.com)
 function prompt_char {
 	git branch >/dev/null 2>/dev/null && echo '±' && return
 	echo '>'
@@ -17,7 +18,7 @@ function prompt_char {
 
 # prompt
 export PROMPT=$'\n\e[1;33m%n\e[0m at \e[1;35m%m\e[0m in \e[0;34m${PWD/#$HOME/~}\e[0m \n$(prompt_char) '
-export RPROMPT=''
+#export RPROMPT=''
 
 # terminal window title
 precmd() {
