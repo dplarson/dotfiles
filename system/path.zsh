@@ -1,4 +1,4 @@
-export PATH="/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$ZSH/bin:/usr/local/share/python:$PATH"
 
 export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
 
