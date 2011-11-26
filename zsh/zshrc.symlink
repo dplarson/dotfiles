@@ -16,7 +16,7 @@ fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
-compinit
+compinit -ui
 
 # load every completion after autcomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
