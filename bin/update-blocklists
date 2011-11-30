@@ -4,7 +4,7 @@
 
 
 # Specify blocklist directory
-LIST_DIR=/Users/david/Library/Application\ Support/Transmission/blocklists/
+LIST_DIR=$HOME/Library/Application\ Support/Transmission/blocklists/
 
 
 # Specify block lists
