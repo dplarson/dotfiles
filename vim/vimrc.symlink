@@ -35,7 +35,7 @@ let g:Tex_ViewRule_pdf='TexShop' 						" view PDFs with TexShop
 let g:Tex_MultipleCompileFormats='pdf' 						" compile with bibtex
 let g:Tex_CompileRule_pdf='pdflatex -synctex=1 --interaction=nonstopmode $*' 	" pdflatex compile nonstopmode
 let g:Tex_MakeIndexFlavor = 'makeindex $*.idx' 					" MakeIndex setting
-let g:Tex_UsePython='0'
+let g:Tex_UsePython='0' 							" Prevent 'retval undefined' error when compiling
 
 let g:Tex_IgnoredWarnings ='
        \"Underfull\n".
