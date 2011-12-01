@@ -1,9 +1,10 @@
-# vundle
+## About
+Vundle is a great Vim plugin manager by gmarik that I highly recommend.
 
-## requirements
+## Requirements
 Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
 
-## install
+## Installation
 1. Setup [Vundle]:
 
      ```
