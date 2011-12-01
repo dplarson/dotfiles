@@ -37,6 +37,8 @@ let g:Tex_CompileRule_pdf='pdflatex -synctex=1 --interaction=nonstopmode $*' 	" 
 let g:Tex_MakeIndexFlavor = 'makeindex $*.idx' 					" MakeIndex setting
 let g:Tex_UsePython='0' 							" Prevent 'retval undefined' error when compiling
 
+au BufNewFile,BufRead *.tex set filetype=tex
+
 let g:Tex_IgnoredWarnings ='
        \"Underfull\n".
        \"Overfull\n".
