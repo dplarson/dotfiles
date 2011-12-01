@@ -6,6 +6,9 @@ These files are inspired by Zach Holman's dotfiles, with slight modifications.
 To learn more, [read Zach's post on the
 subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
+## requirements
+Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
+
 ## install
 
 - `git clone git://github.com/dplarson/dotfiles ~/.dotfiles`
