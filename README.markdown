@@ -13,10 +13,9 @@ Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/
 	```
 	$ git clone git://github.com/dplarson/dotfiles ~/.dotfiles
 	```
-
 2. Browse to dotfiles directory:
 	```
-	$ cd ~/.dotfiles`
+	$ cd ~/.dotfiles
 	```
 
 3. Install symlinks
