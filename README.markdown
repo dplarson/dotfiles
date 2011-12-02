@@ -10,10 +10,13 @@ Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/
 
 ## Install
 1. Download dotfiles:	
+	```
 	`$ git clone git://github.com/dplarson/dotfiles ~/.dotfiles`
-
+	```
 2. Browse to dotfiles directory:
+	```
 	`$ cd ~/.dotfiles`
+	```
 
 3. Install symlinks
 	`$ rake install`
