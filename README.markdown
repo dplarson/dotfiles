@@ -10,13 +10,10 @@ Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/
 
 ## Install
 	
-	$ git clone git://github.com/dplarson/dotfiles ~/.dotfiles
+`$ git clone git://github.com/dplarson/dotfiles ~/.dotfiles`
+`$ cd ~/.dotfiles`
+`$ rake install`
 	
-	$ cd ~/.dotfiles
-	
-	$ rake install
-	
-
 The install rake task will symlink the appropriate files in `.dotfiles` to your
 home directory. Everything is configured and tweaked within `~/.dotfiles`,
 though.
