@@ -78,3 +78,11 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
+
+" Custom functions
+function! ReplaceQuotes()
+	execute "%s/[”“]/\"/g"
+	execute "%s/[‘’]/\'/g"
+	echo "Success!"
+endfunction
