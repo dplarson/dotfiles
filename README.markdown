@@ -9,13 +9,19 @@ To learn more, [fork Zach's dotfiles](https://github.com/holman/dotfiles) and [r
 Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
 
 ## Install
-	
-`$ git clone git://github.com/dplarson/dotfiles ~/.dotfiles`
+1. Download dotfiles:	
+	```
+	$ git clone git://github.com/dplarson/dotfiles ~/.dotfiles
+	```
+2. Browse to dotfiles directory
+	```
+	$ cd ~/.dotfiles`
+	```
+3. Install symlinks
+	```
+	$ rake install
+	```
 
-`$ cd ~/.dotfiles`
-
-`$ rake install`
-	
 The install rake task will symlink the appropriate files in `.dotfiles` to your
 home directory. Everything is configured and tweaked within `~/.dotfiles`,
 though.
