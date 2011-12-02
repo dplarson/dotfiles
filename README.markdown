@@ -12,13 +12,7 @@ Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/
 	
 	```
 	git clone git://github.com/dplarson/dotfiles ~/.dotfiles
-	```
-	
-	```
 	cd ~/.dotfiles
-	```
-	
-	```
 	rake install
 	```
 
