@@ -3,7 +3,7 @@
 ## Inspiration
 These files are inspired by Zach Holman's dotfiles, with slight modifications.
 
-To learn more, [fork Zach's dotfiles](https://github.com/holman/dotfiles) and [read Zach's post about his thoughts on dotfiles](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
+To learn more, [fork Zach's dotfiles](https://github.com/holman/dotfiles) and [read Zach's post about dotfiles](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
 ## Requirements
 Requires vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
