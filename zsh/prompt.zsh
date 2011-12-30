@@ -16,11 +16,22 @@ function prompt_char {
 	echo '>'
 }
 
+git_branch() {
+	echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+}
+
 # prompt
-export PROMPT=$'\n\e[1;33m%n\e[0m at \e[1;35m%m\e[0m in \e[0;34m${PWD/#$HOME/~}\e[0m \n$(prompt_char) '
+export PROMPT=$'\n\e[1;33m%n\e[0m at \e[1;35m%m\e[0m in \e[0;34m${PWD/#$HOME/~}\e[0m$(git_prompt_info) \e[0m \n$(prompt_char) '
 #export RPROMPT=''
 
 # terminal window title
 precmd() {
     title "zsh" "%m - zsh" "%55<...<%~"
 }
+
+# Git prompt (taken from oh-my-zsh)
+ZSH_THEME_GIT_PROMPT_PREFIX=" on %{\e[1;35m%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{\e[0m%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{\e[1;32m%}!"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\e[1;32m%}?"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
