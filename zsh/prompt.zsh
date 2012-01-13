@@ -10,12 +10,12 @@
 
 
 # Color aliases
-D=$'\e[37;40m'		# reset color (i.e. white)
-PINK=$'\e[35;40m' 	# pink
-GREEN=$'\e[32;40m' 	# green
-ORANGE=$'\e[33;40m'	# orange (yellow)
-BLUE=$'\e[34;40m' 	# blue
-RED=$'\e[31;40m'	# red
+D=$'\e[0;37m'		# reset color (i.e. white)
+PINK=$'\e[0;35m' 	# pink
+GREEN=$'\e[0;32m' 	# green
+ORANGE=$'\e[0;33m'	# orange (yellow)
+BLUE=$'\e[0;34m' 	# blue
+RED=$'\e[0;31m'		# red
 
 # function to change prompt character depending whether inside a git branch
 # 	-adapted from Steve Losh's zsh prompt (stevelosh.com)
