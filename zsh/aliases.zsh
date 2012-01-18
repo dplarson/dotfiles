@@ -3,7 +3,7 @@
 if [ -x /usr/bin/dircolors ];
 then
     eval "`dircolors -b`"
-    LS_COMMON='--color=auto'
+    LS_COMMON='--color=auto -h'
 else
     LS_COMMON="-hBG"
 fi
