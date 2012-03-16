@@ -1,0 +1,7 @@
+# Taken from oh-my-zsh
+# Github: https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/osx/osx.plugin.zsh
+
+# Preview manuals in Preview
+function man-preview() {
+	man -t "$@" | open -f -a Preview
+}
