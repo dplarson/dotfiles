@@ -69,7 +69,7 @@ Bundle 'gmarik/snipmate.vim'
 Bundle "Markdown"
 
 " LaTeX
-Bundle 'jcf/vim-latex'
+Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 
 
 filetype plugin indent on     " required! 
