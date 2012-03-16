@@ -1,3 +1,6 @@
+# Taken from oh-my-zsh
+# Github: https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/nyan/nyan.plugin.zsh
+
 if [[ -x `which nc` ]]; then
 	alias nyan='nc -v miku.acm.uiuc.edu 23' # nyan cat
 fi
