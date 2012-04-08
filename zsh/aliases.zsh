@@ -31,6 +31,7 @@ alias mkdir='mkdir -p'
 alias h='history'
 alias du='du -kh'
 alias df='df -kTh'
+alias sizes='du -h -d1'
 alias path='echo -e ${PATH//:/\\n}'
 alias o='open .'
 
