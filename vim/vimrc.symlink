@@ -37,7 +37,7 @@ map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
 let g:Tex_Flavor='latex' 							" 
 let g:Tex_ViewRule_pdf='Preview' 						" view PDFs with listed app
 let g:Tex_MultipleCompileFormats='pdf' 						" compile with bibtex
-let g:Tex_CompileRule_pdf='pdflatex -synctex=1 --interaction=nonstopmode $*' 	" pdflatex compile nonstopmode
+let g:Tex_CompileRule_pdf='latexmk -pdf $*'				" pdflatex compile nonstopmode
 let g:Tex_MakeIndexFlavor = 'makeindex $*.idx' 					" MakeIndex setting
 let g:Tex_UsePython='0' 							" Prevent 'retval undefined' error when compiling
 
