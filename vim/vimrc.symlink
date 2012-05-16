@@ -34,24 +34,8 @@ map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
 "--------------------------------------------------------------
 " LATEX
 "--------------------------------------------------------------
-let g:Tex_Flavor='latex' 							" 
-let g:Tex_ViewRule_pdf='TexShop' 			" view PDFs with listed app
-let g:Tex_MultipleCompileFormats='pdf' 			" compile with bibtex
-let g:Tex_CompileRule_pdf='latexmk -pdf $*'		" pdflatex compile nonstopmode
-let g:Tex_MakeIndexFlavor = 'makeindex $*.idx' 		" MakeIndex setting
-let g:Tex_UsePython='0' 				" Prevent 'retval undefined' error when compiling
-
-au BufNewFile,BufRead *.tex set filetype=tex
-
-let g:Tex_IgnoredWarnings ='
-       \"Underfull\n".
-       \"Overfull\n".
-       \"specifier changed to\n".
-       \"You have requested\n".
-       \"Missing number, treated as zero.\n".
-       \"There were undefined references\n".
-       \"Citation %.%# undefined\n".
-       \"\oval, \circle, or \line size unavailable\n"'
+let g:LatexBox_viewer = 'Skim'
+let g:LatexBox_latexmk_options = '-pvc'
 
 
 " Plugins
@@ -69,7 +53,8 @@ Bundle 'gmarik/snipmate.vim'
 Bundle "Markdown"
 
 " LaTeX
-Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+" Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 
 filetype plugin indent on     " required! 
