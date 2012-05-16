@@ -11,12 +11,11 @@ fi
 alias ls="command ls $LS_COMMON"
 
 # ls 
-alias l='ls -CF' 	    # 
-alias ll='ls -l'	    # list in lines, sorted alphabetically
-alias lt='ls -tr'	    # list newest files at the bottom
-alias llt='ls -ltr'	# list in lines, newest files at bottom
+alias l='ls -ltr' 	# list in lines, sorted by date
+alias ll='ls -l'	# list in lines, sorted alphabetically
+alias lt='ls -tr'	# list newest files at the bottom
 alias lk='ls -lSr'	#
-alias lla='ls -al'	    # list all in lines
+alias lla='ls -al'	# list all in lines
 alias l.='ls -ld .*'    # list dot files
 
 # Easier navigation
@@ -41,6 +40,7 @@ alias showcal='cal | sed "s/.*/ & /;s/ $(date +%e) / [] /"'     # show calendar
 
 # Brew
 alias brews='brew list -l'
+alias bout='brew outdated'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
