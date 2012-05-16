@@ -1,5 +1,3 @@
-
-# C-# switches to tab
 nmap <d-1> 1gt
 nmap <d-2> 2gt
 nmap <d-3> 3gt
