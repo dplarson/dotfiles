@@ -14,6 +14,7 @@ alias ls="command ls $LS_COMMON"
 alias l='ls -ltr' 	# list in lines, sorted by date
 alias ll='ls -l'	# list in lines, sorted alphabetically
 alias lt='ls -tr'	# list newest files at the bottom
+alias llt='ls -ltr' 	# list in lines, sorted by date
 alias lk='ls -lSr'	#
 alias lla='ls -al'	# list all in lines
 alias l.='ls -ld .*'    # list dot files
