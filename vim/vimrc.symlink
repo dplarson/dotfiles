@@ -60,6 +60,9 @@ Bundle "Markdown"
 " Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
+" Fuzzyfinder
+Bundle 'L9'
+Bundle 'FuzzyFinder'
 
 filetype plugin indent on     " required! 
 "
