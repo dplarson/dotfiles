@@ -39,10 +39,6 @@ alias o='open .'
 alias reload='source ~/.zshrc'                                  # reload zsh settings
 alias showcal='cal | sed "s/.*/ & /;s/ $(date +%e) / [] /"'     # show calendar
 
-# Brew
-alias brews='brew list -l'
-alias bout='brew outdated'
-
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
