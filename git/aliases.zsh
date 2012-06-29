@@ -4,7 +4,7 @@ alias gd='git diff'
 alias ga='git add'
 alias gc='git commit'
 alias gca='git commit -a'
-alias gco='git checkout'
+alias gch='git checkout'
 alias gb='git branch'
 alias gm='git merge --no-ff' # keep commit from feature when merging
 
