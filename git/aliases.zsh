@@ -6,6 +6,8 @@ alias gc='git commit'
 alias gca='git commit -a'
 alias gch='git checkout'
 alias gb='git branch'
+alias gbr='git branch -r'
+alias gba='git branch -a'
 alias gm='git merge --no-ff' # keep commit from feature when merging
 
 # Analysis
