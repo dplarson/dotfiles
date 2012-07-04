@@ -46,7 +46,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Snippets
-Bundle 'gmarik/snipmate.vim'
+Bundle 'msanders/snipmate.vim'
 
 " Syntax
 Bundle "Markdown"
