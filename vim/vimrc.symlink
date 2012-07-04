@@ -31,16 +31,11 @@ set nofoldenable        " dont fold by default
 :imap jk <esc>
 
 
-" Execute file being edited with <Shift> + e:
-map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
-
-
 "--------------------------------------------------------------
 " LATEX
 "--------------------------------------------------------------
 let g:LatexBox_viewer = 'Skim'
 let g:LatexBox_latexmk_options = '-pvc'
-
 
 " Plugins
 set rtp+=~/.vim/bundle/vundle/
@@ -57,7 +52,6 @@ Bundle 'gmarik/snipmate.vim'
 Bundle "Markdown"
 
 " LaTeX
-" Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 " Fuzzyfinder
