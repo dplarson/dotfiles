@@ -53,8 +53,9 @@ Bundle 'gmarik/vundle'
 " Snippets
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle "snipmate-snippets"
+Bundle "honza/snipmate-snippets"
 Bundle "garbas/vim-snipmate"
+
 
 " Syntax
 Bundle "Markdown"
