@@ -31,11 +31,13 @@ set nofoldenable        " dont fold by default
 :imap jk <esc>
 
 
+
 "--------------------------------------------------------------
 " LATEX
 "--------------------------------------------------------------
 let g:LatexBox_viewer = 'Skim'
 let g:LatexBox_latexmk_options = '-pvc'
+
 
 
 "--------------------------------------------------------------
@@ -52,6 +54,7 @@ Bundle 'gmarik/vundle'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "snipmate-snippets"
+Bundle "garbas/vim-snipmate"
 
 " Syntax
 Bundle "Markdown"
