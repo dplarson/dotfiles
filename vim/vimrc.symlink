@@ -52,6 +52,7 @@ Bundle 'gmarik/vundle'
 
 " Snippets
 Bundle "SirVer/ultisnips"
+let g:UltiSnipsUsePythonVersion = 2
 
 " Syntax
 Bundle "Markdown"
