@@ -42,6 +42,13 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
+" LaTeX
+Bundle "LaTeX-Box-Team/LaTeX-Box"
+let g:LatexBox_latexmk_options = "-diagnostics -pv"
+let g:LatexBox_output_type = "pdf"
+let g:LatexBox_viewer = "Preview"
+let g:LatexBox_autojump = 1
+
 " Snippets
 Bundle "SirVer/ultisnips"
 let g:UltiSnipsUsePythonVersion = 2
