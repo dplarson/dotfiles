@@ -37,6 +37,7 @@ set nofoldenable        " dont fold by default
 "--------------------------------------------------------------
 let g:LatexBox_viewer = 'Skim'
 let g:LatexBox_latexmk_options = '-pvc'
+let g:LatexBox_output_type = "pdf"
 
 
 
