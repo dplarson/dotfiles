@@ -33,15 +33,6 @@ set nofoldenable        " dont fold by default
 
 
 "--------------------------------------------------------------
-" LATEX
-"--------------------------------------------------------------
-let g:LatexBox_viewer = 'Skim'
-let g:LatexBox_latexmk_options = '-pvc'
-let g:LatexBox_output_type = "pdf"
-
-
-
-"--------------------------------------------------------------
 " PLUGINS 
 "--------------------------------------------------------------
 set rtp+=~/.vim/bundle/vundle/
@@ -57,9 +48,6 @@ let g:UltiSnipsUsePythonVersion = 2
 
 " Syntax
 Bundle "Markdown"
-
-" LaTeX
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 " Fuzzyfinder
 Bundle 'L9'
