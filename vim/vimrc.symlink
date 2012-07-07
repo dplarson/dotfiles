@@ -26,9 +26,21 @@ endif
 
 set nofoldenable        " dont fold by default
 
+"--------------------------------------------------------------
+" COMMAND REMAPPING 
+"--------------------------------------------------------------
+" faster commands
+let mapleader="," 
+let maplocalleader=","
 
-" Command remapping
-:imap jk <esc>
+" faster mode change
+imap jk <esc> 
+
+" faster file functions
+nnoremap ; :
+
+" clear search buffer
+nmap <silent> ,/ :nohlsearch<CR> 
 
 
 
