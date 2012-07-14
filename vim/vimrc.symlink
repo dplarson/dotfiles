@@ -1,13 +1,32 @@
-set nocompatible 	" be iMproved
+set nocompatible 	" be improved
 filetype off 		" required
 
+
+"--------------------------------------------------------------
+" UI 
+"--------------------------------------------------------------
 set cursorline
 set incsearch
 set number
 set ruler
 
 
-" GUI specific settings
+"--------------------------------------------------------------
+" TEXT FORMATTING 
+"--------------------------------------------------------------
+set autoindent 		" automatic indent new lines
+set softtabstop=4 	" soft tabs
+set tabstop=4
+set expandtab 		" expand tabs to spaces
+set nosmarttab		"
+
+set nofoldenable    " dont fold by default
+
+
+
+"--------------------------------------------------------------
+" GUI SPECIFIC SETTINGS 
+"--------------------------------------------------------------
 if has("gui_running")
 	colorscheme molokai	" color theme
 	set guifont=Monaco:h12 	" font
@@ -24,7 +43,7 @@ if has ("gui_macvim")
 	set guioptions-=T
 endif
 
-set nofoldenable        " dont fold by default
+
 
 "--------------------------------------------------------------
 " COMMAND REMAPPING 
@@ -42,6 +61,17 @@ nnoremap ; :
 " clear search buffer
 nmap <silent> ,/ :nohlsearch<CR> 
 
+" sane movement with wrap turned on
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
 
 
 "--------------------------------------------------------------
@@ -82,3 +112,12 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
+
+"--------------------------------------------------------------
+" STRIP WHITESPACES 
+"--------------------------------------------------------------
+function! StripWhitespace ()
+  exec ':%s/ \+$//gc'
+endfunction
+map ,strip :call StripWhitespace ()<CR>
