@@ -1,5 +1,10 @@
+"--------------------------------------------------------------
+" GENERAL SETTINGS
+"--------------------------------------------------------------
 set nocompatible 	" be improved
 filetype off 		" required
+set nobackup        " delete backup files after close
+
 
 
 "--------------------------------------------------------------
@@ -9,6 +14,7 @@ set cursorline
 set incsearch
 set number
 set ruler
+
 
 
 "--------------------------------------------------------------
@@ -74,6 +80,7 @@ inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
 
+
 "--------------------------------------------------------------
 " PLUGINS 
 "--------------------------------------------------------------
@@ -112,6 +119,7 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
 
 
 "--------------------------------------------------------------
