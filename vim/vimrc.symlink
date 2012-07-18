@@ -105,9 +105,8 @@ let g:UltiSnipsUsePythonVersion = 2
 " Syntax
 Bundle "Markdown"
 
-" Fuzzyfinder
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+" Faster file opening 
+Bundle "wincent/Command-T"
 
 filetype plugin indent on     " required! 
 "
