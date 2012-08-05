@@ -33,8 +33,10 @@ set nofoldenable    " dont fold by default
 "--------------------------------------------------------------
 " GUI SPECIFIC SETTINGS 
 "--------------------------------------------------------------
+colorscheme molokai	" color theme
+syntax on
+
 if has("gui_running")
-	colorscheme molokai	" color theme
 	set guifont=Monaco:h12 	" font
 endif
 
