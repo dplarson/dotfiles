@@ -18,6 +18,9 @@ Thumbs.db
 *~
 *.swp
 
+# Mathematica files
+*.nb
+
 # LaTeX
 *.acn
 *.acr
