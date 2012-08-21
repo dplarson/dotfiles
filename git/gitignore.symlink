@@ -21,6 +21,10 @@ Thumbs.db
 # Mathematica files
 *.nb
 
+# Matlab files
+*.m~
+*.mat
+
 # LaTeX
 *.acn
 *.acr
