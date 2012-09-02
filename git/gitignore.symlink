@@ -25,6 +25,9 @@ Thumbs.db
 *.m~
 *.mat
 
+# Python files
+*.pyc
+
 # LaTeX
 *.acn
 *.acr
