@@ -20,7 +20,7 @@ set ruler
 "--------------------------------------------------------------
 " TEXT FORMATTING 
 "--------------------------------------------------------------
-set autoindent 		" automatic indent new lines
+"set autoindent 		" automatic indent new lines
 set softtabstop=4 	" soft tabs
 set tabstop=4
 set expandtab 		" expand tabs to spaces
@@ -109,6 +109,9 @@ Bundle "Markdown"
 
 " Faster file opening 
 Bundle "wincent/Command-T"
+
+" Tab completition
+Bundle "ervandew/supertab"
 
 filetype plugin indent on     " required! 
 "
