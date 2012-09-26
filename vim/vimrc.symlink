@@ -113,6 +113,9 @@ Bundle "wincent/Command-T"
 " Tab completition
 Bundle "ervandew/supertab"
 
+" Tagbar
+Bundle "majutsushi/tagbar"
+
 filetype plugin indent on     " required! 
 "
 " Brief help
