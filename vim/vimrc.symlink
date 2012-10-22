@@ -37,7 +37,7 @@ colorscheme molokai	" color theme
 syntax on
 
 if has("gui_running")
-	set guifont=Monaco:h12 	" font
+	set guifont=Inconsolata:h14
 endif
 
 if has ("gui_macvim")
