@@ -34,6 +34,7 @@ set nofoldenable    " dont fold by default
 " GUI SPECIFIC SETTINGS 
 "--------------------------------------------------------------
 colorscheme solarized
+set bg=dark
 syntax on
 
 if has("gui_running")
