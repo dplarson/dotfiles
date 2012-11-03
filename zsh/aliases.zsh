@@ -3,9 +3,9 @@
 if [ -x /usr/bin/dircolors ];
 then
     eval "`dircolors -b`"
-    LS_COMMON='--color=auto -h'
+    LS_COMMON='--color=auto -hF'
 else
-    LS_COMMON="-hBG"
+    LS_COMMON="-hBGF"
 fi
 # set ls to use $LS_COMMON
 alias ls="command ls $LS_COMMON"
