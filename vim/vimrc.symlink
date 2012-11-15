@@ -107,6 +107,8 @@ let g:UltiSnipsUsePythonVersion = 2
 
 " Syntax
 Bundle "Markdown"
+Bundle "atourino/jinja.vim"
+au BufRead,BufNewFile *.j2 set filetype=jinja
 
 " Faster file opening 
 Bundle "wincent/Command-T"
@@ -116,6 +118,11 @@ Bundle "ervandew/supertab"
 
 " Tagbar
 Bundle "majutsushi/tagbar"
+
+" NERDTree
+Bundle "scrooloose/nerdtree"
+map <leader>n :NERDTreeToggle<CR>
+
 
 filetype plugin indent on     " required! 
 "
