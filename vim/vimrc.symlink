@@ -123,6 +123,8 @@ Bundle "majutsushi/tagbar"
 Bundle "scrooloose/nerdtree"
 map <leader>n :NERDTreeToggle<CR>
 
+" PyFlakes
+Bundle "kevinw/pyflakes-vim"
 
 filetype plugin indent on     " required! 
 "
