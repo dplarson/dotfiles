@@ -33,8 +33,15 @@ set nofoldenable    " dont fold by default
 "--------------------------------------------------------------
 " GUI SPECIFIC SETTINGS 
 "--------------------------------------------------------------
+
+" colors
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 colorscheme solarized
-set bg=dark
+
 syntax on
 
 if has("gui_running")
