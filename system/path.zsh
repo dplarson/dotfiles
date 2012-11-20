@@ -5,7 +5,7 @@ export PATH="/usr/local/share/python:$PATH"
 export PATH="/usr/texbin:$PATH"
 export PATH="/usr/local/Cellar/gems/1.8/bin:$PATH"
 export PATH="/usr/sbin:$PATH"
-export PATH="~/anaconda/bin:$PATH"
+export PATH="$HOME/anaconda/bin:$PATH"
 
 export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
 
