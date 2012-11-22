@@ -109,8 +109,8 @@ let g:LatexBox_viewer = "Preview"
 let g:LatexBox_autojump = 1
 
 " Snippets
-Bundle "SirVer/ultisnips"
-let g:UltiSnipsUsePythonVersion = 2
+" Bundle "SirVer/ultisnips"
+" let g:UltiSnipsUsePythonVersion = 2
 
 " Syntax
 Bundle "Markdown"
@@ -132,6 +132,13 @@ map <leader>n :NERDTreeToggle<CR>
 
 " PyFlakes
 Bundle "kevinw/pyflakes-vim"
+
+" Powerline
+Bundle "Lokaltog/vim-powerline"
+let g:PowerLine_symbols = 'compatible'
+let g:PowerLine_theme = 'solarized256'
+let g:Powerline_colorscheme = 'solarized256'
+set laststatus=2
 
 filetype plugin indent on     " required! 
 "
