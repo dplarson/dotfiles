@@ -5,6 +5,9 @@ set nocompatible 	" be improved
 filetype off 		" required
 set nobackup        " delete backup files after close
 
+if has("gui_macvim")
+    set shell=/usr/local/bin/zsh
+endif
 
 
 "--------------------------------------------------------------
