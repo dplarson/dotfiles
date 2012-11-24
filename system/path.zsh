@@ -1,11 +1,11 @@
 export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$ZSH/bin:$PATH"
-export PATH="/usr/local/share/python:$PATH"
-export PATH="/usr/texbin:$PATH"
-export PATH="/usr/local/Cellar/gems/1.8/bin:$PATH"
-export PATH="/usr/sbin:$PATH"
-export PATH="$HOME/anaconda/bin:$PATH"
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:$ZSH/bin:"
+#export PATH="$PATH:$HOME/anaconda/bin"
+export PATH="$PATH:/usr/local/share/python"
+export PATH="$PATH:/usr/texbin"
+export PATH="$PATH:/usr/local/Cellar/gems/1.8/bin"
+export PATH="$PATH:/usr/sbin"
 
 export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
 
