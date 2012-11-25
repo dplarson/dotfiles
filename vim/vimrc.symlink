@@ -139,6 +139,9 @@ map <leader>n :NERDTreeToggle<CR>
 " PyFlakes
 Bundle "kevinw/pyflakes-vim"
 
+" Use Git in Vim
+Bundle "tpope/vim-fugitive"
+
 " Powerline
 Bundle "Lokaltog/vim-powerline"
 let g:PowerLine_symbols = 'compatible'
