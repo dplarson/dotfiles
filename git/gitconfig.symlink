@@ -1,6 +1,8 @@
 [user]
 	name = David Larson
 	email = dplarson@ucsd.edu 
+[github]
+	user = dplarson
 [core]
 	editor = mvim -f
 	excludesfile = ~/.gitignore
@@ -15,5 +17,5 @@
 	status = auto
 	branch = auto
 	ui = auto
-[github]
-	user = dplarson
+[push]
+    default = current
