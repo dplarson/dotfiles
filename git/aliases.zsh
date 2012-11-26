@@ -21,6 +21,7 @@ alias gm='git merge --no-ff' # keep commit from feature when merging
 # status
 alias gs='git status -sb' 
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias gwtf='git-wtf'
 
 # log
 alias glog="git log --graph --pretty=format:'%Cred%h %Cblue%an%Creset: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
