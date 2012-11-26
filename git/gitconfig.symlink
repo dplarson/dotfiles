@@ -1,0 +1,19 @@
+[user]
+	name = David Larson
+	email = dplarson@ucsd.edu 
+[core]
+	editor = mvim -f
+	excludesfile = ~/.gitignore
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+[github]
+	user = dplarson
