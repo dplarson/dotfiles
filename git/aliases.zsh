@@ -1,16 +1,29 @@
-# Actions
+# push 
 alias gp='git push origin HEAD'
+
+# diff
 alias gd='git diff'
+
+# add
 alias ga='git add'
+
+# commit
 alias gc='git commit'
 alias gca='git commit -a'
-alias gch='git checkout'
+
+# branches
 alias gb='git branch'
-alias gbr='git branch -r'
 alias gba='git branch -a'
+
+# merge
 alias gm='git merge --no-ff' # keep commit from feature when merging
 
-# Analysis
-alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+# status
+alias gs='git status -sb' 
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+
+# log
 alias glog="git log --graph --pretty=format:'%Cred%h %Cblue%an%Creset: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+
+# analysis
+alias g#='git shortlog -sn'     # view number of commits per user
