@@ -23,3 +23,9 @@ solarized color theme by altercation [https://github.com/altercation/solarized](
 The install rake task will symlink the appropriate files in `.dotfiles` to your
 home directory. Everything is configured and tweaked within `~/.dotfiles`,
 though.
+
+
+## Screenshot
+iTerm 2 + zsh + solarized dark + dotfiles on Mac 10.7:
+
+![iterm2](https://raw.github.com/dplarson/dotfiles/master/zsh_iterm2_git_demo.png)
