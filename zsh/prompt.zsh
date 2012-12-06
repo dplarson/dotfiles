@@ -18,7 +18,7 @@ tilde_or_pwd() {
 }
 
 # left prompt with host info
-export PROMPT=$'\n%{\e[1;33m%}%n@\e[1;33m%M%{\e[0m%}
+export PROMPT=$'\n%{\e[1;33m%}%n%{\e[1;34m%}@\e[1;33m%M%{\e[0m%}
 %{\e[0;%(?.32.31)m%}>%{\e[0m%} '
 
 # right prompt with current directory and git branch (if in repo)
@@ -31,8 +31,9 @@ precmd() {
 
 
 # Git prompt (taken from oh-my-zsh)
-ZSH_THEME_GIT_PROMPT_PREFIX="on %{${PINK}%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{${BLUE}%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{${D}%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{${GREEN}%}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{${GREEN}%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{\e[1;34m%}@%{\e[1;31m%}"
