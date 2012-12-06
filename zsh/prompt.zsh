@@ -1,13 +1,3 @@
-# Custom colors (r,g,b)
-# -black:    0,0,0
-# -red:      255,27,0
-# -green:    166,227,45
-# -blue:     38,162,255
-# -yellow:   252,149,30
-# -magenta:  250,37,115
-# -cyan:     103,217,240
-# -white:    242,242,242
-
 
 # Color aliases
 D=$'\e[0;37m'		# reset color (i.e. white)
@@ -17,23 +7,22 @@ ORANGE=$'\e[0;33m'	# orange (yellow)
 BLUE=$'\e[0;34m' 	# blue
 RED=$'\e[0;31m'		# red
 
-# function to change prompt character depending whether inside a git branch
-# 	-adapted from Steve Losh's zsh prompt (stevelosh.com)
-function prompt_char {
-	git branch >/dev/null 2>/dev/null && echo '±' && return
-	echo '>'
-}
-
 
 git_branch() {
 	echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 
+# get current directory
+tilde_or_pwd() {
+  echo $PWD | sed -e "s/\/Users\/$USER/~/"
+}
 
-# prompt
-export PROMPT=$'\n${PINK}%n ${D}at ${ORANGE}%m ${D}in ${BLUE}${PWD/#$HOME/~} ${D}$(git_prompt_info) \e[0m \n$(prompt_char) '
-#export RPROMPT=''
+# left prompt with host info
+export PROMPT=$'\n%{\e[1;33m%}%n@\e[1;33m%M%{\e[0m%}
+%{\e[0;%(?.32.31)m%}>%{\e[0m%} '
 
+# right prompt with current directory and git branch (if in repo)
+export RPROMPT=$'%{\e[1;33m%}$(tilde_or_pwd) $(git_prompt_info)%{\e[0m%}'
 
 # terminal window title
 precmd() {
