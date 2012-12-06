@@ -13,6 +13,8 @@
     co = checkout
     df = diff
     f  = fetch -v
+    s  = summary
+    i  = info
 [color]
 	diff = auto
 	status = auto
