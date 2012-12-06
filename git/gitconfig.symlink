@@ -12,6 +12,7 @@
     br = branch
     co = checkout
     df = diff
+    f  = fetch -v
 [color]
 	diff = auto
 	status = auto
