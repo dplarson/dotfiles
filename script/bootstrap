@@ -14,8 +14,13 @@ function die {
 }
 
 
+function echo_with_color {
+    echo "\033[0;34m$1\033[0m"
+}
+
+
 function install_homebrew {
-    echo "Checking if homebrew is already installed..."
+    echo_with_color "\nChecking if homebrew is already installed..."
     if [ -x /usr/local/bin/brew ] ; then
         echo "Homebrew is already installed."
     else
@@ -25,14 +30,14 @@ function install_homebrew {
 
 
 function install_homebrew_pkgs {
-    echo "Installing homebrew packages..."
+    echo_with_color "\nInstalling homebrew packages..."
     brew install ack
     brew install git git-extras
 }
 
 
 function install_vundle {
-    "Checking if vundle is already installed..."
+    echo_with_color "\nChecking if vundle is already installed..."
 
     # create vundle directory
     if [ ! -d ~/.vim/bundle/vundle/ ] ; then
@@ -50,7 +55,7 @@ function install_vundle {
 
 
 function install_vundle_pkgs {
-    "Installing vundle packages now..."
+    echo_with_color "\nInstalling vundle packages now..."
 
     # check that vim is installed
     if test ! $(which vim) ; then
