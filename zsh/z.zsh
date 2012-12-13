@@ -1,6 +1,6 @@
 # Setup z.sh for OSX
 if [ $(uname -s) = "Darwin" ] ; then
-    
+
     # assumes z.sh installed using homebrew
     source $(brew --prefix)/etc/profile.d/z.sh
 
@@ -11,8 +11,4 @@ if [ $(uname -s) = "Darwin" ] ; then
         touch $HOME/.z
     fi
 
-    # required to build-up z datafile
-    function precmd () {
-        z --add "$(pwd -P)"
-    }
 fi
