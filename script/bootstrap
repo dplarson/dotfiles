@@ -32,7 +32,11 @@ function install_homebrew {
 function install_homebrew_pkgs {
     echo_with_color "\nInstalling homebrew packages..."
     brew install ack
+    brew install coreutils
     brew install git git-extras
+    brew install macvim --override-system-vim
+    brew install --disable-etcdir zsh
+    brew install z
 }
 
 
@@ -55,7 +59,7 @@ function install_vundle {
 
 
 function install_vundle_pkgs {
-    echo_with_color "\nInstalling vundle packages now..."
+    echo_with_color "\nInstalling vundle packages..."
 
     # check that vim is installed
     if test ! $(which vim) ; then
@@ -67,10 +71,13 @@ function install_vundle_pkgs {
 }
 
 
-# install OSX-specific items
+# OS-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
     install_homebrew
-    install_homebrew_pkgs
+    install_homebrew_pkgs 
+    export EDITOR='mvim'
+else
+    export EDITOR='vim'
 fi
 
 
