@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Homebrew
+#
+# Install some common dependencies using Homebrew
+
+# check for Homebrew
+if test ! $(which brew)
+then
+    echo "Homebrew not installed."
+    echo "Please install homebrew first:"
+    echo "https://github.com/mxcl/homebrew/wiki/installation"
+else
+    echo "Homebrew found."
+    echo "Now installing Homebrew essentials..."
+fi
+
+# git
+brew install git git-extras 
+
+# zsh
+brew install --disable-etcdir zsh

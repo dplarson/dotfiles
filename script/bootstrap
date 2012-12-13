@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# bootstrap
+
+# Homebrew
+if [ $(uname -s) = "Darwin" ]
+then
+    . script/homebrew
+fi
+
+# Install
+rake install
