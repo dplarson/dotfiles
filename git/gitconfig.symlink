@@ -8,13 +8,16 @@
 	excludesfile = ~/.gitignore
 [alias]
     st = status
+    cl = clone    
     ci = commit
-    br = branch
     co = checkout
+    br = branch
     df = diff
     f  = fetch -v
     s  = summary
     i  = info
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    dl = "!git ll -1"
 [color]
 	diff = auto
 	status = auto
