@@ -1,12 +1,74 @@
 #!/bin/sh
 #
 # bootstrap
+#
+# Install dependencies.
 
-# Homebrew
-if [ $(uname -s) = "Darwin" ]
-then
-    . script/homebrew
+# Inspired heavily by davidxia's bootstrap_dotfiles
+#   URL: https://github.com/davidxia/bootstrap_dotfiles/
+
+
+function die {
+    echo "Error: $1"
+    exit 1
+}
+
+
+function install_homebrew {
+    echo "Checking if homebrew is already installed..."
+    if [ -x /usr/local/bin/brew ] ; then
+        echo "Homebrew is already installed."
+    else
+        die "Homebrew not installed."
+    fi
+}
+
+
+function install_homebrew_pkgs {
+    echo "Installing homebrew packages..."
+    brew install ack
+    brew install git git-extras
+}
+
+
+function install_vundle {
+    "Checking if vundle is already installed..."
+
+    # create vundle directory
+    if [ ! -d ~/.vim/bundle/vundle/ ] ; then
+        mkdir -p ~/.vim/bundle/vundle
+    fi
+    
+    # install vundle
+    if [ ! -d ~/.vim/bundle/vundle/.git/ ] ; then
+        echo "Vundle not installed. Installing now..."
+        git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    else
+        echo "Vundle is already installed."
+    fi
+}
+
+
+function install_vundle_pkgs {
+    "Installing vundle packages now..."
+
+    # check that vim is installed
+    if test ! $(which vim) ; then
+        die "Vim not installed."
+    fi
+
+    # install packages
+    vim -c "execute \"BundleInstall\" | q | q"
+}
+
+
+# install OSX-specific items
+if [ $(uname -s) = "Darwin" ] ; then
+    install_homebrew
+    install_homebrew_pkgs
 fi
 
-# Install
-rake install
+
+# install all other dependencies
+install_vundle
+install_vundle_pkgs
