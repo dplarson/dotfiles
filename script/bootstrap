@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # bootstrap
 #
@@ -9,20 +9,20 @@
 
 
 function die {
-    echo "Error: $1"
+    echo -e "Error: $1"
     exit 1
 }
 
 
 function echo_with_color {
-    echo "\033[0;34m$1\033[0m"
+    echo -e "\033[0;34m$1\033[0m"
 }
 
 
 function install_homebrew {
     echo_with_color "\nChecking if homebrew is already installed..."
     if [ -x /usr/local/bin/brew ] ; then
-        echo "Homebrew is already installed."
+        echo -e "Homebrew is already installed."
     else
         die "Homebrew not installed."
     fi
@@ -46,10 +46,10 @@ function install_vundle {
     
     # install vundle
     if [ ! -d ~/.vim/bundle/vundle/.git/ ] ; then
-        echo "Vundle not installed. Installing now..."
+        echo -e "Vundle not installed. Installing now..."
         git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     else
-        echo "Vundle is already installed."
+        echo -e "Vundle is already installed."
     fi
 }
 
