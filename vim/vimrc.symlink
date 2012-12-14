@@ -151,6 +151,7 @@ set laststatus=2
 
 " Relative line number
 Bundle "myusuf3/numbers.vim"
+nnoremap <leader><leader> :NumbersToggle<CR>
 
 filetype plugin indent on     " required! 
 "
