@@ -44,12 +44,12 @@ install_vundle () {
     echo_with_color "\nChecking if vundle is already installed..."
 
     # create vundle directory
-    if [ ! -d ~/.vim/bundle/vundle/ ] ; then
-        mkdir -p ~/.vim/bundle/vundle
+    if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
+        mkdir -p $HOME/.vim/bundle/vundle
     fi
     
     # install vundle
-    if [ ! -d ~/.vim/bundle/vundle/.git/ ] ; then
+    if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
         echo "Vundle not installed. Installing now..."
         git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     else
