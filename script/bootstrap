@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # bootstrap
 #
@@ -8,28 +8,28 @@
 #   URL: https://github.com/davidxia/bootstrap_dotfiles/
 
 
-function die {
-    echo -e "Error: $1"
+die () {
+    echo "Error: $1"
     exit 1
 }
 
 
-function echo_with_color {
-    echo -e "\033[0;34m$1\033[0m"
+echo_with_color () {
+    echo "\033[0;34m$1\033[0m"
 }
 
 
-function install_homebrew {
+install_homebrew () {
     echo_with_color "\nChecking if homebrew is already installed..."
     if [ -x /usr/local/bin/brew ] ; then
-        echo -e "Homebrew is already installed."
+        echo "Homebrew is already installed."
     else
         die "Homebrew not installed."
     fi
 }
 
 
-function install_homebrew_pkgs {
+install_homebrew_pkgs () {
     echo_with_color "\nInstalling homebrew packages..."
     brew install ack
     brew install coreutils
@@ -40,7 +40,7 @@ function install_homebrew_pkgs {
 }
 
 
-function install_vundle {
+install_vundle () {
     echo_with_color "\nChecking if vundle is already installed..."
 
     # create vundle directory
@@ -50,15 +50,15 @@ function install_vundle {
     
     # install vundle
     if [ ! -d ~/.vim/bundle/vundle/.git/ ] ; then
-        echo -e "Vundle not installed. Installing now..."
+        echo "Vundle not installed. Installing now..."
         git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
     else
-        echo -e "Vundle is already installed."
+        echo "Vundle is already installed."
     fi
 }
 
 
-function install_vundle_pkgs {
+install_vundle_pkgs () {
     echo_with_color "\nInstalling vundle packages..."
 
     # check that vim is installed
