@@ -1,7 +1,7 @@
 "--------------------------------------------------------------
 " GENERAL SETTINGS
 "--------------------------------------------------------------
-set nocompatible 	" be improved
+set nocompatible 
 filetype off 		" required
 set nobackup        " delete backup files after close
 
@@ -13,6 +13,7 @@ elseif filereadable("/bin/zsh")
 endif
 
 
+
 "--------------------------------------------------------------
 " UI 
 "--------------------------------------------------------------
@@ -22,23 +23,20 @@ set number
 set ruler
 
 
-
 "--------------------------------------------------------------
 " TEXT FORMATTING 
 "--------------------------------------------------------------
-"set autoindent 		" automatic indent new lines
 set softtabstop=4 	" soft tabs
 set tabstop=4
 set expandtab 		" expand tabs to spaces
-set nosmarttab		"
-
+set nosmarttab
 set nofoldenable    " dont fold by default
-
 
 
 "--------------------------------------------------------------
 " GUI SPECIFIC SETTINGS 
 "--------------------------------------------------------------
+syntax on
 
 " colors
 set background=dark
@@ -48,29 +46,20 @@ let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
 
-syntax on
+" font
+set guifont=Inconsolata:h14
 
-if has("gui_running")
-	set guifont=Inconsolata:h14
-endif
-
+" MacVim specific settings
 if has ("gui_macvim")
-	" Fullscreen takes up entire screen
-	set fuoptions=maxhorz,maxvert
-
- 	" Don't beep
-	set visualbell
-	
-	" Start without the toolbar
-	set guioptions-=T
+	set fuoptions=maxhorz,maxvert   " fullscreen
+	set visualbell                  " no beep
+	set guioptions-=T               " start with no toolbar
 endif
-
 
 
 "--------------------------------------------------------------
 " COMMAND REMAPPING 
 "--------------------------------------------------------------
-" faster commands
 let mapleader="," 
 let maplocalleader=","
 
@@ -96,15 +85,13 @@ inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
 
-
 "--------------------------------------------------------------
 " PLUGINS 
 "--------------------------------------------------------------
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
+" let Vundle manage Vundle (required)
 Bundle 'gmarik/vundle'
 
 " LaTeX
@@ -153,23 +140,4 @@ set laststatus=2
 Bundle "myusuf3/numbers.vim"
 nnoremap <leader><leader> :NumbersToggle<CR>
 
-filetype plugin indent on     " required! 
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
-
-
-"--------------------------------------------------------------
-" STRIP WHITESPACES 
-"--------------------------------------------------------------
-function! StripWhitespace ()
-  exec ':%s/ \+$//gc'
-endfunction
-map ,strip :call StripWhitespace ()<CR>
+filetype plugin indent on     " required (at end of vimrc)
