@@ -2,7 +2,10 @@
 #
 # Quick search in a directory for a string ($1).
 #
-set -e
 
-# use -iru to search directories ack usually ignores (like .git)
-ack -i $1
+if [ $(uname -s) = "Darwin" ] ; then
+    # use -iru to search directories ack usually ignores (like .git)
+    ack -i $1
+else
+    ack-grep -i $1
+fi
