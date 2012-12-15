@@ -16,8 +16,7 @@
 #
 # https://github.com/holman/dotfiles/blob/master/bin/e
 
-if test "$1" == ""
-then
+if [ "$1" = "" ] ; then
   exec $EDITOR .
 else
   exec $EDITOR "$1"
