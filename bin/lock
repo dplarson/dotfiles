@@ -3,5 +3,9 @@
 # Stolen from R Tomayko
 # https://github.com/rtomayko/dotfiles/blob/rtomayko/bin/lock-screen
 
-/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession \
-  -suspend
+if [ $(uname -s) = "Darwin" ] ; then
+    /System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession \
+      -suspend
+else
+    echo "This command is not supported for your OS."
+fi
