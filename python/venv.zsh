@@ -2,7 +2,7 @@
 
 # source virtualenvwrapper and autoenv
 if [ $(uname -s) = "Darwin" ] ; then
-    . $(which virtualenvwrapper.sh)
+    . /usr/local/share/python/virtualenvwrapper.sh
     . /usr/local/opt/autoenv/activate.sh
 fi
 
