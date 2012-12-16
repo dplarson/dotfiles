@@ -27,6 +27,7 @@ _1st_arguments=(
   'info:information about a formula'
   'prune:remove dead links'
   'update:freshen up links'
+  'upgrade:upgrade a formula'
   'outdated:list outdated formula'
   'log:git commit log for a formula'
   'create:create a new formula'
