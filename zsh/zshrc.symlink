@@ -1,6 +1,9 @@
 # set shortcut to dotfiles path
 export ZSH=$HOME/.dotfiles
 
+# set project folder so we can 'c [tab]' to it
+export PROJECTS=$HOME/projects
+
 # source every .zsh file in this rep
 for config_file in $ZSH/**/*.zsh; do source $config_file; done
 
