@@ -18,6 +18,7 @@ local -a _1st_arguments
 _1st_arguments=(
   'install:install a formula'
   'remove:remove a formula'
+  'uninstall:uninstall a formula (same as remove)'
   'search:search for a formula (/regex/ or string)'
   'list:list files in a formula or not-installed formulae'
   'link:link a formula'
@@ -26,6 +27,7 @@ _1st_arguments=(
   'info:information about a formula'
   'prune:remove dead links'
   'update:freshen up links'
+  'outdated:list outdated formula'
   'log:git commit log for a formula'
   'create:create a new formula'
   'edit:edit a formula'
