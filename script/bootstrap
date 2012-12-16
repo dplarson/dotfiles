@@ -16,6 +16,7 @@ die () {
 
 
 echo_with_color () {
+    # font color = blue
     echo "\033[0;34m$1\033[0m"
 }
 
@@ -31,6 +32,9 @@ install_homebrew () {
 
 
 install_homebrew_pkgs () {
+    echo_with_color "\nUpdating homebrew package list..."
+    brew update
+
     echo_with_color "\nInstalling homebrew packages..."
     brew install ack
     brew install coreutils
