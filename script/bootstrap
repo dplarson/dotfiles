@@ -38,6 +38,17 @@ install_homebrew_pkgs () {
     brew install macvim --override-system-vim
     brew install --disable-etcdir zsh
     brew install z
+    brew install python
+    brew install autoenv
+}
+
+
+install_pip_pkgs () {
+    echo_with_color "\nInstalling pip packages..."
+    pip install --upgrade distribute
+    pip install --upgrade pip
+    pip install virtualenv
+    pip install virtualenvwrapper
 }
 
 
@@ -76,6 +87,7 @@ install_vundle_pkgs () {
 if [ $(uname -s) = "Darwin" ] ; then
     install_homebrew
     install_homebrew_pkgs 
+    install_pip_pkgs
 fi
 
 
