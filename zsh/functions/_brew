@@ -59,7 +59,7 @@ case "$words[1]" in
         _brew_installed_formulae
         _requested installed_formulae expl 'installed formulae' compadd -a installed_formulae
       fi ;;
-  install|home|log|info)
+  install|home|log|info|upgrade)
     _brew_all_formulae
     _wanted formulae expl 'all formulae' compadd -a formulae ;;
   remove|edit|xo)
