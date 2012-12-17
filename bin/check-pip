@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Check if all required Python packages are installed.
+
+
+# get list of all installed Python packages 
+declare -a PKGS_INSTALLED=$(pip freeze)
+
+
+# get list of all required Python packages 
+if [ "$1" = "" ] ; then
+    declare -a PKGS_REQUIRED=$(cat requirements.txt)
+else
+    declare -a PKGS_REQUIRED=$(cat $1)
+fi
+
+
+# check if each module is installed
+echo "Checking if all requirements are installed..."
+
+for module in ${PKGS_REQUIRED[@]}
+do
+    if test "${PKGS_INSTALLED#*$module}" != "$PKGS_INSTALLED" ; then 
+        echo "${module%==*} ${module#*==}: installed."
+    else
+        # module is missing (show "missing" in red text)
+        echo "${module%==*} ${module#*==}: \033[0;31mmissing\033[0m."
+    fi
+done
