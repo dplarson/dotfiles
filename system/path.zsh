@@ -10,7 +10,7 @@ export PATH
 
 # set manual path
 MANPATH="/usr/local/git/man:$MANPATH"
-MANPATH="/usr/local/man$MANPATH"
+MANPATH="/usr/local/man:$MANPATH"
 export MANPATH
 
 # select only unique entries
