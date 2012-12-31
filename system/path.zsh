@@ -1,13 +1,18 @@
-export PATH="/usr/local/bin:$PATH"
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$ZSH/bin:"
-#export PATH="$PATH:$HOME/anaconda/bin"
-export PATH="$PATH:/usr/local/share/python"
-export PATH="$PATH:/usr/texbin"
-export PATH="$PATH:/usr/local/Cellar/gems/1.8/bin"
-export PATH="$PATH:/usr/sbin"
+# set system path
+PATH="/usr/local/bin:$PATH"
+PATH="$PATH:/usr/local/sbin"
+PATH="$PATH:$ZSH/bin"
+PATH="$PATH:/usr/local/share/python"
+PATH="$PATH:/usr/texbin"
+PATH="$PATH:/usr/local/Cellar/gems/1.8/bin"
+PATH="$PATH:/usr/sbin"
+export PATH
 
-export MANPATH="/usr/local/man:/usr/local/git/man:$MANPATH"
+# set manual path
+MANPATH="/usr/local/git/man:$MANPATH"
+MANPATH="/usr/local/man$MANPATH"
+export MANPATH
 
-## Remove duplicate paths from $PATH
-PATH=`awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}'<<<$PATH`
+# select only unique entries
+typeset -U PATH
+typeset -U MANPATH
