@@ -1,23 +1,28 @@
 # OSX-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
 
-    # set system path
-    PATH="/usr/local/bin:$PATH"
-    PATH="$PATH:/usr/local/sbin"
-    PATH="$PATH:$ZSH/bin"
-    PATH="$PATH:/usr/local/share/python"
-    PATH="$PATH:/usr/texbin"
-    PATH="$PATH:/usr/local/Cellar/gems/1.8/bin"
-    PATH="$PATH:/usr/sbin"
-    export PATH
+  # set system path
+  path=(
+    /usr/local/bin
+    $path
+    $ZSH/bin
+    /usr/local/share/python
+    /usr/texbin
+    /usr/local/Cellar/gems/1.8/bin
+    /usr/sbin
+  )
+  export PATH
 
-    # set manual path
-    MANPATH="/usr/local/git/man:$MANPATH"
-    MANPATH="/usr/local/man:$MANPATH"
-    export MANPATH
+  # set manual path (help files)
+  manpath=(
+    /usr/local/man
+    /usr/local/git/man
+    $manpath
+  )
+  export MANPATH
 
-    # select only unique entries
-    typeset -U PATH
-    typeset -U MANPATH
+  # remove non-unique entries
+  typeset -U PATH
+  typeset -U MANPATH
 
 fi
