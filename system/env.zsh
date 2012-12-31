@@ -1,7 +1,7 @@
-# Editor
+# set default editor
 
 if [ $(uname -s) = "Darwin" ] ; then
-    export EDITOR='mvim'
+  export EDITOR='mvim'
 else
-    export EDITOR='vim'
+  export EDITOR='vim'
 fi

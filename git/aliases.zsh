@@ -1,3 +1,5 @@
+# add git command aliases
+
 # push 
 alias gp='git push origin HEAD'
 

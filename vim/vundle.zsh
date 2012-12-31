@@ -1,3 +1,5 @@
+# add vundle setup commands
+
 # Taken from oh-my-zsh
 # Github: https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vundle/vundle.plugin.zsh
 

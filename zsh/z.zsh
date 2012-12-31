@@ -1,4 +1,6 @@
-# Setup z.sh for OSX
+# setup z.sh
+
+# OSX-specific setup
 if [ $(uname -s) = "Darwin" ] ; then
 
     # assumes z.sh installed using homebrew
@@ -6,9 +8,9 @@ if [ $(uname -s) = "Darwin" ] ; then
 
     # creates empty z datafile if it doesn't already exist
     if [ ! -f $HOME/.z ] ; then
-        echo "z datafile (~/.z) does not exist."
-        echo "Creating it now..."
-        touch $HOME/.z
+      echo "z datafile (~/.z) does not exist."
+      echo "Creating ~/.z now..."
+      touch $HOME/.z
     fi
 
 fi

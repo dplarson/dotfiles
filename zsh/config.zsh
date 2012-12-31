@@ -1,14 +1,16 @@
+# set general zsh options
+
 # set functions path
 fpath=(
     $ZSH/zsh/functions
     $fpath
 )
-export FPATH
+export fpath
 
 # remove non-unique items from fpath
 typeset -U fpath
 
-
+#
 autoload -U $ZSH/zsh/functions/*(:t)
 
 # set terminal colors
@@ -25,7 +27,7 @@ setopt PROMPT_SUBST
 setopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt IGNORE_EOF
-setopt COMPLETE_ALIASES
+setopt complete_aliases
 
 # set keybinding to emacs
 bindkey -e

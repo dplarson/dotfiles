@@ -1,3 +1,5 @@
+# set path
+
 # OSX-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
 

@@ -1,4 +1,6 @@
-# matches case insensitive for lowercase
+# customize zsh completition
+
+# treasts upper and lower case the same
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # pasting with tabs doesn't perform completion
