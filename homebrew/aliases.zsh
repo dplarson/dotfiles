@@ -1,6 +1,10 @@
 # homebrew command aliases
 
-# common functions
-alias brews='brew list -l' # list all brews installed
-alias bru='brew update'    # update brew formulas
-alias bro='brew outdated'  # list outdated brews
+# list all brews installed
+alias brews='brew list -l'
+
+# update brew formulas and list outdated after update
+alias bru='brew update && brew outdated'
+
+# list outdated brews
+alias bro='brew outdated'
