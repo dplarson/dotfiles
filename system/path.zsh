@@ -6,6 +6,7 @@ if [ $(uname -s) = "Darwin" ] ; then
   # set system path
   path=(
     /usr/local/bin
+    /usr/local/sbin
     $path
     $ZSH/bin
     /usr/local/share/python
