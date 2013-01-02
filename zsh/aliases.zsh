@@ -37,7 +37,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias o='open .'
 
 # misc
-alias reload='source $HOME/.zshrc' # reload zsh settings
+alias reload='. $HOME/.zshrc' # reload zsh settings
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
