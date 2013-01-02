@@ -33,7 +33,7 @@ set nosmarttab
 set nofoldenable    " dont fold by default
 
 " filetype specific formatting
-autocmd BufRead,BufNewFile *.sh,*.zsh
+autocmd BufRead,BufNewFile *.sh,*.zsh, *.symlink
     \ setlocal shiftwidth=2 |
     \ setlocal tabstop=2 |
     \ setlocal softtabstop=2 |
