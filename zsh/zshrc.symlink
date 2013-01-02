@@ -8,13 +8,10 @@ export PROJECTS=$HOME/projects
 for config_file in $ZSH/**/*.zsh; do source $config_file; done
 
 # source private or per-system data via .localrc
-if [[ -a ~/.localrc ]] ; then
+if [ $HOME/.localrc ] ; then
    source $HOME/.localrc
 fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit -ui
-
-# load every completion after autcomplete loads
-for config_file ($ZSH/**/completion.sh) source $config_file
