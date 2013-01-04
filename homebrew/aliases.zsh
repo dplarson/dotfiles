@@ -4,7 +4,7 @@
 alias brews='brew list -l'
 
 # update brew formulas and list outdated after update
-alias bru='brew update && echo "==> Outdated Formulae" && brew outdated'
+alias bru='brew update && echo "==> \033[1mOutdated Formulae \033[0m" && brew outdated'
 
 # list outdated brews
-alias bro='brew outdated'
+alias bro='echo "==> \033[1mOutdated Formulae \033[0m" && brew outdated'
