@@ -8,7 +8,6 @@ if [ $(uname -s) = "Darwin" ] ; then
     /usr/local/bin
     /usr/local/sbin
     $path
-    $ZSH/bin
     /usr/local/share/python
     /usr/texbin
     /usr/local/Cellar/gems/1.8/bin
@@ -24,8 +23,15 @@ if [ $(uname -s) = "Darwin" ] ; then
   )
   export MANPATH
 
-  # remove non-unique entries
-  typeset -U PATH
-  typeset -U MANPATH
-
 fi
+
+# OS-independent settings
+path=(
+  $path
+  $ZSH/bin
+)
+export PATH
+
+# remove non-unique entries
+typeset -U PATH
+typeset -U MANPATH
