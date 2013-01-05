@@ -36,13 +36,24 @@ install_homebrew_pkgs () {
     brew update
 
     echo_with_color "\nInstalling homebrew packages..."
+
+    # git 
+    brew install git git-extras
+
+    # shells
+    brew install --disable-etcdir zsh
+
+    # editors
+    brew install macvim --override-system-vim
+
+    # tools
     brew install ack
     brew install coreutils
-    brew install git git-extras
-    brew install macvim --override-system-vim
-    brew install --disable-etcdir zsh
     brew install z
+    
+    # languages
     brew install python
+    brew install ruby 
 }
 
 
