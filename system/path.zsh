@@ -23,6 +23,9 @@ if [ $(uname -s) = "Darwin" ] ; then
   )
   export MANPATH
 
+  # set ruby gems path
+  export GEM_HOME="$(brew --prefix)/Cellar/gems/1.8"
+
 fi
 
 # OS-independent settings
@@ -35,3 +38,4 @@ export PATH
 # remove non-unique entries
 typeset -U PATH
 typeset -U MANPATH
+typeset -U GEM_HOME
