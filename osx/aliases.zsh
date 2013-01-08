@@ -2,10 +2,6 @@
 
 if [ $(uname -s) = "Darwin" ] ; then
 
-  # toggle wifi on/off
-  alias off='/usr/sbin/networksetup -setairportpower en1 off'
-  alias on='/usr/sbin/networksetup -setairportpower en1 on'
-
   # recursively delete `.DS_Store` files
   alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
