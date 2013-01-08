@@ -19,7 +19,6 @@ wifi_restart () {
 }
 
 
-
 if [ -x /usr/sbin/networksetup ] ; then
 
   case "$1" in
@@ -32,6 +31,12 @@ if [ -x /usr/sbin/networksetup ] ; then
     restart)
       wifi_restart
       ;;
+    *)
+      echo "Usage: wifi {off|on|restart}" >&2
+      exit 1
+    ;;
     esac
 
 fi
+
+exit 0
