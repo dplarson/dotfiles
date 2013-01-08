@@ -1,0 +1,13 @@
+#!/usr/bin/osascript
+
+# Turns off Macbook Pro display (for when hooked up to external monitor and 
+# internal monitor is therefore not needed)
+
+tell application "System Preferences"
+	activate
+	set current pane to pane "com.apple.preference.displays"
+	tell application "System Events"
+		set value of slider 1 of group 2 of tab group 1 of window "Color LCD" of process "System Preferences" to 0.0
+	end tell
+	quit
+end tell
