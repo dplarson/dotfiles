@@ -3,7 +3,7 @@
 # OSX-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
 
-  # set system path
+  # system path
   path=(
     /usr/local/bin
     /usr/local/sbin
@@ -15,7 +15,7 @@ if [ $(uname -s) = "Darwin" ] ; then
   )
   export PATH
 
-  # set manual path (help files)
+  # manuals (help files)
   manpath=(
     /usr/local/man
     /usr/local/git/man
@@ -23,8 +23,15 @@ if [ $(uname -s) = "Darwin" ] ; then
   )
   export MANPATH
 
-  # set ruby gems path
+  # ruby gems
   export GEM_HOME="$(brew --prefix)/Cellar/gems/1.8"
+
+  # python
+  pythonpath=(
+    /usr/local/lib/python2.7/site-packages
+    $pythonpath
+  )
+  export PYTHONPATH
 
 fi
 
@@ -39,3 +46,4 @@ export PATH
 typeset -U PATH
 typeset -U MANPATH
 typeset -U GEM_HOME
+typeset -U PYTHONPATH
