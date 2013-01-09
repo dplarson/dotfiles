@@ -4,8 +4,9 @@
 #
 # Install dependencies.
 
-# Inspired heavily by davidxia's bootstrap_dotfiles
-#   URL: https://github.com/davidxia/bootstrap_dotfiles/
+# Inspired bootstrap install scripts from:
+#   davidxia's dotfiles (https://github.com/davidxia/bootstrap_dotfiles/)
+#   joshdick's dotfiles (https://github.com/joshdick/dotfiles)
 
 
 die () {
@@ -18,6 +19,34 @@ die () {
 echo_with_color () {
     # font color = blue
     echo "\033[0;34m$1\033[0m"
+}
+
+
+install_dotfiles () {
+    echo_with_color "\nInstalling dotfiles to $HOME..."    
+
+    DOTFILES_ROOT="$( cd "$( dirname "$0" )" && cd .. && pwd )"
+
+    for file in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink` ; do
+
+        # get absolute path of directory containg $file 
+        symlink_dir="$( cd "$( dirname "$file" )" && pwd )"
+
+        # get filename of $file (no path)
+        symlink_filename=`basename "$file"`
+
+        # create absolute paths of symlinks (for linking)
+        symlink_home=$file
+        symlink_dest=`echo "$HOME/.$symlink_filename" | sed "s/\.symlink$//g"`
+
+        # link files
+        if [ -f $symlink_dest ] || [ -d $symlink_dest ] ; then
+            echo "$symlink_dest already exists; skipping it..."
+        else
+            ln -sv $symlink_home $symlink_dest
+        fi
+
+    done
 }
 
 
@@ -95,13 +124,15 @@ install_vundle_pkgs () {
 }
 
 
+# OS-agnostic settings
+install_dotfiles
+
 # OS-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
     install_homebrew
     install_homebrew_pkgs 
     install_pip_pkgs
 fi
-
 
 # install all other dependencies
 install_vundle
