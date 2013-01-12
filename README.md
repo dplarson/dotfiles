@@ -1,28 +1,30 @@
 # dotfiles
 
 ## Inspiration
-These files are inspired by Zach Holman's dotfiles, with a variety of modifications and additions.
-
-To learn more, [fork Zach's dotfiles](https://github.com/holman/dotfiles) and [read Zach's post about dotfiles](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
+These dotfiles were inspired by the work of several users, most prominently:
+* [Zach Holman](https://github.com/holman/dotfiles): general organization
+* [David Xia](https://github.com/davidxia/bootstrap_dotfiles/): bootstrap installer
+* [Josh Dick](https://github.com/joshdick/dotfiles): bootstrap installer
 
 
 ## Requirements
-vundle by gmarik [https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
+*Most*, but not all settings will work on OSX and Linux.
 
-homebrew by mxcl [https://github.com/mxcl/homebrew](https://github.com/mxcl/homebrew)
+* [homebrew by mxcl](https://github.com/mxcl/homebrew)
 
-solarized color theme by altercation [https://github.com/altercation/solarized](https://github.com/altercation/solarized)
+* [solarized color theme by altercation](https://github.com/altercation/solarized)
 
 
 ## Install
+Download the repository to your local machine and run the installer:
 
-- `git clone git://github.com/dplarson/dotfiles ~/.dotfiles`
-- `cd ~/.dotfiles`
-- `rake install`
+```shell
+$ git clone git://github.com/dplarson/dotfiles $HOME/.dotfiles
+$ cd $HOME/.dotfiles
+$ ./script/bootstrap
+```
 
-The install rake task will symlink the appropriate files in `.dotfiles` to your
-home directory. Everything is configured and tweaked within `~/.dotfiles`,
-though.
+The bootstrap installer will symlink the necessary files from dotfiles directory to your home directory (e.g. `$HOME/.dotfiles/zsh/zshrc.symlink` symlinks to `$HOME/.zshrc`). It will also install some default packages (e.g. **Python**).
 
 
 ## Screenshot
