@@ -10,6 +10,8 @@ These dotfiles were inspired by the work of several users, most prominently:
 ## Requirements
 *Most*, but not all settings will work on both OSX and Linux.
 
+To take full advantage of these dotfiles, the system should have the following installed:
+
 * [homebrew by mxcl](https://github.com/mxcl/homebrew)
 
 * [solarized color theme by altercation](https://github.com/altercation/solarized)
@@ -28,6 +30,6 @@ The bootstrap installer will symlink the necessary files from dotfiles directory
 
 
 ## Screenshot
-iTerm 2 + zsh + solarized dark + dotfiles on Mac 10.7:
+iTerm 2 + zsh + solarized dark color theme + Inconsolata font on OSX 10.7:
 
 ![iterm2](https://raw.github.com/dplarson/dotfiles/master/zsh_iterm2_git_demo.png)
