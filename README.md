@@ -8,7 +8,7 @@ These dotfiles were inspired by the work of several users, most prominently:
 
 
 ## Requirements
-*Most*, but not all settings will work on OSX and Linux.
+*Most*, but not all settings will work on both OSX and Linux.
 
 * [homebrew by mxcl](https://github.com/mxcl/homebrew)
 
@@ -24,7 +24,7 @@ $ cd $HOME/.dotfiles
 $ ./script/bootstrap
 ```
 
-The bootstrap installer will symlink the necessary files from dotfiles directory to your home directory (e.g. `$HOME/.dotfiles/zsh/zshrc.symlink` symlinks to `$HOME/.zshrc`). It will also install some default packages (e.g. **Python**).
+The bootstrap installer will symlink the necessary files from dotfiles directory to your home directory. It will also install some default packages (e.g. **Python**).
 
 
 ## Screenshot
