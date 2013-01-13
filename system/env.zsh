@@ -4,7 +4,6 @@
 # editor preference:
 #   1. MacVim/mvim
 #   2. vim
-#   3. vi
 
 
 # check if command exists
@@ -16,6 +15,8 @@ exists () {
 # set editor based on what is installed
 if exists mvim ; then
   export EDITOR='mvim'
+  export GIT_EDITOR='mvim -f'
 elif exists vim ; then
   export EDITOR='vim'
+  export GIT_EDITOR='vim'
 fi

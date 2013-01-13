@@ -4,7 +4,6 @@
 [github]
 	user = dplarson
 [core]
-	editor = mvim -f
 	excludesfile = ~/.gitignore
 [alias]
     st = status
