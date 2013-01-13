@@ -22,6 +22,12 @@ echo_with_color () {
 }
 
 
+# check if cmd exists
+exists () {
+  type "$1" >/dev/null 2>/dev/null
+}
+
+
 install_dotfiles () {
   echo_with_color "\nInstalling dotfiles to $HOME..."    
 
@@ -186,13 +192,13 @@ install_vundle () {
 install_vundle_pkgs () {
   echo_with_color "\nInstalling vundle packages..."
 
-  # check that vim is installed
-  if test ! $(which vim) ; then
+  if exists mvim ; then 
+    mvim -c "execute \"BundleInstall\" | q | q"
+  elif exists vim ; then 
+    vim -c "execute \"BundleInstall\" | q | q"
+  else
     die "Vim not installed."
   fi
-
-  # install packages
-  vim -c "execute \"BundleInstall\" | q | q"
 }
 
 
