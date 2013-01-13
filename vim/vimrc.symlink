@@ -21,6 +21,7 @@ set cursorline
 set incsearch
 set number
 set ruler
+set colorcolumn=80
 
 
 "--------------------------------------------------------------
