@@ -27,6 +27,9 @@ install_dotfiles () {
 
     DOTFILES_ROOT="$( cd "$( dirname "$0" )" && cd .. && pwd )"
 
+    # get list of all dotfiles to be symlinked
+    # NOTE: assumes a dotfiles structure of topic/setting.symlink
+    #       (e.g. zsh/zshrc.symlink)
     for file in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink` ; do
 
         # get absolute path of directory containg $file 
