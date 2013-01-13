@@ -61,9 +61,9 @@ install_dotfiles () {
         # get user input 
         echo "$symlink_dest already exists; what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
 
-        read -n 1 -s action
+        read REPLY
                 
-        case "$action" in
+        case "$REPLY" in
           s)
             ;; 
           S)
