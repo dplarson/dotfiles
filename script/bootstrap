@@ -38,34 +38,29 @@ install_dotfiles () {
   #       (e.g. zsh/zshrc.symlink)
   for file in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink` ; do
 
-    # get absolute path of directory containg $file 
-    symlink_dir="$( cd "$( dirname "$file" )" && pwd )"
-
     # get filename of $file (no path)
     symlink_filename=`basename "$file"`
 
-    # create absolute paths of symlinks (for linking)
-    symlink_home=$file
-    symlink_dest=`echo "$HOME/.$symlink_filename" | sed "s/\.symlink$//g"`
+    # create absolute path for link target
+    target=`echo "$HOME/.$symlink_filename" | sed "s/\.symlink$//g"`
         
     # set default install options (per symlink file)
     overwrite=false
     backup=false
-    
 
-    if [ -f $symlink_dest ] || [ -d $symlink_dest ] ; then
+    if [ -f $target ] || [ -d $target ] ; then
     
       # get user input if files exist and no global options are set
       if [ "$overwrite_all" = "false" ] && [ "$backup_all" = "false" ] && [ "$skip_all" = "false" ] ; then 
             
         # get user input 
-        echo "$symlink_dest already exists; what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        echo "File already exists: $target; what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
 
         read REPLY
                 
         case "$REPLY" in
           s)
-            echo "Skipping: $symlink_dest...\n"
+            echo "Skipping: $target... \n"
             continue
             ;; 
           S)
@@ -73,7 +68,7 @@ install_dotfiles () {
             skip_all=true
             ;;
           o)
-            echo "Overwriting: $symlink_dest...\n"
+            echo "Overwriting: $target... \n"
             overwrite=true
             ;; 
           O)
@@ -81,7 +76,7 @@ install_dotfiles () {
             overwrite_all=true
             ;; 
           b)
-            echo "Backing up: $symlink_dest...\n"
+            echo "Backing up: $target... \n"
             backup=true
             ;; 
           B)
@@ -97,12 +92,12 @@ install_dotfiles () {
             
       # delete pre-existing files
       if [ "$overwrite" = "true" ] || [ "$overwrite_all" = "true" ] ; then
-        rm -rf $symlink_dest
+        rm -rf $target
       fi
 
       # backup pre-existing files
       if [ "$backup" = "true" ] || [ "$backup_all" = "true" ] ; then
-        mv $symlink_dest $symlink_dest\.backup
+        mv $target $target\.backup
       fi
 
     fi # end if-statement for pre-existing files
@@ -110,7 +105,7 @@ install_dotfiles () {
 
     # link files if user didn't select skip all 
     if [ "$skip_all" = "false" ] ; then
-      ln -s $symlink_home $symlink_dest
+      ln -s $file $target
     fi
 
   done # end loop for all *.symlink files
