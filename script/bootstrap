@@ -65,20 +65,27 @@ install_dotfiles () {
                 
         case "$REPLY" in
           s)
+            echo "skip $symlink_dest"
+            continue
             ;; 
           S)
+            echo "skip all"
             skip_all=true
             ;;
           o)
+            echo "overwrite $symlink_dest"
             overwrite=true
             ;; 
           O)
+            echo "overwrite all"
             overwrite_all=true
             ;; 
           b)
+            echo "backup $symlink_dest"
             backup=true
             ;; 
           B)
+            echo "backup all"
             backup_all=true
             ;; 
           *)
