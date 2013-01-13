@@ -9,121 +9,181 @@
 #   joshdick's dotfiles (https://github.com/joshdick/dotfiles)
 
 
+# Error (red, underlined)
 die () {
-    # Error (red, underlined)
-    echo "\033[0;31;4mError\033[0m: $1"
-    exit 1
+  echo "\033[0;31;4mError\033[0m: $1"
+  exit 1
 }
 
 
+# echo with blue text
 echo_with_color () {
-    # font color = blue
-    echo "\033[0;34m$1\033[0m"
+  echo "\033[0;34m$1\033[0m"
 }
 
 
 install_dotfiles () {
-    echo_with_color "\nInstalling dotfiles to $HOME..."    
+  echo_with_color "\nInstalling dotfiles to $HOME..."    
 
-    DOTFILES_ROOT="$( cd "$( dirname "$0" )" && cd .. && pwd )"
+  # get path of dotfiles repo
+  DOTFILES_ROOT="$( cd "$( dirname "$0" )" && cd .. && pwd )"
 
-    # get list of all dotfiles to be symlinked
-    # NOTE: assumes a dotfiles structure of topic/setting.symlink
-    #       (e.g. zsh/zshrc.symlink)
-    for file in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink` ; do
+  # set global default install options
+  skip_all=false
+  overwrite_all=false
+  backup_all=false
 
-        # get absolute path of directory containg $file 
-        symlink_dir="$( cd "$( dirname "$file" )" && pwd )"
+  # get list of all dotfiles to be symlinked
+  # NOTE: assumes a dotfiles structure of topic/setting.symlink
+  #       (e.g. zsh/zshrc.symlink)
+  for file in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink` ; do
 
-        # get filename of $file (no path)
-        symlink_filename=`basename "$file"`
+    # get absolute path of directory containg $file 
+    symlink_dir="$( cd "$( dirname "$file" )" && pwd )"
 
-        # create absolute paths of symlinks (for linking)
-        symlink_home=$file
-        symlink_dest=`echo "$HOME/.$symlink_filename" | sed "s/\.symlink$//g"`
+    # get filename of $file (no path)
+    symlink_filename=`basename "$file"`
 
-        # link files
-        if [ -f $symlink_dest ] || [ -d $symlink_dest ] ; then
-            echo "$symlink_dest already exists; skipping it..."
-        else
-            ln -sv $symlink_home $symlink_dest
-        fi
+    # create absolute paths of symlinks (for linking)
+    symlink_home=$file
+    symlink_dest=`echo "$HOME/.$symlink_filename" | sed "s/\.symlink$//g"`
+        
+    # set default install options (per symlink file)
+    overwrite=false
+    backup=false
+    
 
-    done
+    if [ -f $symlink_dest ] || [ -d $symlink_dest ] ; then
+    
+      # get user input if files exist and no global options are set
+      if [ "$overwrite_all" = "false" ] && [ "$backup_all" = "false" ] && [ "$skip_all" = "false" ] ; then 
+            
+        # get user input 
+        echo "$symlink_dest already exists; what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+
+        read -n 1 -s action
+                
+        case "$action" in
+          s)
+            ;; 
+          S)
+            skip_all=true
+            ;;
+          o)
+            overwrite=true
+            ;; 
+          O)
+            overwrite_all=true
+            ;; 
+          b)
+            backup=true
+            ;; 
+          B)
+            backup_all=true
+            ;; 
+          *)
+            die "unknown option; quitting now..."
+            exit 1
+            ;;
+          esac
+      fi # end if-statement for if no global options are set
+            
+      # delete pre-existing files
+      if [ "$overwrite" = "true" ] || [ "$overwrite_all" = "true" ] ; then
+        rm -rf $symlink_dest
+      fi
+
+      # backup pre-existing files
+      if [ "$backup" = "true" ] || [ "$backup_all" = "true" ] ; then
+        mv $symlink_dest $symlink_dest\.backup
+      fi
+
+    fi # end if-statement for pre-existing files
+        
+
+    # link files if user didn't select skip all 
+    if [ "$skip_all" = "false" ] ; then
+      ln -s $symlink_home $symlink_dest
+    fi
+
+  done # end loop for all *.symlink files
 }
 
 
 install_homebrew () {
-    echo_with_color "\nChecking if homebrew is already installed..."
-    if [ -x /usr/local/bin/brew ] ; then
-        echo "Homebrew is already installed."
-    else
-        die "Homebrew not installed."
-    fi
+  echo_with_color "\nChecking if homebrew is already installed..."
+
+  if [ -x /usr/local/bin/brew ] ; then
+    echo "Homebrew is already installed."
+  else
+    die "Homebrew not installed."
+  fi
 }
 
 
 install_homebrew_pkgs () {
-    echo_with_color "\nUpdating homebrew package list..."
-    brew update
+  echo_with_color "\nUpdating homebrew package list..."
+  brew update
 
-    echo_with_color "\nInstalling homebrew packages..."
+  echo_with_color "\nInstalling homebrew packages..."
 
-    # git 
-    brew install git git-extras
+  # git 
+  brew install git git-extras
 
-    # shells
-    brew install --disable-etcdir zsh
+  # shells
+  brew install --disable-etcdir zsh
 
-    # editors
-    brew install macvim --override-system-vim
+  # editors
+  brew install macvim --override-system-vim
 
-    # tools
-    brew install ack
-    brew install coreutils
-    brew install z
+  # tools
+  brew install ack
+  brew install coreutils
+  brew install z
     
-    # languages
-    brew install python
-    brew install ruby 
+  # languages
+  brew install python
+  brew install ruby 
 }
 
 
 install_pip_pkgs () {
-    echo_with_color "\nInstalling pip packages..."
-    pip install --upgrade distribute
-    pip install --upgrade pip
+  echo_with_color "\nUpdating pip package list..."
+  pip install --upgrade distribute
+  pip install --upgrade pip
+
+  echo_with_color "\nInstalling pip packages..."
 }
 
 
 install_vundle () {
-    echo_with_color "\nChecking if vundle is already installed..."
+  echo_with_color "\nChecking if vundle is already installed..."
 
-    # create vundle directory
-    if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
-        mkdir -p $HOME/.vim/bundle/vundle
-    fi
+  # create vundle directory
+  if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
+    mkdir -p $HOME/.vim/bundle/vundle
+  fi
     
-    # install vundle
-    if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
-        echo "Vundle not installed. Installing now..."
-        git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    else
-        echo "Vundle is already installed."
-    fi
+  # install vundle
+  if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
+    echo "Vundle not installed. Installing now..."
+    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  else
+    echo "Vundle is already installed."
+  fi
 }
 
 
 install_vundle_pkgs () {
-    echo_with_color "\nInstalling vundle packages..."
+  echo_with_color "\nInstalling vundle packages..."
 
-    # check that vim is installed
-    if test ! $(which vim) ; then
-        die "Vim not installed."
-    fi
+  # check that vim is installed
+  if test ! $(which vim) ; then
+    die "Vim not installed."
+  fi
 
-    # install packages
-    vim -c "execute \"BundleInstall\" | q | q"
+  # install packages
+  vim -c "execute \"BundleInstall\" | q | q"
 }
 
 
@@ -140,3 +200,6 @@ fi
 # install all other dependencies
 install_vundle
 install_vundle_pkgs
+
+
+# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=sh
