@@ -51,10 +51,17 @@ install_dotfiles () {
     if [ -f $target ] || [ -d $target ] ; then
     
       # get user input if files exist and no global options are set
-      if [ "$overwrite_all" = "false" ] && [ "$backup_all" = "false" ] && [ "$skip_all" = "false" ] ; then 
+      if [ "$overwrite_all" = "false" ] && [ "$backup_all" = "false" ] \
+        && [ "$skip_all" = "false" ] ; then 
             
         # get user input 
-        echo "File already exists: $target; what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        echo "File already exists: $target; what do you want to do?" \
+              "[s]kip," \
+              "[S]kip all," \
+              "[o]verwrite," \
+              "[O]verwrite all," \
+              "[b]ackup," \
+              "[B]ackup all?"
 
         read REPLY
                 
