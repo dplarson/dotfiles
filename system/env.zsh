@@ -18,6 +18,4 @@ if exists mvim ; then
   export EDITOR='mvim'
 elif exists vim ; then
   export EDITOR='vim'
-elif exists vi ; then
-  export EDITOR='vi'
 fi
