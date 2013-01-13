@@ -193,9 +193,9 @@ install_vundle_pkgs () {
   echo_with_color "\nInstalling vundle packages..."
 
   if exists mvim ; then 
-    mvim -c "execute \"BundleInstall\" | q | q"
+    mvim +BundleInstall +qall
   elif exists vim ; then 
-    vim -c "execute \"BundleInstall\" | q | q"
+    vim +BundleInstall +qall
   else
     die "Vim not installed."
   fi
