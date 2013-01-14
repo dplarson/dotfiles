@@ -152,6 +152,9 @@ install_python_pkgs () {
     # update pip package list
     pip install --upgrade distribute >/dev/null 2>/dev/null
     pip install --upgrade pip >/dev/null 2>/dev/null
+
+    # utilities
+    pip install pip-tools
   else
     die "Pip not installed."
   fi
