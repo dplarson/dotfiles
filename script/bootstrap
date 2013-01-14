@@ -104,6 +104,7 @@ install_dotfiles () {
     
     # link dotfiles if they don't already exist 
     else
+      echo "Installing: $target... "
       ln -s $file $target
     fi
         
