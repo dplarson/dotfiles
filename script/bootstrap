@@ -216,5 +216,6 @@ fi
 install_vundle
 install_vundle_pkgs
 
+exit 0
 
 # vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=sh
