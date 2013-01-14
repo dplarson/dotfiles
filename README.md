@@ -8,7 +8,7 @@ These dotfiles were inspired by the work of several users, most prominently:
 
 
 ## Prerequisites
-* OS X 10.6+ (_most_, but not all settings will also work on Linux)
+* OS X 10.6+ (*most*, but not all settings will also work on Linux)
 
 * [homebrew](https://github.com/mxcl/homebrew)
 
@@ -24,7 +24,7 @@ $ cd $HOME/.dotfiles
 $ ./script/bootstrap
 ```
 
-The bootstrap installer will symlink the necessary files as well as install some _essential_ packages.
+The bootstrap installer will symlink the necessary files as well as install some *essential* packages.
 
 
 ## Screenshot
