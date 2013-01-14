@@ -111,54 +111,58 @@ install_dotfiles () {
 }
 
 
-install_homebrew () {
-  echo_with_color "\nChecking if homebrew is already installed..."
+install_unix_pkgs () {
+  echo_with_color "\nInstalling UNIX packages..."
 
   if exists brew ; then
-    echo "Homebrew is already installed."
+
+    # update homebrew package list
+    brew update >/dev/null 2>/dev/null
+
+    # git 
+    brew install git git-extras
+
+    # shells
+    brew install --disable-etcdir zsh
+
+    # editors
+    brew install macvim --override-system-vim
+
+    # tools
+    brew install ack
+    brew install coreutils
+    brew install z
+    
+    # languages
+    brew install python
+    brew install ruby 
   else
     die "Homebrew not installed."
   fi
 }
 
 
-install_homebrew_pkgs () {
-  echo_with_color "\nUpdating homebrew package list..."
-  brew update
 
-  echo_with_color "\nInstalling homebrew packages..."
+install_python_pkgs () {
+  echo_with_color "\nInstalling Python packages..."
 
-  # git 
-  brew install git git-extras
+  if exists pip ; then
 
-  # shells
-  brew install --disable-etcdir zsh
+    # update pip package list
+    pip install --upgrade distribute
+    pip install --upgrade pip
 
-  # editors
-  brew install macvim --override-system-vim
-
-  # tools
-  brew install ack
-  brew install coreutils
-  brew install z
-    
-  # languages
-  brew install python
-  brew install ruby 
+    # virtual environments
+    pip install virtualenv
+    pip install virtualenvwrapper
+  else
+    die "Pip not installed."
+  fi
 }
 
 
-install_pip_pkgs () {
-  echo_with_color "\nUpdating pip package list..."
-  pip install --upgrade distribute
-  pip install --upgrade pip
-
-  echo_with_color "\nInstalling pip packages..."
-}
-
-
-install_vundle () {
-  echo_with_color "\nChecking if vundle is already installed..."
+install_vim_pkgs () {
+  echo_with_color "\nInstalling Vim packages..."
 
   # create vundle directory
   if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
@@ -167,17 +171,11 @@ install_vundle () {
     
   # install vundle
   if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
-    echo "Vundle not installed. Installing now..."
+    echo "Vundle not installed; installing now..."
     git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  else
-    echo "Vundle is already installed."
   fi
-}
 
-
-install_vundle_pkgs () {
-  echo_with_color "\nInstalling vundle packages..."
-
+  # install bundles listed in vimrc
   if exists vim ; then 
     vim +BundleInstall +qall
   elif exists mvim ; then 
@@ -193,14 +191,13 @@ install_dotfiles
 
 # OS-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
-    install_homebrew
-    install_homebrew_pkgs 
-    install_pip_pkgs
+    install_unix_pkgs
+    install_python_pkgs
 fi
 
 # install all other dependencies
-install_vundle
-install_vundle_pkgs
+install_vim_pkgs
+
 
 exit 0
 
