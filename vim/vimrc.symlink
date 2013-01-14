@@ -33,13 +33,14 @@ set expandtab 		" expand tabs to spaces
 set nosmarttab
 set nofoldenable    " dont fold by default
 
-" filetype specific formatting
+" shell files
 autocmd BufRead,BufNewFile *.sh,*.zsh,*.symlink
-    \ setlocal shiftwidth=2 |
     \ setlocal tabstop=2 |
     \ setlocal softtabstop=2 |
     \ setlocal shiftwidth=2
 
+" Python files
+autocmd Filetype Python setlocal ts=4 sts=4 sw=4 expandtab
 
 "--------------------------------------------------------------
 " GUI SPECIFIC SETTINGS 
