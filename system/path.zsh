@@ -27,11 +27,7 @@ if [ $(uname -s) = "Darwin" ] ; then
   export GEM_HOME="$(brew --prefix)/Cellar/gems/1.8"
 
   # python
-  pythonpath=(
-    /usr/local/lib/python2.7/site-packages
-    $pythonpath
-  )
-  export PYTHONPATH
+  export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
 fi
 
