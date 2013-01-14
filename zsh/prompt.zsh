@@ -41,7 +41,7 @@ export RPROMPT=$'%{\e[1;33m%}$(tilde_or_pwd) $(git_prompt_info)%{\e[0m%}'
 
 # set terminal window title
 precmd() {
-    title "zsh" "%m - zsh" "%55<...<%~"
+  title "zsh" "%m - zsh" "%55<...<%~"
 }
 
 # set git prompt settings (taken from oh-my-zsh)
