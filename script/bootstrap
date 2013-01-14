@@ -24,7 +24,7 @@ echo_with_color () {
 
 # check if cmd exists
 exists () {
-  type "$1" >/dev/null 2>/dev/null
+  command -v "$1" >/dev/null 2>&1
 }
 
 
@@ -118,7 +118,7 @@ install_homebrew_pkgs () {
   if exists brew ; then
 
     # update homebrew package list
-    brew update >/dev/null 2>/dev/null
+    brew update >/dev/null 2>&1
 
     # git 
     brew install git git-extras
@@ -150,8 +150,8 @@ install_python_pkgs () {
   if exists pip ; then
 
     # update pip package list
-    pip install --upgrade distribute >/dev/null 2>/dev/null
-    pip install --upgrade pip >/dev/null 2>/dev/null
+    pip install --upgrade distribute >/dev/null 2>&1
+    pip install --upgrade pip >/dev/null 2>&1
 
     # utilities
     pip install pip-tools
