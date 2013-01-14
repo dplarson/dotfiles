@@ -178,10 +178,10 @@ install_vundle () {
 install_vundle_pkgs () {
   echo_with_color "\nInstalling vundle packages..."
 
-  if exists mvim ; then 
-    mvim +BundleInstall +qall
-  elif exists vim ; then 
+  if exists vim ; then 
     vim +BundleInstall +qall
+  elif exists mvim ; then 
+    mvim +BundleInstall +qall
   else
     die "Vim not installed."
   fi
