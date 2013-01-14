@@ -51,12 +51,13 @@ install_dotfiles () {
     target=`echo "$HOME/.$symlink_filename" | sed "s/\.symlink$//g"`
         
     # set default install options (per symlink file)
+    skip=false
     overwrite=false
     backup=false
 
+    # get user input if dotfiles already exist
     if [ -f $target ] || [ -d $target ] ; then
     
-      # get user input if files exist and no global options are set
       if [ "$overwrite_all" = "false" ] && [ "$backup_all" = "false" ] \
         && [ "$skip_all" = "false" ] ; then 
             
@@ -68,59 +69,44 @@ install_dotfiles () {
               "[O]verwrite all," \
               "[b]ackup," \
               "[B]ackup all?"
-
         read REPLY
-                
+        
+        # apply user input 
         case "$REPLY" in
-          s)
-            echo "Skipping: $target... \n"
-            continue
-            ;; 
-          S)
-            echo "Skipping: all..."
-            skip_all=true
-            ;;
-          o)
-            echo "Overwriting: $target... \n"
-            overwrite=true
-            ;; 
-          O)
-            echo "Overwriting: all..."
-            overwrite_all=true
-            ;; 
-          b)
-            echo "Backing up: $target... \n"
-            backup=true
-            ;; 
-          B)
-            echo "Backing up: all..."
-            backup_all=true
-            ;; 
-          *)
-            die "unknown option; quitting now..."
-            exit 1
-            ;;
-          esac
+          s) skip=true                             ;; 
+          S) skip_all=true                         ;;
+          o) overwrite=true                        ;; 
+          O) overwrite_all=true                    ;; 
+          b) backup=true                           ;; 
+          B) backup_all=true                       ;; 
+          *) die "unknown option; quitting now..." ;;
+        esac
       fi # end if-statement for if no global options are set
             
-      # delete pre-existing files
+      # delete pre-existing dotfiles
       if [ "$overwrite" = "true" ] || [ "$overwrite_all" = "true" ] ; then
+        echo "Overwriting: $target... "
         rm -rf $target
       fi
 
-      # backup pre-existing files
+      # backup pre-existing dotfiles
       if [ "$backup" = "true" ] || [ "$backup_all" = "true" ] ; then
+        echo "Backing up: $target... "
         mv $target $target\.backup
       fi
-
-    fi # end if-statement for pre-existing files
-        
-
-    # link files if user didn't select skip all 
-    if [ "$skip_all" = "false" ] ; then
+    
+      # linking dotfiles
+      if [ "$skip" = "false" ] && [ "$skip_all" = "false" ] ; then
+        ln -s $file $target
+      else
+        echo "Skipping: $target... "
+      fi
+    
+    # link dotfiles if they don't already exist 
+    else
       ln -s $file $target
     fi
-
+        
   done # end loop for all *.symlink files
 }
 
