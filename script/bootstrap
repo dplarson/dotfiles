@@ -150,12 +150,8 @@ install_python_pkgs () {
   if exists pip ; then
 
     # update pip package list
-    pip install --upgrade distribute
-    pip install --upgrade pip
-
-    # virtual environments
-    pip install virtualenv
-    pip install virtualenvwrapper
+    pip install --upgrade distribute >/dev/null 2>/dev/null
+    pip install --upgrade pip >/dev/null 2>/dev/null
   else
     die "Pip not installed."
   fi
