@@ -114,7 +114,7 @@ install_dotfiles () {
 install_homebrew () {
   echo_with_color "\nChecking if homebrew is already installed..."
 
-  if [ -x /usr/local/bin/brew ] ; then
+  if exists brew ; then
     echo "Homebrew is already installed."
   else
     die "Homebrew not installed."
