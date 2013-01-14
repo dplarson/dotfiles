@@ -7,18 +7,16 @@ These dotfiles were inspired by the work of several users, most prominently:
 * [Josh Dick](https://github.com/joshdick/dotfiles): bootstrap installer
 
 
-## Requirements
-*Most*, but not all settings will work on both OSX and Linux.
+## Prerequisites
+* OS X 10.6+ (_most_, but not all settings will also work on Linux)
 
-To take full advantage of these dotfiles, the system should have the following installed:
+* [homebrew](https://github.com/mxcl/homebrew)
 
-* [homebrew by mxcl](https://github.com/mxcl/homebrew)
-
-* [solarized color theme by altercation](https://github.com/altercation/solarized)
+* [solarized color theme](https://github.com/altercation/solarized)
 
 
 ## Install
-Download the repository to your local machine and run the installer:
+Download the repository and run the installer:
 
 ```shell
 $ git clone git://github.com/dplarson/dotfiles $HOME/.dotfiles
@@ -26,10 +24,10 @@ $ cd $HOME/.dotfiles
 $ ./script/bootstrap
 ```
 
-The bootstrap installer will symlink the necessary files from dotfiles directory to your home directory. It will also install some default packages (e.g. **Python**).
+The bootstrap installer will symlink the necessary files as well as install some _essential_ packages.
 
 
 ## Screenshot
-iTerm 2 + zsh + solarized dark color theme + Inconsolata font on OSX 10.7:
+iTerm 2 + zsh + solarized dark color theme + Inconsolata font on OS X 10.7:
 
 ![iterm2](https://raw.github.com/dplarson/dotfiles/master/zsh_iterm2_git_demo.png)
