@@ -8,11 +8,11 @@ These dotfiles were inspired by the work of several users, most prominently:
 
 
 ## Prerequisites
-* OS X 10.6+ (*most*, but not all settings will also work on Linux)
-
+* OS X 10.6+
 * [homebrew](https://github.com/mxcl/homebrew)
-
 * [solarized color theme](https://github.com/altercation/solarized)
+
+NOTE: *most*, but not all settings will work with Linux
 
 
 ## Install
