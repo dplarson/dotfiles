@@ -9,15 +9,16 @@
 #   joshdick's dotfiles (https://github.com/joshdick/dotfiles)
 
 
+
 # Error (red, underlined)
-die () {
+msg_fail () {
   echo "\033[0;31;4mError\033[0m: $1"
   exit 1
 }
 
 
-# echo with blue text
-echo_with_color () {
+# Text (blue)
+msg_run () {
   echo "\033[0;34m$1\033[0m"
 }
 
@@ -29,7 +30,7 @@ exists () {
 
 
 install_dotfiles () {
-  echo_with_color "\nInstalling dotfiles to $HOME..."    
+  msg_run "\nInstalling dotfiles to $HOME..."    
 
   # get path of dotfiles repo
   DOTFILES_ROOT="$( cd "$( dirname "$0" )" && cd .. && pwd )"
@@ -73,13 +74,13 @@ install_dotfiles () {
         
         # apply user input 
         case "$REPLY" in
-          s) skip=true                             ;; 
-          S) skip_all=true                         ;;
-          o) overwrite=true                        ;; 
-          O) overwrite_all=true                    ;; 
-          b) backup=true                           ;; 
-          B) backup_all=true                       ;; 
-          *) die "unknown option; quitting now..." ;;
+          s) skip=true                                  ;; 
+          S) skip_all=true                              ;;
+          o) overwrite=true                             ;; 
+          O) overwrite_all=true                         ;; 
+          b) backup=true                                ;; 
+          B) backup_all=true                            ;; 
+          *) msg_fail "unknown option; quitting now..." ;;
         esac
       fi # end if-statement for if no global options are set
             
@@ -113,7 +114,7 @@ install_dotfiles () {
 
 
 install_homebrew_pkgs () {
-  echo_with_color "\nInstalling Homebrew packages..."
+  msg_run "\nInstalling Homebrew packages..."
 
   if exists brew ; then
 
@@ -138,14 +139,14 @@ install_homebrew_pkgs () {
     brew install python
     brew install ruby 
   else
-    die "Homebrew not installed."
+    msg_fail "Homebrew not installed."
   fi
 }
 
 
 
 install_python_pkgs () {
-  echo_with_color "\nInstalling Python packages..."
+  msg_run "\nInstalling Python packages..."
 
   if exists pip ; then
 
@@ -156,13 +157,13 @@ install_python_pkgs () {
     # utilities
     pip install pip-tools
   else
-    die "Pip not installed."
+    msg_fail "Pip not installed."
   fi
 }
 
 
 install_vim_pkgs () {
-  echo_with_color "\nInstalling Vim packages..."
+  msg_run "\nInstalling Vim packages..."
 
   # create vundle directory
   if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
@@ -181,7 +182,7 @@ install_vim_pkgs () {
   elif exists mvim ; then 
     mvim +BundleInstall +qall
   else
-    die "Vim not installed."
+    msg_fail "Vim not installed."
   fi
 }
 
