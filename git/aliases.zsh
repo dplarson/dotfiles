@@ -1,5 +1,8 @@
 # add git command aliases
 
+# fetch
+alias gf='git f && git wtf'
+
 # push 
 alias gp='git push origin HEAD'
 
