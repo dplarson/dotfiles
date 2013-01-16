@@ -55,7 +55,7 @@ Thumbs.db
 *.nlg
 *.nls
 *.out
-*.pdf
+#*.pdf
 *.pdfsync
 *.ps
 *.snm
