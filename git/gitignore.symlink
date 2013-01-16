@@ -11,11 +11,13 @@
 *.tar
 *.zip
 
-# OS generated files
+# OSX generated files
 .DS_Store*
 Thumbs.db
 *~
 *.swp
+.Trashes
+.Spotlight-V100
 
 # Mathematica files
 *.nb
@@ -25,7 +27,7 @@ Thumbs.db
 *.mat
 
 # Python files
-*.pyc
+*.py[cod]
 
 # LaTeX
 *.acn
@@ -55,7 +57,6 @@ Thumbs.db
 *.nlg
 *.nls
 *.out
-#*.pdf
 *.pdfsync
 *.ps
 *.snm
