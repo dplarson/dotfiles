@@ -132,8 +132,8 @@ Bundle "majutsushi/tagbar"
 Bundle "scrooloose/nerdtree"
 map <leader>n :NERDTreeToggle<CR>
 
-" PyFlakes
-Bundle "kevinw/pyflakes-vim"
+" Python
+Bundle "klen/python-mode"
 
 " Use Git in Vim
 Bundle "tpope/vim-fugitive"
