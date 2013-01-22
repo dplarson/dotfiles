@@ -1,6 +1,9 @@
 # Private data
 .gitconfig
 
+# SVN
+.svn/
+
 # Packages
 *.7z
 *.dmg
