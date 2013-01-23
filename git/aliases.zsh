@@ -29,7 +29,9 @@ alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias gwtf='git-wtf'
 
 # log
+alias gl="git log --graph --pretty=format:'%Cred%h %Cblue%an%Creset: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias glog="git log --graph --pretty=format:'%Cred%h %Cblue%an%Creset: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+
 
 # analysis
 alias g#='git shortlog -sn'         # view number of commits per user
