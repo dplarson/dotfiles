@@ -1,11 +1,11 @@
 # set shortcut to dotfiles path
-export ZSH=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 
 # set project folder so we can 'c [tab]' to it
 export PROJECTS=$HOME/projects
 
 # load all .zsh files in dotfiles repo
-for config_file in $ZSH/**/*.zsh; do source $config_file; done
+for config_file in $DOTFILES/**/*.zsh; do source $config_file; done
 
 # load private or per-system settings
 if [ -f $HOME/.localrc ] ; then

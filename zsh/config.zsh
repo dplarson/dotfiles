@@ -2,7 +2,7 @@
 
 # set functions path
 fpath=(
-    $ZSH/zsh/functions
+    $DOTFILES/zsh/functions
     $fpath
 )
 export fpath
@@ -11,7 +11,7 @@ export fpath
 typeset -U fpath
 
 #
-autoload -U $ZSH/zsh/functions/*(:t)
+autoload -U $DOTFILES/zsh/functions/*(:t)
 
 # set terminal colors
 export LSCOLORS="exfxcxdxbxegedabagacad"

@@ -34,7 +34,7 @@ fi
 # OS-independent settings
 path=(
   $path
-  $ZSH/bin
+  $DOTFILES/bin
 )
 export PATH
 
