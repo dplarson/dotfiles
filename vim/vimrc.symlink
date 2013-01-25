@@ -29,6 +29,7 @@ set colorcolumn=80
 "--------------------------------------------------------------
 set softtabstop=4 	" soft tabs
 set tabstop=4
+set shiftwidth=4
 set expandtab 		" expand tabs to spaces
 set nosmarttab
 set nofoldenable    " dont fold by default
