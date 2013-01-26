@@ -1,13 +1,8 @@
 # homebrew command aliases
 
 
-brew_no_outdated_pkgs () {
-  # returns nothing if no pkgs are outdated
-  brew outdated >/dev/null 2>&1
-}
-
 brew_check_outdated () {
-  if brew_no_outdated_pkgs ; then
+  if [ "$(brew oudated >/dev/null 2>&1)" = "" ]; then
     echo "==> \033[1mOutdated Formulae \033[0m" && echo "Nothing to upgrade."
   else
     echo "==> \033[1mOutdated Formulae \033[0m" && brew outdated
