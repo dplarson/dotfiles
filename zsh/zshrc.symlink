@@ -4,8 +4,19 @@ export DOTFILES=$HOME/.dotfiles
 # set project folder so we can 'c [tab]' to it
 export PROJECTS=$HOME/projects
 
-# load all .zsh files in dotfiles repo
-for config_file in $DOTFILES/**/*.zsh; do source $config_file; done
+# get all zsh files
+config_files=($DOTFILES/**/*.zsh)
+typeset -U config_files
+
+# load all path files
+for file in ${(M)config_files:#*/path.zsh} ; do
+  . $file
+done
+
+# load everything but path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh} ; do
+  . $file
+done
 
 # load private or per-system settings
 if [ -f $HOME/.localrc ] ; then
@@ -15,3 +26,11 @@ fi
 # initialize autocomplete
 autoload -U compinit
 compinit -ui
+
+# load completion files after autocomplete
+for file in ${(M)config_files:#*/completion.zsh} ; do
+  . $file
+done
+
+# remove config_files variable now that we're done
+unset config_files
