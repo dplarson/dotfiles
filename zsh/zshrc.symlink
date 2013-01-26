@@ -10,7 +10,7 @@ typeset -U config_files
 
 # load all path files
 for file in ${(M)config_files:#*/path.zsh} ; do
-  . $file
+  source $file
 done
 
 # load everything but path and completion files
