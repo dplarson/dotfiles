@@ -1,16 +1,24 @@
 #compdef wifi
 
-# wifi completition function
+# wifi completion function
 
-_wifi () {
-    local cmd
 
-    if (( CURRENT > 2)); then
-        # (not sure if this if-statement is required...)
-    else
-        _values :                   \
-            "off[turn wifi off]"    \
-            "on[turn wifi on]"      \
-            "restart[restart wifi]"
-    fi
-}
+local state cmds ret=1
+
+_arguments -C '1: :->cmds'
+
+case $state in
+  cmds)
+      local -a cmds
+      cmds=(
+        'off:turn wifi off'
+        'on:turn wifi on'
+        'restart:restart wifi'
+      )
+
+      # show cmds descriptions
+      _describe -t commands 'wifi command' cmds && ret=0
+      ;;
+esac
+
+return ret
