@@ -122,8 +122,8 @@ au BufRead,BufNewFile *.j2 set filetype=jinja
 
 " Faster file opening 
 Bundle "kien/ctrlp.vim"
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
+
 
 " Tab completition
 Bundle "ervandew/supertab"
