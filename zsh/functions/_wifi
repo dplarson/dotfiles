@@ -1,0 +1,8 @@
+#compdef wifi
+
+local args
+
+args=( off on restart )
+
+_arguments \
+    ":::($args)"
