@@ -121,7 +121,9 @@ Bundle "atourino/jinja.vim"
 au BufRead,BufNewFile *.j2 set filetype=jinja
 
 " Faster file opening 
-Bundle "wincent/Command-T"
+Bundle "kien/ctrlp.vim"
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Tab completition
 Bundle "ervandew/supertab"
