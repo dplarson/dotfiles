@@ -1,8 +1,16 @@
 #compdef wifi
 
-local args
+# wifi completition function
 
-args=( off on restart )
+_wifi () {
+    local cmd
 
-_arguments \
-    ":::($args)"
+    if (( CURRENT > 2)); then
+        # (not sure if this if-statement is required...)
+    else
+        _values :                   \
+            "off[turn wifi off]"    \
+            "on[turn wifi on]"      \
+            "restart[restart wifi]"
+    fi
+}
