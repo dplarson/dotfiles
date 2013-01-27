@@ -118,7 +118,7 @@ install_homebrew_pkgs () {
 
   if exists brew ; then
 
-    # update homebrew package list
+    # update homebrew package list (silently)
     brew update >/dev/null 2>&1
 
     # git 
