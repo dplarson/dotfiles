@@ -1,5 +1,8 @@
 # add git command aliases
 
+# git
+alias g='git'
+
 # fetch
 alias gf='git f && git wtf'
 
