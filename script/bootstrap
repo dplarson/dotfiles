@@ -134,6 +134,7 @@ install_homebrew_pkgs () {
     brew install ack
     brew install coreutils
     brew install z
+    brew install fasd
     
     # languages
     brew install python
