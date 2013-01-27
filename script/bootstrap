@@ -133,7 +133,6 @@ install_homebrew_pkgs () {
     # tools
     brew install ack
     brew install coreutils
-    brew install z
     brew install fasd
     
     # languages
