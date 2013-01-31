@@ -2,7 +2,7 @@
 
 
 brew_check_outdated () {
-  if [ "$(brew oudated >/dev/null 2>&1)" = "" ]; then
+  if [ "$(brew oudated)" = "" ]; then
     #echo "==> \033[1mOutdated Formulae \033[0m" && echo "Nothing to upgrade."
   else
     echo "==> \033[1mOutdated Formulae \033[0m" && brew outdated
