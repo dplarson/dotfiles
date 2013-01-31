@@ -3,6 +3,8 @@
 # set functions path
 fpath=(
     $DOTFILES/zsh/functions
+    /usr/local/share/zsh-completions
+    /usr/local/share/zsh/functions
     $fpath
 )
 export fpath
