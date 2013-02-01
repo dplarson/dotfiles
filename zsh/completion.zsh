@@ -3,23 +3,11 @@
 # use cache for increased speeds
 zstyle ':completion:*' use-cache on
 
-# verbose
-zstyle ':completion:*' verbose yes 
-
-# add descriptions
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-
-# group by tag names
-zstyle ':completion:*' group-name ''
-
 # case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # menu for large list
 zstyle ':completion:*:default' menu 'select=0'
-
-# show newest items first
-zstyle ':completion:*' file-sort modification reverse
 
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
