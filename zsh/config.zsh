@@ -3,8 +3,6 @@
 # set functions path
 fpath=(
     $DOTFILES/zsh/functions
-    /usr/local/share/zsh-completions
-    /usr/local/share/zsh/functions
     $fpath
 )
 export fpath
@@ -29,7 +27,7 @@ setopt PROMPT_SUBST
 setopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt IGNORE_EOF
-setopt complete_aliases
+setopt COMPLETE_ALIASES
 
 # set keybinding to emacs
 bindkey -e
