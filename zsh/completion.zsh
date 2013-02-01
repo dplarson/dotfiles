@@ -1,13 +1,7 @@
 # customize zsh completion
 
-# use cache for increased speeds
-zstyle ':completion:*' use-cache on
-
 # case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# menu for large list
-zstyle ':completion:*:default' menu 'select=0'
 
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
