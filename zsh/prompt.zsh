@@ -41,7 +41,7 @@ git_prompt() {
 #   > git status
 #
 export PROMPT='
-%{$fg_bold[yellow]%}%n%{$fg_bold[blue]%}@%{$fg_bold[yellow]%}%M%{$reset_color%}
+%{$fg_bold[yellow]%}%n%{$fg_bold[blue]%}@%{$fg_bold[yellow]%}%m%{$reset_color%}
 %{$fg[green]%}> %{$reset_color%}'
 
 
