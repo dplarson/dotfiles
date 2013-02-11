@@ -12,6 +12,8 @@ elseif filereadable("/bin/zsh")
     set shell=/bin/zsh
 endif
 
+" Allow backspace to delete
+set backspace=indent,eol,start
 
 
 "--------------------------------------------------------------
