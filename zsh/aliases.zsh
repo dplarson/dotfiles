@@ -30,11 +30,16 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias h='history'
-alias du='du -kh'
-alias df='df -kTh'
-alias sizes='du -h -d1'
 alias path='echo -e ${PATH//:/\\n}'
 alias o='open .'
+
+# calculate directory size
+alias du='du -kh'
+alias du1='du -kh -d 1'
+alias du2='du -kh -d 2'
+
+# calculate free space
+alias df='df -kTh'
 
 # misc
 alias reload='. $HOME/.zshrc' # reload zsh settings
