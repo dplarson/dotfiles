@@ -26,6 +26,9 @@ alias gba='git branch -a'
 # merge
 alias gm='git merge --no-ff' # keep commit from feature when merging
 
+# cleanup
+alias gprune='git remote prune origin'
+
 # status
 alias gs='git status -sb' 
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
