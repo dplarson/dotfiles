@@ -131,13 +131,17 @@ install_homebrew_pkgs () {
     brew install macvim --override-system-vim
 
     # tools
-    brew install ack
+    brew install ack 
+    brew install the_silver_searcher
     brew install coreutils
-    brew install fasd
-    
+
     # languages
     brew install python
     brew install ruby 
+
+    # tmux
+    brew install tmux
+
   else
     msg_fail "Homebrew not installed."
   fi
