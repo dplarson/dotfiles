@@ -1,0 +1,9 @@
+shell -$SHELL
+
+startup_message off
+
+# enable UTF-8
+defutf8 on
+
+# show window list at bottom
+hardstatus alwayslastline "%w"
