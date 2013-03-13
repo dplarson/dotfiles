@@ -9,6 +9,9 @@ alias gf='git f && git wtf'
 # push 
 alias gp='git push origin HEAD'
 
+# pull
+alias gpl='git pull'
+
 # diff
 alias gd='git diff'
 
@@ -27,7 +30,7 @@ alias gba='git branch -a'
 alias gm='git merge --no-ff' # keep commit from feature when merging
 
 # cleanup
-alias gprune='git remote prune origin'
+alias gpr='git remote prune origin'
 
 # status
 alias gs='git status -sb' 
