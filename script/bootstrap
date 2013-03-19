@@ -19,7 +19,7 @@ msg_fail () {
 
 # Text (blue)
 msg_run () {
-  echo "\033[0;34m$1\033[0m"
+  echo "\n\033[0;34m$1\033[0m"
 }
 
 
@@ -30,7 +30,7 @@ exists () {
 
 
 install_dotfiles () {
-  msg_run "\nInstalling dotfiles to $HOME..."    
+  msg_run "Installing dotfiles to $HOME ..."    
 
   # get path of dotfiles repo
   DOTFILES_ROOT="$( cd "$( dirname "$0" )" && cd .. && pwd )"
@@ -50,6 +50,9 @@ install_dotfiles () {
 
     # create absolute path for link target
     target=`echo "$HOME/.$symlink_filename" | sed "s/\.symlink$//g"`
+
+    # target basename
+    target_name=`basename "$target"`
         
     # set default install options (per symlink file)
     skip=false
@@ -63,7 +66,7 @@ install_dotfiles () {
         && [ "$skip_all" = "false" ] ; then 
             
         # get user input 
-        echo "File already exists: $target; what do you want to do?" \
+        echo "File already exists: $target_name; what do you want to do?" \
               "[s]kip," \
               "[S]kip all," \
               "[o]verwrite," \
@@ -86,13 +89,13 @@ install_dotfiles () {
             
       # delete pre-existing dotfiles
       if [ "$overwrite" = "true" ] || [ "$overwrite_all" = "true" ] ; then
-        echo "Overwriting: $target... "
+        echo "Overwriting $target_name ... "
         rm -rf $target
       fi
 
       # backup pre-existing dotfiles
       if [ "$backup" = "true" ] || [ "$backup_all" = "true" ] ; then
-        echo "Backing up: $target... "
+        echo "Backing up $target_name ... "
         mv $target $target\.backup
       fi
     
@@ -100,12 +103,12 @@ install_dotfiles () {
       if [ "$skip" = "false" ] && [ "$skip_all" = "false" ] ; then
         ln -s $file $target
       else
-        echo "Skipping: $target... "
+        echo "Skipping $target_name ... "
       fi
     
     # link dotfiles if they don't already exist 
     else
-      echo "Installing: $target... "
+      echo "Installing $target_name ... "
       ln -s $file $target
     fi
         
@@ -114,43 +117,52 @@ install_dotfiles () {
 
 
 install_homebrew_pkgs () {
-  msg_run "\nInstalling Homebrew packages..."
 
-  if exists brew ; then
-
-    # update homebrew package list (silently)
-    brew update >/dev/null 2>&1
-
-    # git 
-    brew install git git-extras
-
-    # shells
-    brew install --disable-etcdir zsh
-
-    # editors
-    brew install macvim --override-system-vim
-
-    # tools
-    brew install ack 
-    brew install the_silver_searcher
-    brew install coreutils
-
-    # languages
-    brew install python
-    brew install ruby 
-
-    # tmux
-    brew install tmux
-
-  else
-    msg_fail "Homebrew not installed."
+  if ! exists brew ; then
+    echo ""
+    msg_fail "Homebrew not installed; unable to continue ..."
   fi
+
+  # update homebrew package list (silently)
+  brew update >/dev/null 2>&1
+
+  # git 
+  msg_run "Installing Git, for version control ..."
+  brew install git 
+  brew install git-extras
+
+  # shells
+  msg_run "Installing ZSH, a better shell than BASH ..."
+  brew install --disable-etcdir zsh
+
+  # editors
+  msg_run "Installing MacVim, a nice Vim GUI ..."
+  brew install macvim --override-system-vim
+
+  # tools
+  msg_run "Installing The Silver Searcher, (better than ack or grep) for searching the contents of files ..."
+  brew install the_silver_searcher
+
+  msg_run "Installing coreutils, a collection of GNU utilities ..."
+  brew install coreutils
+
+  # languages
+  msg_run "Installing Python ..."
+  brew install python
+  
+  msg_run "Installing Ruby ..."
+  brew install ruby 
+
+  # tmux
+  msg_run "Installing tmux ..."
+  brew install tmux
+
 }
 
 
 
 install_python_pkgs () {
-  msg_run "\nInstalling Python packages..."
+  msg_run "Installing Python packages ..."
 
   if exists pip ; then
 
@@ -167,7 +179,7 @@ install_python_pkgs () {
 
 
 install_vim_pkgs () {
-  msg_run "\nInstalling Vim packages..."
+  msg_run "Installing Vim packages ..."
 
   # create vundle directory
   if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
@@ -176,7 +188,7 @@ install_vim_pkgs () {
     
   # install vundle
   if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
-    echo "Vundle not installed; installing now..."
+    echo "Vundle not installed; installing now ..."
     git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
   fi
 
@@ -202,6 +214,8 @@ fi
 
 # install all other dependencies
 install_vim_pkgs
+
+# restart ZSH to apply settings
 
 
 exit 0
