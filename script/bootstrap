@@ -111,8 +111,9 @@ install_dotfiles () {
       echo "Installing $target_name ... "
       ln -s $file $target
     fi
-  
+
   done # end loop for all *.symlink files
+
 }
 
 
@@ -187,9 +188,8 @@ fi
 
 install_vim_pkgs
 
-
-msg_run "Your shell will now restart in order for changes to apply ..."
-exec $SHELL -l
+msg_run "Installation complete."
+echo "To apply changes, reload ZSH using '. ~/.zshrc' ..."
 
 exit 0
 
