@@ -111,7 +111,7 @@ install_dotfiles () {
       echo "Installing $target_name ... "
       ln -s $file $target
     fi
-        
+  
   done # end loop for all *.symlink files
 }
 
@@ -162,14 +162,9 @@ install_homebrew_pkgs () {
 
 install_vim_pkgs () {
 
-  if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
+  if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
     msg_run "Installing Vundle, a good Vim package manager ..."
     git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-  fi
-
-  # initialize vundle directory
-  if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
-    mkdir -p $HOME/.vim/bundle/vundle
   fi
 
   msg_run "Installing Vim packages ..."
@@ -185,12 +180,10 @@ install_vim_pkgs () {
 
 install_dotfiles
 
-
-# Mac-specific
+# OS-specific installs
 if [ $(uname -s) = "Darwin" ] ; then
     install_homebrew_pkgs
 fi
-
 
 install_vim_pkgs
 
