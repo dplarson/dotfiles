@@ -66,7 +66,7 @@ install_dotfiles () {
         && [ "$skip_all" = "false" ] ; then 
             
         # get user input 
-        echo "File already exists: $target_name; what do you want to do?" \
+        echo "$target_name already exists; what do you want to do?" \
               "[s]kip," \
               "[S]kip all," \
               "[o]verwrite," \
@@ -197,7 +197,7 @@ fi
 install_vim_pkgs
 
 
-msg_run "Restarting the shell in order for changes to apply ..."
+msg_run "Your shell will now restart in order for changes to apply ..."
 exec $SHELL -l
 
 exit 0
