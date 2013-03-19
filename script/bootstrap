@@ -66,7 +66,7 @@ install_dotfiles () {
         && [ "$skip_all" = "false" ] ; then 
             
         # get user input 
-        echo "$target_name already exists; what do you want to do?" \
+        echo "\033[0;31;4mError\033[0m: $target_name already exists:" \
               "[s]kip," \
               "[S]kip all," \
               "[o]verwrite," \
@@ -161,20 +161,18 @@ install_homebrew_pkgs () {
 
 
 install_vim_pkgs () {
-  msg_run "Installing Vim packages ..."
 
-  # create vundle directory
+  if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
+    msg_run "Installing Vundle, a good Vim package manager ..."
+    git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+  fi
+
+  # initialize vundle directory
   if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
     mkdir -p $HOME/.vim/bundle/vundle
   fi
-    
-  # install vundle
-  if [ ! -d $HOME/.vim/bundle/vundle/.git/ ] ; then
-    echo "Vundle not installed; installing now ..."
-    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  fi
 
-  # install bundles listed in vimrc
+  msg_run "Installing Vim packages ..."
   if exists vim ; then 
     vim +BundleInstall +qall
   elif exists mvim ; then 
