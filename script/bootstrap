@@ -160,24 +160,6 @@ install_homebrew_pkgs () {
 }
 
 
-
-install_python_pkgs () {
-  msg_run "Installing Python packages ..."
-
-  if exists pip ; then
-
-    # update pip package list
-    pip install --upgrade distribute >/dev/null 2>&1
-    pip install --upgrade pip >/dev/null 2>&1
-
-    # utilities
-    pip install pip-tools
-  else
-    msg_fail "Pip not installed."
-  fi
-}
-
-
 install_vim_pkgs () {
   msg_run "Installing Vim packages ..."
 
@@ -203,20 +185,20 @@ install_vim_pkgs () {
 }
 
 
-# OS-agnostic settings
 install_dotfiles
 
-# OS-specific settings
+
+# Mac-specific
 if [ $(uname -s) = "Darwin" ] ; then
     install_homebrew_pkgs
-    install_python_pkgs
 fi
 
-# install all other dependencies
+
 install_vim_pkgs
 
-# restart ZSH to apply settings
 
+msg_run "Restarting the shell in order for changes to apply ..."
+exec $SHELL -l
 
 exit 0
 
