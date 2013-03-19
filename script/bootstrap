@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# bootstrap
+# Usage: script/bootstrap
 #
 # Install dependencies.
 
