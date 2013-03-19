@@ -77,13 +77,13 @@ install_dotfiles () {
         
         # apply user input 
         case "$REPLY" in
-          s) skip=true                                  ;; 
-          S) skip_all=true                              ;;
-          o) overwrite=true                             ;; 
-          O) overwrite_all=true                         ;; 
-          b) backup=true                                ;; 
-          B) backup_all=true                            ;; 
-          *) msg_fail "unknown option; quitting now..." ;;
+          s) skip=true                                   ;; 
+          S) skip_all=true                               ;;
+          o) overwrite=true                              ;; 
+          O) overwrite_all=true                          ;; 
+          b) backup=true                                 ;; 
+          B) backup_all=true                             ;; 
+          *) msg_fail "unknown option; quitting now ..." ;;
         esac
       fi # end if-statement for if no global options are set
             
@@ -183,7 +183,14 @@ install_dotfiles
 
 # OS-specific installs
 if [ $(uname -s) = "Darwin" ] ; then
-    install_homebrew_pkgs
+  msg_run "Install dependencies? [Y/N]"
+  read REPLY
+
+  case "$REPLY" in
+    Y) install_homebrew_pkgs                       ;;
+    N) echo "Skipping dependency install ... "     ;;
+    *) msg_fail "unknown option; quitting now ..." ;;
+  esac
 fi
 
 install_vim_pkgs
