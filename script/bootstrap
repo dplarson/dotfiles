@@ -187,15 +187,15 @@ if [ $(uname -s) = "Darwin" ] ; then
   read REPLY
 
   case "$REPLY" in
-    Y) install_homebrew_pkgs                       ;;
-    N) printf "Skipping dependency install ... \n" ;;
+    [yY]) install_homebrew_pkgs                       ;;
+    [nN]) printf "Skipping dependency install ... \n" ;;
     *) msg_fail "unknown option; quitting now ..." ;;
   esac
 fi
 
 install_vim_pkgs
 
-msg_run "Installation complete."
+msg_run "Finished!"
 printf "To apply changes, reload ZSH using '. ~/.zshrc' ... \n"
 
 exit 0
