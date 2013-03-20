@@ -12,14 +12,14 @@
 
 # Error (red, underlined)
 msg_fail () {
-  echo "\033[0;31;4mError\033[0m: $1"
+  printf "\033[0;31;4mError\033[0m: $1 \n"
   exit 1
 }
 
 
 # Text (blue)
 msg_run () {
-  echo "\n\033[0;34m$1\033[0m"
+  printf "\n\033[0;34m$1\033[0m \n"
 }
 
 
@@ -66,13 +66,13 @@ install_dotfiles () {
         && [ "$skip_all" = "false" ] ; then 
             
         # get user input 
-        echo "\033[0;31;4mError\033[0m: $target_name already exists:" \
-              "[s]kip," \
-              "[S]kip all," \
-              "[o]verwrite," \
-              "[O]verwrite all," \
-              "[b]ackup," \
-              "[B]ackup all?"
+        printf "\033[0;31;4mError\033[0m: $target_name already exists:" 
+        printf " [s]kip," 
+        printf " [S]kip all," 
+        printf " [o]verwrite,"
+        printf " [O]verwrite all,"
+        printf " [b]ackup,"
+        printf " [B]ackup all? \n"
         read REPLY
         
         # apply user input 
@@ -89,13 +89,13 @@ install_dotfiles () {
             
       # delete pre-existing dotfiles
       if [ "$overwrite" = "true" ] || [ "$overwrite_all" = "true" ] ; then
-        echo "Overwriting $target_name ... "
+        printf "Overwriting $target_name ... \n"
         rm -rf $target
       fi
 
       # backup pre-existing dotfiles
       if [ "$backup" = "true" ] || [ "$backup_all" = "true" ] ; then
-        echo "Backing up $target_name ... "
+        printf "Backing up $target_name ... \n"
         mv $target $target\.backup
       fi
     
@@ -103,12 +103,12 @@ install_dotfiles () {
       if [ "$skip" = "false" ] && [ "$skip_all" = "false" ] ; then
         ln -s $file $target
       else
-        echo "Skipping $target_name ... "
+        printf "Skipping $target_name ... \n"
       fi
     
     # link dotfiles if they don't already exist 
     else
-      echo "Installing $target_name ... "
+      printf "Installing $target_name ... \n"
       ln -s $file $target
     fi
 
@@ -183,12 +183,12 @@ install_dotfiles
 
 # OS-specific installs
 if [ $(uname -s) = "Darwin" ] ; then
-  msg_run "Install dependencies? [Y/N]"
+  msg_run "Install dependencies? [Y/N] "
   read REPLY
 
   case "$REPLY" in
     Y) install_homebrew_pkgs                       ;;
-    N) echo "Skipping dependency install ... "     ;;
+    N) printf "Skipping dependency install ... \n" ;;
     *) msg_fail "unknown option; quitting now ..." ;;
   esac
 fi
@@ -196,7 +196,7 @@ fi
 install_vim_pkgs
 
 msg_run "Installation complete."
-echo "To apply changes, reload ZSH using '. ~/.zshrc' ..."
+printf "To apply changes, reload ZSH using '. ~/.zshrc' ... \n"
 
 exit 0
 
