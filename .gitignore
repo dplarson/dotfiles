@@ -1,2 +1,5 @@
-git/gitconfig.symlink
+# ignore Vim bundles (installed with Vundle)
 vim/vim.symlink/bundle/**/*
+
+# ignore Python virtualenvs
+python/virtualenvs.symlink/**/
