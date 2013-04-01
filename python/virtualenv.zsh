@@ -8,7 +8,9 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
 # activate virtualenv
-source /usr/local/share/python/virtualenvwrapper.sh
+if test -f /usr/local/share/python/virtualenvwrapper.sh ; then 
+  . /usr/local/share/python/virtualenvwrapper.sh
+fi
 
 # aliases
 alias v='workon'
