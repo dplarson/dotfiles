@@ -26,3 +26,5 @@ bind 1:alt move ${leftHalf}
 bind 2:alt move ${rightHalf}
 bind 3:alt move ${centered}
 bind 4:alt move ${fullscreen}
+bind `:alt relaunch
+bind esc:alt grid
