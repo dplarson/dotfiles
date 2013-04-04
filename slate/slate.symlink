@@ -22,9 +22,10 @@ alias leftHalf ${sox};${soy} ${ssx}/2;${ssy}
 alias rightHalf ${sox}+${ssx}/2;${soy} ${ssx}/2;${ssy}
 
 # Bindings
-bind 1:alt move ${leftHalf}
-bind 2:alt move ${rightHalf}
-bind 3:alt move ${centered}
-bind 4:alt move ${fullscreen}
-bind `:alt relaunch
-bind esc:alt grid
+alias leader alt
+bind 1:${leader} move ${leftHalf}
+bind 2:${leader} move ${rightHalf}
+bind 3:${leader} move ${centered}
+bind 4:${leader} move ${fullscreen}
+bind `:${leader} relaunch
+bind esc:${leader} grid
