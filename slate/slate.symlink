@@ -1,0 +1,28 @@
+# settings for Slate.app (window management)
+#
+# read more: github.com/jigish/slate
+
+# Config
+config windowHintsFontSize 100
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config windowHintsTopLeftX (windowSizeX/2)-(windowHintsWidth/2)
+config windowHintsTopLeftY (windowSizeY/2)-(windowHintsHeight/2)
+
+# General aliases
+alias sox screenOriginX
+alias soy screenOriginY
+alias ssx screenSizeX
+alias ssy screenSizeY
+
+# Position aliases
+alias centered ${sox}+${ssx}/6;${soy} ${sox}+${ssx}/6*4;${ssy}
+alias fullscreen ${sox};${soy} ${ssx};${ssy}
+alias leftHalf ${sox};${soy} ${ssx}/2;${ssy}
+alias rightHalf ${sox}+${ssx}/2;${soy} ${ssx}/2;${ssy}
+
+# Bindings
+bind 1:alt move ${leftHalf}
+bind 2:alt move ${rightHalf}
+bind 3:alt move ${centered}
+bind 4:alt move ${fullscreen}
