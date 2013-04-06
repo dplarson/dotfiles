@@ -34,6 +34,14 @@ git_prompt() {
 }
 
 
+prompt_character() {
+  if [ ! "$SSH_CLIENT" = "" ] ; then
+    echo ">>>"
+  else
+    echo ">"
+  fi
+}
+
 # set left prompt
 #
 # should look similar to this:
@@ -42,7 +50,7 @@ git_prompt() {
 #
 export PROMPT='
 %{$fg_bold[yellow]%}%n%{$fg_bold[blue]%}@%{$fg_bold[yellow]%}%m%{$reset_color%}
-%{$fg[green]%}> %{$reset_color%}'
+%{$fg[green]%}$(prompt_character) %{$reset_color%}'
 
 
 # set right prompt with current directory and git info
