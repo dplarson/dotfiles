@@ -6,18 +6,18 @@
 [core]
 	excludesfile = ~/.gitignore
 [alias]
-    st = status
-    cl = clone    
-    ci = commit
-    co = checkout
-    br = branch
-    df = diff
-    f  = fetch -v
-    pl = pull
-    s  = summary
-    i  = info
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    dl = "!git ll -1"
+  st = status
+  cl = clone    
+  ci = commit
+  co = checkout
+  br = branch
+  df = diff
+  f  = fetch -v
+  pl = pull
+  s  = summary
+  i  = info
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  dl = "!git ll -1"
 [color]
 	diff = auto
 	status = auto
