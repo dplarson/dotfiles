@@ -32,7 +32,7 @@ setw -g automatic-rename off
 
 # reload config
 unbind r
-bind r source-file $HOME/.tmux.conf
+bind r source-file $HOME/.tmux.conf \; display-message "Config reloaded..."
 
 
 #### COLOR (Solarized dark)
