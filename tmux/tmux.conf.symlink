@@ -27,6 +27,9 @@ unbind %
 bind | split-window -h
 bind - split-window -v
 
+# set correct terminal
+set -g default-terminal "xterm-256color"
+
 # don't auto name windows
 setw -g automatic-rename off
 
