@@ -18,9 +18,16 @@ setw -g mouse-select-pane on
 # enable copy-paste
 set -g default-command "reattach-to-user-namespace -l zsh"
 
+# no delay
+set -s escape-time 0
+
 # name windows starting at 1
 set -g base-index 1
 setw -g pane-base-index 1
+
+# window navigation
+#bind-key -n C-[ prev
+#bind-key -n C-] next
 
 # split windows
 unbind %
