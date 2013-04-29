@@ -10,6 +10,11 @@ bind ^A select-pane -t :.+
 # quiet
 set -g quiet on
 
+# clear history with CMD-K (Mac default) using iTerm2 and hex codes
+# 1. create new global shortcut key
+# 2. set key combination to CMD-K
+# 3. set action to "Send Hex Codes: 0x0C" (hex code for Ctrl-L)
+
 # mouse
 set -g mode-mouse on
 setw -g mouse-select-window on
