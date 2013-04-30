@@ -15,10 +15,12 @@ set -g quiet on
 # 2. set key combination to CMD-K
 # 3. set action to "Send Hex Codes: 0x0C" (hex code for Ctrl-L)
 
-# mouse
+# enable mouse actions
 set -g mode-mouse on
-setw -g mouse-select-window on
+set -g mouse-resize-pan on
 setw -g mouse-select-pane on
+setw -g mouse-select-window on
+
 
 # enable copy-paste
 set -g default-command "reattach-to-user-namespace -l zsh"
