@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Check that all Python requirements are installed.
+
+PKGS_REQUIRED=$(cat requirements.txt)
+
+PKGS_INSTALLED=$(pip freeze)
+
+for pkg in $PKGS_REQUIRED ; do
+
+  name_required=$(echo $pkg | sed 's/==*.*//g')
+  version_required=$(echo $pkg | grep -P -o '==[0-9].*' | sed 's/==//g')
+
+  # check if packname is found 
+  pkg_found=$(echo "$PKGS_INSTALLED" | grep -P "$name_required")
+
+  version_installed=$(echo "$pkg_found" | grep -P -o '==[0-9].*' | sed 's/==//g') 
+   
+  # if found, then check that versions match
+  if ! [ "$pkg_found" = "" ] ; then
+    printf "FOUND: %-10s %10s (installed: %s) \n" "$name_required" "$version_required" "$version_installed"
+  else
+    printf "MISSING: %-10s %10s \n" "$name_required" "$version_required"
+  fi
+done
+
+#echo "$PKGS_REQUIRED" | while read pkg ; do echo "$PKGS_INSTALLED" | grep -P "$pkg" | grep -P -o '[0-9].*' ; done
+
+#cat requirements.txt| sed 's/==*.*$//g' | while read pkg ; do echo "$(pip freeze)" | grep -q "$pkg" && printf "FOUND: %s\n" "$pkg" || printf "NOT FOUND: %s\n" "$pkg" ; done
+
+# vim: set autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=sh
