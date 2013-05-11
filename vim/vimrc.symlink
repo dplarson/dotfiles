@@ -159,8 +159,4 @@ let g:PowerLine_theme = 'solarized256'
 let g:Powerline_colorscheme = 'solarized256'
 set laststatus=2
 
-" Relative line number
-Bundle "myusuf3/numbers.vim"
-nnoremap <leader><leader> :NumbersToggle<CR>
-
 filetype plugin indent on     " required (at end of vimrc)
