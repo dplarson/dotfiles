@@ -1,8 +1,6 @@
 " Run current python file
-nnoremap <leader>r :!python %:p<Enter>
+nnoremap <leader>r :call PythonRun()<CR>
 
-" MacVim specific keymappings
-if has("gui_macvim")
-    " Run current Python file
-    nnoremap <D-r> :!python %:p<Enter>
-endif
+function! PythonRun()
+    echo system("python ".expand("%:p"))
+endfunction

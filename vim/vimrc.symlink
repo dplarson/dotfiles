@@ -148,6 +148,7 @@ map <leader>n :NERDTreeToggle<CR>
 
 " Python
 Bundle "klen/python-mode"
+let g:pymode_run = 0
 
 " Use Git in Vim
 Bundle "tpope/vim-fugitive"
