@@ -116,18 +116,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " LaTeX
-"Bundle "LaTeX-Box-Team/LaTeX-Box"
-"let g:LatexBox_latexmk_options = "-diagnostics -pv"
-"let g:LatexBox_output_type = "pdf"
-"let g:LatexBox_viewer = "Preview"
-"let g:LatexBox_autojump = 1
-
-" Vim-Latex
-Bundle "git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex"
-let g:Tex_Flavor = 'latex'
-let g:Tex_ViewRule_pdf = 'Preview'
-let g:Tex_MultipleCompileFormats = 'pdf'
-let g:TexCompileRule_pdf = 'latexmk -pdf $*'
+Bundle "LaTeX-Box-Team/LaTeX-Box"
+let g:LatexBox_latexmk_options = "-diagnostics -pv"
+let g:LatexBox_output_type = "pdf"
+let g:LatexBox_viewer = "Preview"
+let g:LatexBox_autojump = 1
 
 " Snippets
 " Bundle "SirVer/ultisnips"
