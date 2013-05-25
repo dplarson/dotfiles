@@ -2,8 +2,10 @@
 " GENERAL SETTINGS
 "--------------------------------------------------------------
 set nocompatible 
-filetype off 		" required
-set nobackup        " delete backup files after close
+set nobackup
+
+" required
+filetype off  " required
 
 " set shell
 if filereadable("/usr/local/bin/zsh")
@@ -12,8 +14,12 @@ elseif filereadable("/bin/zsh")
     set shell=/bin/zsh
 endif
 
-" Allow backspace to delete
+" allow backspace to delete
 set backspace=indent,eol,start
+
+" prevent Vim from removing scrollback buffer. 
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
 
 
 "--------------------------------------------------------------
@@ -29,21 +35,25 @@ set colorcolumn=80
 "--------------------------------------------------------------
 " TEXT FORMATTING 
 "--------------------------------------------------------------
-set softtabstop=4 	" soft tabs
+" ts = tabstop
+" sts = softtabstop
+" sw = shiftwidth
+" et = expandtab
+
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
-set expandtab 		" expand tabs to spaces
+
+set expandtab
 set nosmarttab
-set nofoldenable    " dont fold by default
+set nofoldenable
 
-" shell files
-autocmd BufRead,BufNewFile *.sh,*.zsh,*.symlink
-    \ setlocal tabstop=2 |
-    \ setlocal softtabstop=2 |
-    \ setlocal shiftwidth=2
+" per file extension
+autocmd BufRead,BufNewFile *.sh setlocal ts=2 sts=2 sw=2
+autocmd BufRead,BufNewFile *.zsh setlocal ts=2 sts=2 sw=2
+autocmd BufRead,BufNewFile *.symlink setlocal ts=2 sts=2 sw=2
+autocmd BufRead,BufNewFile *.html setlocal ts=2 sts=2 sw=2
 
-" Python files
-autocmd Filetype Python setlocal ts=4 sts=4 sw=4 expandtab
 
 "--------------------------------------------------------------
 " GUI SPECIFIC SETTINGS 
@@ -135,7 +145,6 @@ au BufRead,BufNewFile *.j2 set filetype=jinja
 Bundle "kien/ctrlp.vim"
 silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
 
-
 " Tab completition
 Bundle "ervandew/supertab"
 
@@ -160,4 +169,5 @@ let g:PowerLine_theme = 'solarized256'
 let g:Powerline_colorscheme = 'solarized256'
 set laststatus=2
 
-filetype plugin indent on     " required (at end of vimrc)
+" required (at end of vimrc)
+filetype plugin indent on
