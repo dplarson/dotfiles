@@ -17,8 +17,8 @@ if [ $(uname -s) = "Darwin" ] ; then
 
   # manuals (help files)
   manpath=(
-    /usr/local/man
-    /usr/local/git/man
+    /usr/local/share/man
+    /usr/share/man
     $manpath
   )
   export MANPATH
