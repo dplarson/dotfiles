@@ -31,6 +31,13 @@ set number
 set ruler
 set colorcolumn=80
 
+" mouse
+if has('mouse')
+  set mouse=a
+  set mousemodel=popup_setpos
+  set mousehide
+endif
+
 
 "--------------------------------------------------------------
 " TEXT FORMATTING 
