@@ -48,14 +48,12 @@ prompt_character() {
 #   user@computer-name
 #   > git status
 #
-PROMPT='
-'                                           # blank line
+PROMPT=$'\n'                                # blank line
 PROMPT+='%{$fg_bold[yellow]%}%n'            # user
 PROMPT+='%{$fg_bold[blue]%}@'               # @
 PROMPT+='%{$fg_bold[yellow]%}%m'            # hostname
 PROMPT+='%{$reset_color%}'                  # reset color
-PROMPT+='
-'
+PROMPT+=$'\n'                               # blank line
 PROMPT+='%{$fg[green]%}$(prompt_character)' # >
 PROMPT+='%{$reset_color%} '                 # reset color
 
