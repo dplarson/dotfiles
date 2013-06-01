@@ -158,10 +158,6 @@ Bundle "ervandew/supertab"
 " Tagbar
 Bundle "majutsushi/tagbar"
 
-" NERDTree
-Bundle "scrooloose/nerdtree"
-map <leader>n :NERDTreeToggle<CR>
-
 " Python
 Bundle "klen/python-mode"
 let g:pymode_run = 0
