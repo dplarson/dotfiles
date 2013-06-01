@@ -48,10 +48,18 @@ prompt_character() {
 #   user@computer-name
 #   > git status
 #
-export PROMPT='
-%{$fg_bold[yellow]%}%n%{$fg_bold[blue]%}@%{$fg_bold[yellow]%}%m%{$reset_color%}
-%{$fg[green]%}$(prompt_character) %{$reset_color%}'
+PROMPT='
+'                                           # blank line
+PROMPT+='%{$fg_bold[yellow]%}%n'            # user
+PROMPT+='%{$fg_bold[blue]%}@'               # @
+PROMPT+='%{$fg_bold[yellow]%}%m'            # hostname
+PROMPT+='%{$reset_color%}'                  # reset color
+PROMPT+='
+'
+PROMPT+='%{$fg[green]%}$(prompt_character)' # >
+PROMPT+='%{$reset_color%} '                 # reset color
 
+export PROMPT
 
 # set right prompt with current directory and git info
 #
@@ -61,8 +69,11 @@ export PROMPT='
 #   otherwise only show current directory:
 #     ~/Documents
 #
-export RPROMPT='%{$fg_bold[yellow]%}%~ %{$reset_color%}$(git_prompt)%{$reset_color%}'
+RPROMPT='%{$fg_bold[yellow]%}%~ '         # current directory
+RPROMPT+='%{$reset_color%}$(git_prompt)'  # git info
+RPROMPT+='%{$reset_color%}'               # reset color
 
+export RPROMPT
 
 # set terminal window title
 precmd() {
