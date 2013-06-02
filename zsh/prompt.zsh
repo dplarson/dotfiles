@@ -18,60 +18,36 @@ fi
 
 git_prompt() {
    
-  # check if git repo
   git_status=$($git status 2>/dev/null | tail -n 1)
 
+  # if in git repo, show current branch
   if [[ ! $git_status == "" ]] ; then
-    # current branch name
     git_branch=$($git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
    
-    # short sha1 
-    git_sha1=$($git rev-parse --short HEAD 2>/dev/null)
-
-    # git prompt (example: master@46a45f4)
-    echo "%{$fg[blue]%}$git_branch%{$fg_bold[blue]%}@%{$fg_bold[red]%}$git_sha1"
+    echo "%{$fg_bold[red]%}$git_branch"
   fi
 }
 
+# left prompt:
+#   user@hostname
+#   > ls
+PROMPT=$'\n'
+PROMPT+='%{$fg_bold[yellow]%}%n'  # user
+PROMPT+='%{$fg_bold[blue]%}@'
+PROMPT+='%{$fg_bold[yellow]%}%m'  # hostname
+PROMPT+='%{$reset_color%}'
+PROMPT+=$'\n'
+PROMPT+='%{$fg[green]%}> '        # >
+PROMPT+='%{$reset_color%}'        # reset color
 
-prompt_character() {
-  if [ ! "$SSH_CLIENT" = "" ] ; then
-    echo ">>>"
-  else
-    echo ">"
-  fi
-}
+# right prompt:
+#   ~/current/directory [git branch]
+RPROMPT='%{$reset_color%}%~ '      # current directory
+RPROMPT+='%{$reset_color%}['
+RPROMPT+='$(git_prompt)'        # git info
+RPROMPT+='%{$reset_color%}]'
 
-# set left prompt
-#
-# should look similar to this:
-#   user@computer-name
-#   > git status
-#
-PROMPT=$'\n'                                # blank line
-PROMPT+='%{$fg_bold[yellow]%}%n'            # user
-PROMPT+='%{$fg_bold[blue]%}@'               # @
-PROMPT+='%{$fg_bold[yellow]%}%m'            # hostname
-PROMPT+='%{$reset_color%}'                  # reset color
-PROMPT+=$'\n'                               # blank line
-PROMPT+='%{$fg[green]%}$(prompt_character)' # >
-PROMPT+='%{$reset_color%} '                 # reset color
-
-export PROMPT
-
-# set right prompt with current directory and git info
-#
-#   if inside a git repo show branch and newest commit SHA1:
-#     ~/.dotfiles/zsh master@1e1a62d
-#
-#   otherwise only show current directory:
-#     ~/Documents
-#
-RPROMPT='%{$fg_bold[yellow]%}%~ '         # current directory
-RPROMPT+='%{$reset_color%}$(git_prompt)'  # git info
-RPROMPT+='%{$reset_color%}'               # reset color
-
-export RPROMPT
+export PROMPT RPROMPT
 
 # set terminal window title
 precmd() {
