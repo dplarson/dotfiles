@@ -24,7 +24,7 @@ git_prompt() {
   if [[ ! $git_status == "" ]] ; then
     git_branch=$($git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
    
-    echo "%{$fg_bold[red]%}$git_branch"
+    echo "%{$fg[green]%}$git_branch"
   fi
 }
 
