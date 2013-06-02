@@ -24,7 +24,7 @@ git_prompt() {
   if [[ ! $git_status == "" ]] ; then
     git_branch=$($git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
    
-    echo "%{$fg[green]%}$git_branch"
+    echo "%{$reset_color%}[%{$fg[green]%}$git_branch%{$reset_color%}]"
   fi
 }
 
@@ -42,10 +42,8 @@ PROMPT+='%{$reset_color%}'        # reset color
 
 # right prompt:
 #   ~/current/directory [git branch]
-RPROMPT='%{$reset_color%}%~ '      # current directory
-RPROMPT+='%{$reset_color%}['
+RPROMPT='%{$reset_color%}%~ '   # current directory
 RPROMPT+='$(git_prompt)'        # git info
-RPROMPT+='%{$reset_color%}]'
 
 export PROMPT RPROMPT
 
