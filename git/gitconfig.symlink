@@ -24,4 +24,7 @@
 	branch = auto
 	ui = auto
 [push]
-    default = current
+  default = current
+[diff]
+  tool = vimdiff
+  prompt = false
