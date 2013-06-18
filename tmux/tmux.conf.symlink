@@ -51,6 +51,24 @@ setw -g automatic-rename off
 unbind r
 bind r source-file $HOME/.tmux.conf \; display-message "Config reloaded..."
 
+#### STATUS BAR
+
+# enable UTF-8
+set -g status-utf8 on
+
+# set refresh interval
+set -g status-interval 30
+
+# center status bar
+set -g status-justify left
+
+# left: [session] window-number:window-name
+set -g status-left-length 40
+set -g status-left '#[fg=yellow][#S]#[default]'
+
+# right: hostname mm/dd/yy HH:MM
+set-option -g status-right '#[fg=blue]#H#[default]'
+
 
 #### COLOR (Solarized dark)
 
