@@ -165,12 +165,21 @@ let g:pymode_run = 0
 " Use Git in Vim
 Bundle "tpope/vim-fugitive"
 
-" Powerline
-Bundle "Lokaltog/vim-powerline"
-let g:PowerLine_symbols = 'compatible'
-let g:PowerLine_theme = 'solarized256'
-let g:Powerline_colorscheme = 'solarized256'
+
+"--------------------------------------------------------------
+" STATUSLINE
+"--------------------------------------------------------------
 set laststatus=2
+
+" colors: gray font, lighter gray bg
+hi StatusLine ctermbg=0 ctermfg=11
+
+set statusline=%<                       " truncation point
+set statusline+=%f                      " file name
+set statusline+=\ %y                    " (file type)
+set statusline+=%m                      " [+] if modified
+set statusline+=%=                      " switch to right side
+set statusline+=%-14(\ %P\ (%l,%c)\ %)  " percentage (line #, column #)
 
 " required (at end of vimrc)
 filetype plugin indent on
