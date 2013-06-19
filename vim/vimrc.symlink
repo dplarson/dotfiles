@@ -171,8 +171,8 @@ Bundle "tpope/vim-fugitive"
 "--------------------------------------------------------------
 set laststatus=2
 
-" colors: gray font, lighter gray bg
-hi StatusLine ctermbg=0 ctermfg=11
+" solarized colors: bg=base03, fg=base00
+hi StatusLine ctermbg=0 ctermfg=11 guibg=#002b36 guifg=#657b83
 
 set statusline=%<                       " truncation point
 set statusline+=%f                      " file name
