@@ -8,7 +8,6 @@ if [ $(uname -s) = "Darwin" ] ; then
     /usr/local/bin
     /usr/local/sbin
     $path
-    /usr/local/share/python
     /usr/texbin
     /usr/local/Cellar/gems/1.8/bin
     /usr/sbin
