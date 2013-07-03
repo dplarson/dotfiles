@@ -18,3 +18,6 @@ alias bru='brew update && brew_check_outdated'
 
 # list outdated brews
 alias bro='brew_check_outdated'
+
+# list compact homebrew log
+alias brl="brew log --graph --pretty=format:'%Cred%h %Cblue%an%Creset: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
