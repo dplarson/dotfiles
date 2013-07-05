@@ -170,9 +170,9 @@ install_vim_pkgs () {
 
   msg_run "Installing Vim packages ..."
   if exists vim ; then 
-    vim +BundleInstall +qall
+    vim +BundleInstall +qall >/dev/null 2>&1
   elif exists mvim ; then 
-    mvim +BundleInstall +qall
+    mvim +BundleInstall +qall >/dev/null 2>&1
   else
     msg_fail "Vim not installed."
   fi
