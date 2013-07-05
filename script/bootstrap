@@ -186,17 +186,8 @@ install_dotfiles
 
 # OS-specific installs
 if [ $(uname -s) = "Darwin" ] ; then
-  msg_run "Install dependencies? [Y/N] "
-  read REPLY
-
-  case "$REPLY" in
-    [yY]) 
-      install_homebrew_pkgs ;;
-    [nN]) 
-      printf "Skipping dependency install ... \n" ;;
-    *) 
-      msg_fail "unknown option; quitting now ..." ;;
-  esac
+  msg_run "Installing dependencies ..."
+    install_homebrew_pkgs
 fi
 
 install_vim_pkgs
