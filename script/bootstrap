@@ -77,12 +77,12 @@ install_dotfiles () {
         
         # apply user input 
         case "$REPLY" in
-          s) skip=true                                   ;; 
-          S) skip_all=true                               ;;
-          o) overwrite=true                              ;; 
-          O) overwrite_all=true                          ;; 
-          b) backup=true                                 ;; 
-          B) backup_all=true                             ;; 
+          s) skip=true ;; 
+          S) skip_all=true ;;
+          o) overwrite=true ;; 
+          O) overwrite_all=true ;; 
+          b) backup=true ;; 
+          B) backup_all=true ;; 
           *) msg_fail "unknown option; quitting now ..." ;;
         esac
       fi # end if-statement for if no global options are set
@@ -129,34 +129,37 @@ install_homebrew_pkgs () {
 
   # git 
   msg_run "Installing Git, for version control ..."
-  brew install git 
-  brew install git-extras
+    brew install git 
+    brew install git-extras
 
   # shells
   msg_run "Installing ZSH, a better shell than BASH ..."
-  brew install --disable-etcdir zsh
+    brew install --disable-etcdir zsh
 
   # editors
+  msg_run "Install Vim ..."
+    brew install vim --override-system-vim
+
   msg_run "Installing MacVim, a nice Vim GUI ..."
-  brew install macvim --override-system-vim
+    brew install macvim
 
   # tools
   msg_run "Installing The Silver Searcher, (better than ack or grep) for searching the contents of files ..."
-  brew install the_silver_searcher
+    brew install the_silver_searcher
 
   msg_run "Installing coreutils, a collection of GNU utilities ..."
-  brew install coreutils
+    brew install coreutils
 
   # languages
   msg_run "Installing Python ..."
-  brew install python
+    brew install python
   
   msg_run "Installing Ruby ..."
-  brew install ruby 
+    brew install ruby 
 
   # tmux
   msg_run "Installing tmux ..."
-  brew install tmux
+    brew install tmux
 
 }
 
@@ -187,9 +190,12 @@ if [ $(uname -s) = "Darwin" ] ; then
   read REPLY
 
   case "$REPLY" in
-    [yY]) install_homebrew_pkgs                       ;;
-    [nN]) printf "Skipping dependency install ... \n" ;;
-    *) msg_fail "unknown option; quitting now ..." ;;
+    [yY]) 
+      install_homebrew_pkgs ;;
+    [nN]) 
+      printf "Skipping dependency install ... \n" ;;
+    *) 
+      msg_fail "unknown option; quitting now ..." ;;
   esac
 fi
 
