@@ -56,10 +56,11 @@ set nosmarttab
 set nofoldenable
 
 " per file extension
-autocmd BufRead,BufNewFile *.sh setlocal ts=2 sts=2 sw=2
-autocmd BufRead,BufNewFile *.zsh setlocal ts=2 sts=2 sw=2
-autocmd BufRead,BufNewFile *.symlink setlocal ts=2 sts=2 sw=2
-autocmd BufRead,BufNewFile *.html setlocal ts=2 sts=2 sw=2
+autocmd BufRead,BufNewFile *.sh, *.zsh, *.symlink set filetype=sh
+
+" per file type
+au FileType sh setlocal ts=2 sts=2 sw=2
+au FileType html setlocal ts=2 sts=2 sw=2
 
 
 "--------------------------------------------------------------
