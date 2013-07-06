@@ -117,7 +117,13 @@ install_dotfiles () {
 
 
 brew_install () {
-  sh -c "brew install $*" >/dev/null 2>&1
+  installed=$(sh -c "brew info $*" | grep "Not installed")
+ 
+  # install if not already installed
+  if [ ! "$installed" = "" ] ; then
+    sh -c "brew install $*" >/dev/null 2>&1
+  fi
+
   printf "SUCCESS\n"
 }
 
