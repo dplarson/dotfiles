@@ -30,4 +30,4 @@ The bootstrap installer will symlink the necessary files as well as install some
 ## Screenshot
 iTerm 2 + zsh + solarized dark color theme + Inconsolata font on OS X 10.7:
 
-![iterm2](https://raw.github.com/dplarson/dotfiles/master/zsh_iterm2_git_demo.png)
+![screenshot](https://raw.github.com/dplarson/dotfiles/master/screenshot.png)
