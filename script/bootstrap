@@ -8,20 +8,20 @@
 #   davidxia's dotfiles (https://github.com/davidxia/bootstrap_dotfiles/)
 #   joshdick's dotfiles (https://github.com/joshdick/dotfiles)
 
-
-
 # Error (red, underlined)
 msg_fail () {
   printf "\033[0;31;4mError\033[0m: $1 \n"
   exit 1
 }
 
-
 # Text (blue)
 msg_run () {
   printf "\n\033[0;34m$1\033[0m \n"
 }
 
+msg_install () {
+  printf "%-50s" "$1"
+}
 
 # check if cmd exists
 exists () {
@@ -113,9 +113,13 @@ install_dotfiles () {
     fi
 
   done # end loop for all *.symlink files
-
 }
 
+
+run_quiet () {
+  sh -c ${1} >/dev/null 2>&1
+  printf "SUCCESS\n"
+}
 
 install_homebrew_pkgs () {
 
@@ -128,56 +132,64 @@ install_homebrew_pkgs () {
   brew update >/dev/null 2>&1
 
   # git 
-  msg_run "Installing Git, for version control ..."
-    brew install git 
-    brew install git-extras
+  msg_install "Installing git ..."
+    run_quiet "brew install git git-extras"
 
   # shells
-  msg_run "Installing ZSH, a better shell than BASH ..."
-    brew install --disable-etcdir zsh
+  msg_install "Installing zsh ..."
+    run_quiet "brew install --disable-etcdir zsh"
 
   # editors
-  msg_run "Install Vim ..."
-    brew install vim --override-system-vim
+  msg_install "Installing vim ..."
+    run_quiet "brew install vim --override-system-vim"
 
-  msg_run "Installing MacVim, a nice Vim GUI ..."
-    brew install macvim
+  msg_install "Installing macvim ..."
+    run_quiet "brew install macvim"
 
   # tools
-  msg_run "Installing The Silver Searcher, (better than ack or grep) for searching the contents of files ..."
-    brew install the_silver_searcher
+  msg_install "Installing ack ... "
+    run_quiet "brew install ack"
 
-  msg_run "Installing coreutils, a collection of GNU utilities ..."
-    brew install coreutils
+  msg_install "Installing the silver searcher (ag) ..."
+    run_quiet "brew install the_silver_searcher"
+
+  msg_install "Installing coreutils ..."
+    run_quiet "brew install coreutils"
 
   # languages
-  msg_run "Installing Python ..."
-    brew install python
+  msg_install "Installing python ..."
+    run_quiet "brew install python"
   
-  msg_run "Installing Ruby ..."
-    brew install ruby 
+  msg_install "Installing ruby ..."
+    run_quiet "brew install ruby"
 
   # tmux
-  msg_run "Installing tmux ..."
-    brew install tmux
-
+  msg_install "Installing tmux ..."
+    run_quiet "brew install tmux"
 }
 
 
 install_vim_pkgs () {
 
+  msg_run "Installing vim packages ..."
+
+  # Vundle
+  msg_install "Installing vundle ..."
   if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
-    msg_run "Installing Vundle, a good Vim package manager ..."
-    git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+    run_quiet "git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle"
+  else
+    printf "SUCCESS\n"
   fi
 
-  msg_run "Installing Vim packages ..."
+  msg_install "Installing vim packages ..."
   if exists vim ; then 
     vim +BundleInstall +qall >/dev/null 2>&1
+    printf "SUCCESS\n"
   elif exists mvim ; then 
     mvim +BundleInstall +qall >/dev/null 2>&1
+    printf "SUCCESS\n"
   else
-    msg_fail "Vim not installed."
+    printf "FAILED\n"
   fi
 }
 
@@ -192,8 +204,7 @@ fi
 
 install_vim_pkgs
 
-msg_run "Finished!"
-printf "To apply changes, reload ZSH using '. ~/.zshrc' ... \n"
+msg_run "Finished installing!"
 
 exit 0
 
