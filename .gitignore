@@ -1,5 +1,9 @@
-# ignore Vim bundles (installed with Vundle)
+# Vim bundles (installed with Vundle)
 vim/vim.symlink/bundle/**/*
 
-# ignore Python virtualenvs
+# Python virtualenvs
 python/virtualenvs.symlink/**/
+
+# SSH keys
+id_rsa
+id_dsa

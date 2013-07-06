@@ -1,5 +1,7 @@
 # Private data
 .gitconfig
+id_rsa
+id_dsa
 
 # SVN
 .svn/
