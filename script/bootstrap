@@ -116,8 +116,8 @@ install_dotfiles () {
 }
 
 
-run_quiet () {
-  sh -c ${1} >/dev/null 2>&1
+brew_install () {
+  sh -c "brew install $*" >/dev/null 2>&1
   printf "SUCCESS\n"
 }
 
@@ -133,39 +133,39 @@ install_homebrew_pkgs () {
 
   # git 
   msg_install "Installing git ..."
-    run_quiet "brew install git git-extras"
+    brew_install git git-extras
 
   # shells
   msg_install "Installing zsh ..."
-    run_quiet "brew install --disable-etcdir zsh"
+    brew_install --disable-etcdir zsh
 
   # editors
   msg_install "Installing vim ..."
-    run_quiet "brew install vim --override-system-vim"
+    brew_install vim --override-system-vim
 
   msg_install "Installing macvim ..."
-    run_quiet "brew install macvim"
+    brew_install macvim
 
   # tools
   msg_install "Installing ack ... "
-    run_quiet "brew install ack"
+    brew_install ack
 
   msg_install "Installing the silver searcher (ag) ..."
-    run_quiet "brew install the_silver_searcher"
+    brew_install the_silver_searcher
 
   msg_install "Installing coreutils ..."
-    run_quiet "brew install coreutils"
+    brew_install coreutils
 
   # languages
   msg_install "Installing python ..."
-    run_quiet "brew install python"
+    brew_install python
   
   msg_install "Installing ruby ..."
-    run_quiet "brew install ruby"
+    brew_install ruby
 
   # tmux
   msg_install "Installing tmux ..."
-    run_quiet "brew install tmux"
+    brew_install tmux
 }
 
 
@@ -198,7 +198,7 @@ install_dotfiles
 
 # OS-specific installs
 if [ $(uname -s) = "Darwin" ] ; then
-  msg_run "Installing dependencies ..."
+  msg_run "Installing homebrew packages ..."
     install_homebrew_pkgs
 fi
 
