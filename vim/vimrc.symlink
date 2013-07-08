@@ -153,7 +153,11 @@ au BufRead,BufNewFile *.j2 set filetype=jinja
 
 " Salt
 Bundle "saltstack/salt-vim"
-au BufRead,BufNewFIle *.sls set filetype=sls
+au BufRead,BufNewFile *.sls set filetype=sls
+
+" Puppet
+Bundle "rodjek/vim-puppet"
+au BufRead,BufNewFile *.pp set filetype=pp
 
 " Faster file opening 
 Bundle "kien/ctrlp.vim"
