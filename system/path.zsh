@@ -23,7 +23,9 @@ if [ $(uname -s) = "Darwin" ] ; then
   export MANPATH
 
   # ruby gems
-  export GEM_HOME="$(brew --prefix)/Cellar/gems/1.8"
+  if [ -d "$(brew --prefix)/Cellar/gems" ] ; then
+    export GEM_HOME="$(brew --prefix)/Cellar/gems/1.8"
+  fi
 
   # python
   export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
