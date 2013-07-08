@@ -144,10 +144,16 @@ let g:LatexBox_autojump = 1
 " Bundle "SirVer/ultisnips"
 " let g:UltiSnipsUsePythonVersion = 2
 
-" Syntax
+" Markdown
 Bundle "Markdown"
+
+" Jinja
 Bundle "atourino/jinja.vim"
 au BufRead,BufNewFile *.j2 set filetype=jinja
+
+" Salt
+Bundle "saltstack/salt-vim"
+au BufRead,BufNewFIle *.sls set filetype=sls
 
 " Faster file opening 
 Bundle "kien/ctrlp.vim"
