@@ -157,7 +157,7 @@ au BufRead,BufNewFile *.sls set filetype=sls
 
 " Puppet
 Bundle "rodjek/vim-puppet"
-au BufRead,BufNewFile *.pp set filetype=pp
+au BufRead,BufNewFile *.pp set filetype=puppet
 
 " Faster file opening 
 Bundle "kien/ctrlp.vim"
