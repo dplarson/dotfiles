@@ -3,6 +3,7 @@
 "--------------------------------------------------------------
 set nocompatible 
 set nobackup
+set noswapfile
 
 " required
 filetype off  " required
