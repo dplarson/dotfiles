@@ -182,7 +182,7 @@ install_vim_pkgs () {
   # Vundle
   msg_install "Installing vundle ..."
   if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
-    run_quiet "git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle"
+    git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle >/dev/null 2>&1
   else
     printf "SUCCESS\n"
   fi
