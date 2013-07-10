@@ -57,7 +57,7 @@ set nosmarttab
 set nofoldenable
 
 " per file extension
-autocmd BufRead,BufNewFile *.sh, *.zsh, *.symlink set filetype=sh
+autocmd BufRead,BufNewFile *.sh,*.zsh,*.symlink set filetype=sh
 
 " per file type
 au FileType sh setlocal ts=2 sts=2 sw=2
@@ -159,6 +159,9 @@ au BufRead,BufNewFile *.sls set filetype=sls
 " Puppet
 Bundle "rodjek/vim-puppet"
 au BufRead,BufNewFile *.pp set filetype=puppet
+
+" Tab alignment (helpful for vim-puppet)
+Bundle "godlygeek/tabular"
 
 " Faster file opening 
 Bundle "kien/ctrlp.vim"
