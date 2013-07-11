@@ -5,6 +5,7 @@ if [ $(uname -s) = "Darwin" ] ; then
 
   # system path
   path=(
+    $HOME/.rbenv/shims
     /usr/local/bin
     /usr/local/sbin
     $path
@@ -22,11 +23,6 @@ if [ $(uname -s) = "Darwin" ] ; then
   )
   export MANPATH
 
-  # ruby gems
-  if [ -d "$(brew --prefix)/Cellar/gems" ] ; then
-    export GEM_HOME="$(brew --prefix)/Cellar/gems/1.8"
-  fi
-
   # python
   export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
@@ -42,5 +38,4 @@ export PATH
 # remove non-unique entries
 typeset -U PATH
 typeset -U MANPATH
-typeset -U GEM_HOME
 typeset -U PYTHONPATH
