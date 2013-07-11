@@ -165,6 +165,9 @@ install_homebrew_pkgs () {
   # languages
   msg_install "Installing python ..."
     brew_install python
+
+  msg_install "Installing rbenv ..."
+    brew_install rbenv ruby-build
   
   # tmux
   msg_install "Installing tmux ..."
