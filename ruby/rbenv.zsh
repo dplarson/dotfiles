@@ -1,7 +1,7 @@
 # rbenv
 
-# NOTE: only runs if rbenv is already installed
-if [ ! "$(command -v rbenv)" = "" ] ; then
+# only run code below if rbenv installed via homebrew
+if [ -x /usr/local/bin/rbenv ] ; then
 
   # rehash shims
   rbenv rehash 2>/dev/null
