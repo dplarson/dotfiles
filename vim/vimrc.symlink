@@ -9,11 +9,7 @@ set noswapfile
 filetype off  " required
 
 " set shell
-if filereadable("/usr/local/bin/zsh")
-    set shell=/usr/local/bin/zsh
-elseif filereadable("/bin/zsh")
-    set shell=/bin/zsh
-endif
+set shell=/bin/sh
 
 " allow backspace to delete
 set backspace=indent,eol,start
