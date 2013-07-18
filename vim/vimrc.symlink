@@ -18,6 +18,14 @@ set backspace=indent,eol,start
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
 
+" ignore files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+" store temporary files in central location
+set backup
+set backupdir=$HOME/.vim-tmp,$HOME/.tmp,$HOME/tmp
+set directory=$HOME/.vim-tmp,$HOME/.tmp,$HOME/tmp
+
 
 "--------------------------------------------------------------
 " UI 
@@ -163,7 +171,7 @@ Bundle "godlygeek/tabular"
 Bundle "kien/ctrlp.vim"
 silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
 
-" Tab completition
+" Tab completion
 Bundle "ervandew/supertab"
 
 " Tagbar
