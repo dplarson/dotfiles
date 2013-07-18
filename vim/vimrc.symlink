@@ -98,6 +98,9 @@ endif
 let mapleader="," 
 let maplocalleader=","
 
+" switch between last two files
+nnoremap <leader><leader> <c-^>
+
 " faster mode change
 imap jk <esc> 
 
