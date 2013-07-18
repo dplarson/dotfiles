@@ -4,6 +4,7 @@
 set nocompatible 
 set nobackup
 set noswapfile
+set encoding=utf-8
 
 " required
 filetype off  " required
