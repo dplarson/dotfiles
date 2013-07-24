@@ -183,6 +183,9 @@ let g:pymode_run = 0
 " Use Git in Vim
 Bundle "tpope/vim-fugitive"
 
+" All-inclusive syntax checker
+Bundle "scrooloose/syntastic"
+
 
 "--------------------------------------------------------------
 " STATUSLINE
