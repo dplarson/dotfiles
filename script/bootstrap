@@ -172,6 +172,9 @@ install_homebrew_pkgs () {
   # tmux
   msg_install "Installing tmux ..."
     brew_install tmux
+
+  msg_install "Installing reattach-to-user-namespace ..."
+    brew_install reattach-to-user-namespace
 }
 
 
