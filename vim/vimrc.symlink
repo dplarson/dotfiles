@@ -160,10 +160,6 @@ Bundle "Markdown"
 Bundle "atourino/jinja.vim"
 au BufRead,BufNewFile *.j2 set filetype=jinja
 
-" Salt
-Bundle "saltstack/salt-vim"
-au BufRead,BufNewFile *.sls set filetype=sls
-
 " Puppet
 Bundle "rodjek/vim-puppet"
 au BufRead,BufNewFile *.pp set filetype=puppet
@@ -177,9 +173,6 @@ silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
 
 " Tab completion
 Bundle "ervandew/supertab"
-
-" Tagbar
-Bundle "majutsushi/tagbar"
 
 " Python
 Bundle "klen/python-mode"
