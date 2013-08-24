@@ -30,7 +30,11 @@ set cursorline
 set incsearch
 set number
 set ruler
-set colorcolumn=80
+
+" hint to keep lines short
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
 
 " mouse
 if has('mouse')
