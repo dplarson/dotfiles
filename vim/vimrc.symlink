@@ -202,3 +202,5 @@ set statusline+=%-14(\ %P\ (%l,%c)\ %)  " percentage (line #, column #)
 
 " required (at end of vimrc)
 filetype plugin indent on
+
+" vim: set filetype=vim:
