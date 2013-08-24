@@ -13,10 +13,6 @@ typeset -U fpath
 #
 autoload -U $DOTFILES/zsh/functions/*(:t)
 
-# set terminal colors
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
-
 # set options
 setopt NO_BG_NICE    # don't nice background tasks
 setopt NO_HUP

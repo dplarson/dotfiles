@@ -1,15 +1,17 @@
 # add general command aliases
 
-# set ls defaults: colors and human-readable 
-if [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
-    LS_COMMON='--color=auto -hF'
+# set ls defaults: colors and human-readable
+if (( $+commands[dircolors] )) ; then
+  eval `dircolors $HOME/.dir_colors`
+  alias ls="command ls --color=auto -h"
+elif (( $+commands[gdircolors] )) ; then
+  eval `gdircolors $HOME/.dir_colors`
+  alias ls="command gls --color=auto -h"
 else
-    LS_COMMON="-hBGF"
+  export LSCOLORS="exfxcxdxbxegedabagacad"
+  export CLICOLOR=true
+  alias ls="command ls -hBGF"
 fi
-
-# set ls to use $LS_COMMON
-alias ls="command ls $LS_COMMON"
 
 # ls 
 alias l='ls -ltr' 	 # list in lines, sorted by date
