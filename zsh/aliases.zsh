@@ -2,10 +2,10 @@
 
 # set ls defaults: colors and human-readable
 if (( $+commands[dircolors] )) ; then
-  eval `dircolors $HOME/.dir_colors`
+  eval `dircolors $HOME/.dircolors`
   alias ls="command ls --color=auto -h"
 elif (( $+commands[gdircolors] )) ; then
-  eval `gdircolors $HOME/.dir_colors`
+  eval `gdircolors $HOME/.dircolors`
   alias ls="command gls --color=auto -h"
 else
   export LSCOLORS="exfxcxdxbxegedabagacad"
