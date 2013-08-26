@@ -137,41 +137,36 @@ install_homebrew_pkgs () {
   # update homebrew package list (silently)
   brew update >/dev/null 2>&1
 
-  # git 
+  # essential scripts
+  msg_install "Installing coreutils ..."
+    brew_install coreutils
+
   msg_install "Installing git ..."
     brew_install git git-extras
 
-  # shells
   msg_install "Installing zsh ..."
     brew_install --disable-etcdir zsh
 
-  # editors
   msg_install "Installing vim ..."
     brew_install vim --override-system-vim
 
-  # tools
+  msg_install "Installing tmux ..."
+    brew_install tmux
+
+  msg_install "Installing reattach-to-user-namespace ..."
+    brew_install reattach-to-user-namespace
+
+  msg_install "Installing python ..."
+      brew_install python
+
   msg_install "Installing ack ... "
     brew_install ack
 
   msg_install "Installing the silver searcher (ag) ..."
     brew_install the_silver_searcher
 
-  msg_install "Installing coreutils ..."
-    brew_install coreutils
-
-  # languages
-  msg_install "Installing python ..."
-    brew_install python
-
   msg_install "Installing rbenv ..."
     brew_install rbenv ruby-build
-  
-  # tmux
-  msg_install "Installing tmux ..."
-    brew_install tmux
-
-  msg_install "Installing reattach-to-user-namespace ..."
-    brew_install reattach-to-user-namespace
 }
 
 
