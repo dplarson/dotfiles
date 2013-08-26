@@ -149,9 +149,6 @@ install_homebrew_pkgs () {
   msg_install "Installing vim ..."
     brew_install vim --override-system-vim
 
-  msg_install "Installing macvim ..."
-    brew_install macvim
-
   # tools
   msg_install "Installing ack ... "
     brew_install ack
