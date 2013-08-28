@@ -10,6 +10,9 @@ bind ^A select-pane -t :.+
 # quiet
 set -g quiet on
 
+# vi mode
+setw -g mode-keys vi
+
 # clear history with CMD-K (Mac default) using iTerm2 and hex codes
 # 1. create new global shortcut key
 # 2. set key combination to CMD-K
