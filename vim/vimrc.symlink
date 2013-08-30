@@ -1,7 +1,7 @@
 "--------------------------------------------------------------
 " GENERAL SETTINGS
 "--------------------------------------------------------------
-set nocompatible 
+set nocompatible
 set nobackup
 set noswapfile
 set encoding=utf-8
@@ -15,7 +15,7 @@ set shell=/bin/sh
 " allow backspace to delete
 set backspace=indent,eol,start
 
-" prevent Vim from removing scrollback buffer. 
+" prevent Vim from removing scrollback buffer.
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
 
@@ -24,7 +24,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.m~
 
 
 "--------------------------------------------------------------
-" UI 
+" UI
 "--------------------------------------------------------------
 set cursorline
 set incsearch
@@ -45,7 +45,7 @@ endif
 
 
 "--------------------------------------------------------------
-" TEXT FORMATTING 
+" TEXT FORMATTING
 "--------------------------------------------------------------
 " ts = tabstop
 " sts = softtabstop
@@ -70,7 +70,7 @@ au FileType html setlocal ts=2 sts=2 sw=2
 
 
 "--------------------------------------------------------------
-" GUI SPECIFIC SETTINGS 
+" GUI SPECIFIC SETTINGS
 "--------------------------------------------------------------
 syntax on
 
@@ -87,29 +87,29 @@ set guifont=Inconsolata:h14
 
 " MacVim specific settings
 if has ("gui_macvim")
-	set fuoptions=maxhorz,maxvert   " fullscreen
-	set visualbell                  " no beep
-	set guioptions-=T               " start with no toolbar
+set fuoptions=maxhorz,maxvert   " fullscreen
+set visualbell                  " no beep
+set guioptions-=T               " start with no toolbar
 endif
 
 
 "--------------------------------------------------------------
-" COMMAND REMAPPING 
+" COMMAND REMAPPING
 "--------------------------------------------------------------
-let mapleader="," 
+let mapleader=","
 let maplocalleader=","
 
 " switch between last two files
 nnoremap <leader><leader> <c-^>
 
 " faster mode change
-imap jk <esc> 
+imap jk <esc>
 
 " faster file functions
 nnoremap ; :
 
 " clear search buffer
-nmap <silent> ,/ :nohlsearch<CR> 
+nmap <silent> <leader>/ :nohlsearch<CR>
 
 " toggle folds with space
 nnoremap <Space> za
@@ -133,8 +133,18 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
+" show whitespace
+set list
+set listchars=trail:~
+
+" strip whitespace
+function! StripWhitespace ()
+  exec ':%s/ \+$//gc'
+endfunction
+map <leader><space> :call StripWhitespace()<CR>
+
 "--------------------------------------------------------------
-" PLUGINS 
+" PLUGINS
 "--------------------------------------------------------------
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -167,7 +177,7 @@ au BufRead,BufNewFile *.pp set filetype=puppet
 " Tab alignment (helpful for vim-puppet)
 Bundle "godlygeek/tabular"
 
-" Faster file opening 
+" Faster file opening
 Bundle "kien/ctrlp.vim"
 silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
 
