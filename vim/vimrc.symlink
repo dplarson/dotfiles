@@ -133,10 +133,6 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
-" show whitespace
-set list
-set listchars=trail:~
-
 " strip whitespace
 function! StripWhitespace ()
   exec ':%s/ \+$//gc'
