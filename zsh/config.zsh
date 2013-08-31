@@ -25,5 +25,5 @@ setopt COMPLETE_IN_WORD
 setopt IGNORE_EOF
 setopt COMPLETE_ALIASES
 
-# set keybinding to emacs
-bindkey -e
+# set keybinding to vim
+bindkey -v
