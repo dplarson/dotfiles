@@ -1,7 +1,7 @@
 # remap prefix to Control + a
 set -g prefix C-a
 unbind C-b
-bind C-a send-prefix
+bind a send-prefix
 
 # quick pane cycling
 unbind ^A
