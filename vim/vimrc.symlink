@@ -87,9 +87,9 @@ set guifont=Inconsolata:h14
 
 " MacVim specific settings
 if has ("gui_macvim")
-set fuoptions=maxhorz,maxvert   " fullscreen
-set visualbell                  " no beep
-set guioptions-=T               " start with no toolbar
+  set fuoptions=maxhorz,maxvert   " fullscreen
+  set visualbell                  " no beep
+  set guioptions-=T               " start with no toolbar
 endif
 
 
@@ -101,9 +101,6 @@ let maplocalleader=","
 
 " switch between last two files
 nnoremap <leader><leader> <c-^>
-
-" faster mode change
-imap jk <esc>
 
 " faster file functions
 nnoremap ; :
@@ -127,12 +124,6 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-" easier indentation
-nmap <D-[> <<
-nmap <D-]> >>
-vmap <D-[> <gv
-vmap <D-]> >gv
-
 " strip whitespace
 function! StripWhitespace ()
   exec ':%s/ \+$//gc'
@@ -155,16 +146,8 @@ let g:LatexBox_output_type = "pdf"
 let g:LatexBox_viewer = "Preview"
 let g:LatexBox_autojump = 1
 
-" Snippets
-" Bundle "SirVer/ultisnips"
-" let g:UltiSnipsUsePythonVersion = 2
-
 " Markdown
 Bundle "Markdown"
-
-" Jinja
-Bundle "atourino/jinja.vim"
-au BufRead,BufNewFile *.j2 set filetype=jinja
 
 " Puppet
 Bundle "rodjek/vim-puppet"
