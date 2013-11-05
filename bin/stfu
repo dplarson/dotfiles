@@ -1,7 +1,0 @@
-#!/bin/sh
-#
-# mute volume
-
-if [ $(uname -s) = "Darwin" ] ; then
-    osascript -e 'set volume with output muted'
-fi
