@@ -99,6 +99,9 @@ endif
 let mapleader=","
 let maplocalleader=","
 
+" copy to global register
+map <leader>y "*y
+
 " switch between last two files
 nnoremap <leader><leader> <c-^>
 
