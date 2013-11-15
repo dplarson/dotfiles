@@ -170,6 +170,9 @@ Bundle "ervandew/supertab"
 Bundle "klen/python-mode"
 let g:pymode_run = 0
 
+" Ignore line over 80char warning
+let g:pymode_lint_ignore = "E501"
+
 " Use Git in Vim
 Bundle "tpope/vim-fugitive"
 
