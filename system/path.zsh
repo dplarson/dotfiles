@@ -23,9 +23,6 @@ if [ $(uname -s) = "Darwin" ] ; then
   )
   export MANPATH
 
-  # python
-  export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-
 fi
 
 # OS-independent settings
@@ -38,4 +35,3 @@ export PATH
 # remove non-unique entries
 typeset -U PATH
 typeset -U MANPATH
-typeset -U PYTHONPATH
