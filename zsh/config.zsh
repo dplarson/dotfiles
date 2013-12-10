@@ -30,3 +30,4 @@ bindkey -v
 
 # better keybinding for searching through history
 bindkey '^R' history-incremental-search-backward
+bindkey '^?' backward-delete-char
