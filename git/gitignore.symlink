@@ -33,6 +33,7 @@ Thumbs.db
 
 # Python files
 *.py[cod]
+.venv
 
 # LaTeX
 *.acn
