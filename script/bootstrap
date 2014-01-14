@@ -63,7 +63,7 @@ install_dotfiles () {
     if [ -f $target ] || [ -d $target ] ; then
     
       if [ "$overwrite_all" = "false" ] && [ "$backup_all" = "false" ] \
-        && [ "$skip_all" = "false" ] ; then 
+        && [ "$skip_all" = "false" ] ; then
             
         # get user input 
         printf "\033[0;31;4mError\033[0m: $target_name already exists:" 
@@ -88,22 +88,22 @@ install_dotfiles () {
       fi # end if-statement for if no global options are set
             
       # delete pre-existing dotfiles
-      if [ "$overwrite" = "true" ] || [ "$overwrite_all" = "true" ] ; then
+      if $overwrite || $overwrite_all ; then
         printf "Overwriting $target_name ... \n"
         rm -rf $target
       fi
 
       # backup pre-existing dotfiles
-      if [ "$backup" = "true" ] || [ "$backup_all" = "true" ] ; then
+      if $backup || $backup_all ; then
         printf "Backing up $target_name ... \n"
         mv $target $target\.backup
       fi
     
       # linking dotfiles
-      if [ "$skip" = "false" ] && [ "$skip_all" = "false" ] ; then
-        ln -s $file $target
-      else
+      if $skip || $skip_all ; then
         printf "Skipping $target_name ... \n"
+      else
+        ln -s $file $target
       fi
     
     # link dotfiles if they don't already exist 
@@ -117,14 +117,12 @@ install_dotfiles () {
 
 
 brew_install () {
-  installed=$(sh -c "brew info $*" | grep "Not installed")
+  brew_not_installed=$(sh -c "brew info $*" | grep "Not installed")
  
-  # install if not already installed
-  if [ ! "$installed" = "" ] ; then
+  if $brew_not_installed ; then
     sh -c "brew install $*" >/dev/null 2>&1
+    printf "SUCCESS\n"
   fi
-
-  printf "SUCCESS\n"
 }
 
 install_homebrew_pkgs () {
