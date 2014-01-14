@@ -87,19 +87,16 @@ install_dotfiles () {
         esac
       fi # end if-statement for if no global options are set
             
-      # delete pre-existing dotfiles
       if $overwrite || $overwrite_all ; then
         printf "Overwriting $target_name ... \n"
         rm -rf $target
       fi
 
-      # backup pre-existing dotfiles
       if $backup || $backup_all ; then
         printf "Backing up $target_name ... \n"
         mv $target $target\.backup
       fi
     
-      # linking dotfiles
       if $skip || $skip_all ; then
         printf "Skipping $target_name ... \n"
       else
@@ -132,10 +129,6 @@ install_homebrew_pkgs () {
     msg_fail "Homebrew not installed; unable to continue ..."
   fi
 
-  # update homebrew package list (silently)
-  brew update >/dev/null 2>&1
-
-  # essential scripts
   msg_install "Installing coreutils ..."
     brew_install coreutils
 
@@ -183,9 +176,6 @@ install_vim_pkgs () {
   msg_install "Installing vim packages ..."
   if exists vim ; then 
     vim +BundleInstall +qall >/dev/null 2>&1
-    printf "SUCCESS\n"
-  elif exists mvim ; then 
-    mvim +BundleInstall +qall >/dev/null 2>&1
     printf "SUCCESS\n"
   else
     printf "FAILED\n"
