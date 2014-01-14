@@ -1,12 +1,6 @@
 #!/bin/sh
 #
-# Usage: script/bootstrap
-#
 # Install dependencies.
-
-# Inspired bootstrap install scripts from:
-#   davidxia's dotfiles (https://github.com/davidxia/bootstrap_dotfiles/)
-#   joshdick's dotfiles (https://github.com/joshdick/dotfiles)
 
 # Error (red, underlined)
 msg_fail () {
