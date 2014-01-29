@@ -6,6 +6,9 @@ set nobackup
 set noswapfile
 set encoding=utf-8
 
+" disable beep and flash
+set noeb vb t_vb=
+
 " required
 filetype off  " required
 
