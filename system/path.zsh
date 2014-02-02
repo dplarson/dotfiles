@@ -8,11 +8,11 @@ if [ $(uname -s) = "Darwin" ] ; then
     $HOME/.rbenv/shims
     /usr/local/bin
     /usr/local/sbin
-    $HOME/anaconda/bin
     $path
     /usr/texbin
     /usr/local/Cellar/gems/1.8/bin
     /usr/sbin
+    $HOME/anaconda/bin
   )
   export PATH
 
