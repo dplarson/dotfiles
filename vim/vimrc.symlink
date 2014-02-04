@@ -169,20 +169,12 @@ silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
 " Tab completion
 Bundle "ervandew/supertab"
 
-" Python
-Bundle "klen/python-mode"
-let g:pymode_run = 0
-let g:pymode_rope = 0
-
-" Ignore line over 80char warning
-let g:pymode_lint_ignore = "E501,C0301"
-
 " Use Git in Vim
 Bundle "tpope/vim-fugitive"
 
 " All-inclusive syntax checker
 Bundle "scrooloose/syntastic"
-
+let g:syntastic_python_flake8_args = '--ignore=E501,C0301'
 
 "--------------------------------------------------------------
 " STATUSLINE
