@@ -40,15 +40,11 @@
 #define S_base3         #002b36
 
 
-! To only apply colors to your terminal, for example, prefix
-! the color assignment statement with its name. Example:
-!
-! URxvt*background:            S_base03
-
 Xft.dpi:                  96
 Xft.antialias:            true
-XTerm*faceName:           Inconsolata
-*faceName:                Inconsolata:style=Medium:size=12
+*faceName:                Inconsolata
+*faceSize:                12
+*utf8:                    true
 *background:              S_base03
 *foreground:              S_base0
 *fading:                  40
