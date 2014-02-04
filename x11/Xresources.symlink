@@ -45,6 +45,9 @@
 !
 ! URxvt*background:            S_base03
 
+Xft.dpi:                  96
+Xft.antialias:            true
+XTerm*faceName:           Inconsolata
 *faceName:                Inconsolata:style=Medium:size=12
 *background:              S_base03
 *foreground:              S_base0
