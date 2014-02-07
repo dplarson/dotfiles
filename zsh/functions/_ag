@@ -24,9 +24,9 @@ _ag() {
   [[ -z "$update_policy" ]] && zstyle ":completion:${curcontext}:" cache-policy _ag_types_caching_policy
 
   _arguments -C \
-    '(- 1 *)--version[display version and copyright information]' \
-    '(- 1 *)--help[print a short help statement]' \
-    '(- 1 *)--man[print the manual page]' \
+    '(-V --version)'{-V,--version}'[display version and copyright information]' \
+    '(-h --help)'{-h,--help}'[print a short help statement]' \
+    '(--man)--man[print the manual page]' \
     '(--ackmate)--ackmate[Output results in a format parseable by AckMate.]' \
     '(-a --all-types)'{-a,--all-types}"[Search all files. This doesn't include hidden files, and also doesn't respect any ignore files.]" \
     '(-A --after)'{-A,--after}'[Print lines before match. Defaults to 2.]:LINES' \
