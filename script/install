@@ -1,0 +1,93 @@
+#!/bin/sh
+#
+# Install packages.
+#
+
+msg_install () {
+  printf "%-50s" "$1"
+}
+
+exists () {
+  command -v "$1" >/dev/null 2>&1
+}
+
+brew_install () {
+  brew_not_installed=$(sh -c "brew info $*" | grep "Not installed")
+ 
+  if $brew_not_installed ; then
+    sh -c "brew install $*" >/dev/null 2>&1
+    printf "SUCCESS\n"
+  fi
+}
+
+install_homebrew_pkgs () {
+  if ! exists brew ; then
+    echo ""
+    printf "Homebrew not installed; unable to continue ...\n"
+    exit 1
+  fi
+
+  msg_install "Installing coreutils ..."
+    brew_install coreutils
+
+  msg_install "Installing git ..."
+    brew_install git git-extras
+
+  msg_install "Installing zsh ..."
+    brew_install --disable-etcdir zsh
+
+  msg_install "Installing vim ..."
+    brew_install vim --override-system-vim
+
+  msg_install "Installing tmux ..."
+    brew_install tmux
+
+  msg_install "Installing reattach-to-user-namespace ..."
+    brew_install reattach-to-user-namespace
+
+  msg_install "Installing python ..."
+      brew_install python
+
+  msg_install "Installing ack ... "
+    brew_install ack
+
+  msg_install "Installing the silver searcher (ag) ..."
+    brew_install the_silver_searcher
+
+  msg_install "Installing rbenv ..."
+    brew_install rbenv ruby-build
+}
+
+
+install_vim_pkgs () {
+  printf "==> Installing vim packages ... \n"
+
+  # Vundle
+  msg_install "Installing bundle .. "
+  if [ ! -d $HOME/.vim/bundle/vundle/ ] ; then
+    git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle >/dev/null 2>&1 || printf "FAILED\n"
+  fi
+  printf "SUCCESS\n"
+
+  msg_install "Installing vim packages ..."
+  if exists vim ; then 
+    vim +BundleInstall +qall >/dev/null 2>&1
+    printf "SUCCESS\n"
+  else
+    printf "FAILED\n"
+  fi
+}
+
+
+# OS-specific installs
+if [ $(uname -s) = "Darwin" ] ; then
+  printf "==> Installing homebrew packages ... \n"
+    install_homebrew_pkgs
+  printf "\n"
+fi
+
+install_vim_pkgs
+
+exit 0
+
+# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=sh
