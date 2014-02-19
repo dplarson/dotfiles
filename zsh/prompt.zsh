@@ -46,8 +46,3 @@ RPROMPT='%{$reset_color%}%~ '   # current directory
 RPROMPT+='$(git_prompt)'        # git info
 
 export PROMPT RPROMPT
-
-# set terminal window title
-precmd() {
-  title "zsh" "%m - zsh" "%55<...<%~"
-}
