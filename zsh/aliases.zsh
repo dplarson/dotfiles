@@ -37,9 +37,6 @@ alias du='du -kh'
 alias du1='du -kh -d 1'
 alias du2='du -kh -d 2'
 
-# calculate free space
-alias df='df -kTh'
-
 # misc
 alias reload='. $HOME/.zshrc' # reload zsh settings
 
