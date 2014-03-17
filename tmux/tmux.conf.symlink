@@ -7,10 +7,10 @@ bind a send-prefix
 unbind ^A
 bind ^A select-pane -t :.+
 
-# quiet
+set-option history-limit 3000
+
 set -g quiet on
 
-# vi mode
 setw -g mode-keys vi
 
 # clear history with CMD-K (Mac default) using iTerm2 and hex codes
