@@ -7,7 +7,7 @@ bind a send-prefix
 unbind ^A
 bind ^A select-pane -t :.+
 
-set-option history-limit 3000
+set -g history-limit 3000
 
 set -g quiet on
 
