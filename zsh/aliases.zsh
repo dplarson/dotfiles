@@ -41,6 +41,5 @@ alias du2='du -kh -d 2'
 alias reload='. $HOME/.zshrc' # reload zsh settings
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
