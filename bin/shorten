@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# Shorten a URL using Google's URL shortener API.
+#
+# Example:
+#   > shorten https://www.google.com/
+#   {
+#     "kind": "urlshortener#url", 
+#     "id": "http://goo.gl/Njku",
+#     "longUrl": "https://www.google.com/"
+#   }
+#   
+
+long_url=$1
+
+curl https://www.googleapis.com/urlshortener/v1/url -H "Content-Type: application/json" -d "{'longUrl': '$long_url'}" 
