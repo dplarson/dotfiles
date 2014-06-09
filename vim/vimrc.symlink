@@ -65,7 +65,6 @@ set nofoldenable
 
 " per file extension
 autocmd BufRead,BufNewFile *.sh,*.zsh,*.symlink set filetype=sh
-autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
 
 " per file type
 au FileType sh setlocal ts=2 sts=2 sw=2
@@ -154,10 +153,15 @@ let g:LatexBox_autojump = 1
 
 " Markdown
 Bundle "Markdown"
+au BufRead,BufNewFile *.mk,*.markdown set filetype=markdown
 
 " Puppet
 Bundle "rodjek/vim-puppet"
 au BufRead,BufNewFile *.pp set filetype=puppet
+
+" Go
+Bundle "fatih/vim-go"
+au BufRead,BufNewFile *.go set filetype=go
 
 " Tab alignment (helpful for vim-puppet)
 Bundle "godlygeek/tabular"

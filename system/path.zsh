@@ -3,6 +3,8 @@
 # OSX-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
 
+  export GOPATH=$HOME/go
+
   # system path
   path=(
     $HOME/.rbenv/shims
@@ -13,6 +15,7 @@ if [ $(uname -s) = "Darwin" ] ; then
     /usr/local/Cellar/gems/1.8/bin
     /usr/sbin
     $HOME/anaconda/bin
+    $GOPATH/bin
   )
   export PATH
 
