@@ -16,6 +16,7 @@ case $state in
             'fix:run go tool fix on packages'
             'fmt:run gofmt on package sources'
             'get:download and install packages and dependencies'
+            'help:print help information'
             'install:compile and install packages and dependencies'
             'list:list packages'
             'run:compile and run Go program'
