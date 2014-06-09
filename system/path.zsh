@@ -3,7 +3,7 @@
 # OSX-specific settings
 if [ $(uname -s) = "Darwin" ] ; then
 
-  export GOPATH=$HOME/go
+  export GOPATH=$HOME/projects/go
 
   # system path
   path=(
