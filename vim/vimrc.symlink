@@ -23,7 +23,7 @@ set backspace=indent,eol,start
 set t_ti= t_te=
 
 " ignore files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.m~,*.o
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.m~,*.o.DSYM*
 
 
 "--------------------------------------------------------------
