@@ -102,8 +102,10 @@ endif
 let mapleader=","
 let maplocalleader=","
 
-" copy to global register
+" copy/paste to global register (i.e. system clipboard)
 map <leader>y "*y
+map <leader>p "*p
+map <leader>P "*P
 
 " switch between last two files
 nnoremap <leader><leader> <c-^>
