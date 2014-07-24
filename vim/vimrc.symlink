@@ -166,6 +166,9 @@ au BufRead,BufNewFile *.pp set filetype=puppet
 Bundle "fatih/vim-go"
 au BufRead,BufNewFile *.go set filetype=go
 
+" CRBasic
+au BufRead,BufRead *.cr1 set filetype=crbasic
+
 " Tab alignment (helpful for vim-puppet)
 Bundle "godlygeek/tabular"
 
