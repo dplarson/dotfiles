@@ -7,7 +7,8 @@ if exists("b:current_syntax")
 endif
 
 syn keyword     crbasicKeyword      Const Public Alias Units
-syn keyword     crbasicStatement    DataInterval Sample Include SlowSequence Scan
+syn keyword     crbasicStatement    DataInterval Sample Include SlowSequence Scan NextScan
+syn keyword     crbasicStatement    GetRecord TCPOpen SendVariables NetworkTimeProtocal
 syn keyword     crbasicRepeat       DataTable EndTable BeginProg EndProg
 syn keyword     crbasicMath         Minimum Maximum Average StdDev Sample Totalize WindVector
 syn keyword     crbasicConditional  If Then Else EndIf
