@@ -162,9 +162,14 @@ au BufRead,BufNewFile *.mk,*.markdown set filetype=markdown
 Bundle "rodjek/vim-puppet"
 au BufRead,BufNewFile *.pp set filetype=puppet
 
-" Go
-Bundle "fatih/vim-go"
-au BufRead,BufNewFile *.go set filetype=go
+" Go (only run on OSX machines)
+if has("unix")
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin"
+    Bundle "fatih/vim-go"
+    au BufRead,BufNewFile *.go set filetype=go
+  endif
+end
 
 " CRBasic
 au BufRead,BufRead *.cr1 set filetype=crbasic
