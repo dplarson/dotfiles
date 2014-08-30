@@ -6,6 +6,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
 
+# other settings
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' menu select=2
+zstyle ':completion::complete:*' use-cache 1
+
 # kill process completion
 zstyle ':completion:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always

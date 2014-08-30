@@ -27,7 +27,7 @@ if [ -f $HOME/.localrc ] ; then
 fi
 
 # initialize autocomplete
-autoload -U compinit
+autoload -Uz compinit
 compinit -ui
 
 # load completion files after autocomplete
