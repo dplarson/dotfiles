@@ -2,7 +2,7 @@
 nnoremap <leader>r :call PythonRun()<CR>
 
 function! PythonRun()
-    echo system("python ".expand("%:p"))
+    echo system("python ".shellescape(expand("%:p")))
 endfunction
 
 set foldmethod=indent
