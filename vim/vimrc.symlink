@@ -116,10 +116,6 @@ nnoremap ; :
 " clear search buffer
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-" toggle folds with space
-nnoremap <Space> za
-vnoremap <Space> za
-
 " sane movement with wrap turned on
 nnoremap j gj
 nnoremap k gk
