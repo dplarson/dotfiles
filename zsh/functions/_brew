@@ -101,6 +101,12 @@ case "$words[1]" in
     _brew_installed_taps
     _wanted installed_taps expl 'installed taps' compadd -a installed_taps ;;
   upgrade)
-    _brew_outdated_formulae
-    _wanted outdated_formulae expl 'outdated formulae' compadd -a outdated_formulae ;;
+    _arguments \
+        '(--all)--all[upgrade all outdated formulae]' \
+        '1: :->packages' && return 0
+
+        if [[ "$state" == packages ]] ; then
+            _brew_outdated_formulae
+            _wanted outdated_formulae expl 'outdated formulae' compadd -a outdated_formulae
+        fi ;;
 esac
