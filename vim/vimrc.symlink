@@ -24,7 +24,7 @@ set t_ti= t_te=
 
 " ignore files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.m~,*.o.DSYM*
-
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.pdf
 
 "--------------------------------------------------------------
 " UI
@@ -172,6 +172,9 @@ Bundle "godlygeek/tabular"
 " Faster file opening
 Bundle "kien/ctrlp.vim"
 silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
+
+" == ignore project-specific folders (that contain huge amounts of images)
+let g:ctrlp_custom_ignore = {'dir': '\v[\/](images|ocr)$'}
 
 " Tab completion
 Bundle "ervandew/supertab"
