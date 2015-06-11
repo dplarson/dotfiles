@@ -163,6 +163,10 @@ au BufRead,BufNewFile *.pp set filetype=puppet
 Bundle "fatih/vim-go"
 au BufRead,BufNewFile *.go set filetype=go
 
+" Julia
+Bundle 'JuliaLang/julia-vim'
+au BufRead,BufNewFile *.jl set filetype=julia
+
 " CRBasic
 au BufRead,BufRead *.cr1 set filetype=crbasic
 
