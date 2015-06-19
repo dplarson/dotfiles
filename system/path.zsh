@@ -7,7 +7,6 @@ if [ $(uname -s) = "Darwin" ] ; then
 
   # system path
   path=(
-    $HOME/.rbenv/shims
     /usr/local/bin
     /usr/local/sbin
     $path
@@ -26,6 +25,12 @@ if [ $(uname -s) = "Darwin" ] ; then
     $manpath
   )
   export MANPATH
+
+  # if CUDA is installed, set the DYLD_LIBRARY_PATH (require to
+  # compile cuDNN code)
+  if [ -d /usr/local/cuda ] ; then
+    export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+  fi
 
 fi
 
