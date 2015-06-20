@@ -44,3 +44,4 @@ export PATH
 # remove non-unique entries
 typeset -U PATH
 typeset -U MANPATH
+typeset -U DYLD_LIBRARY_PATH
