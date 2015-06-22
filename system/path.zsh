@@ -30,6 +30,7 @@ if [ $(uname -s) = "Darwin" ] ; then
   # compile cuDNN code)
   if [ -d /usr/local/cuda ] ; then
     export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+    export PATH=$PATH:/usr/local/cuda/bin
   fi
 
 fi
