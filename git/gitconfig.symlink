@@ -1,13 +1,13 @@
 [user]
-	name = David Larson
-	email = dplarson@ucsd.edu 
+  name = David Larson
+  email = dplarson@ucsd.edu
 [github]
-	user = dplarson
+  user = dplarson
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [alias]
   st = status
-  cl = clone    
+  cl = clone
   ci = commit
   co = checkout
   br = branch
@@ -19,10 +19,10 @@
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   dl = "!git ll -1"
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
 [push]
   default = current
 [diff]
