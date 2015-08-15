@@ -26,11 +26,14 @@ if [ $(uname -s) = "Darwin" ] ; then
   )
   export MANPATH
 
-  # if CUDA is installed, set the DYLD_LIBRARY_PATH (require to
-  # compile cuDNN code)
+  # add if CUDA is installed
   if [ -d /usr/local/cuda ] ; then
-    export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
     export PATH=$PATH:/usr/local/cuda/bin
+  fi
+
+  # add if CUDNN is installed (required for compiling Caffe)
+  if [ -d /usr/local/cuda/cudnn ] ; then
+    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/cuda/lib:$HOME/anaconda/lib:/usr/local/lib:/usr/lib
   fi
 
 fi
@@ -45,4 +48,4 @@ export PATH
 # remove non-unique entries
 typeset -U PATH
 typeset -U MANPATH
-typeset -U DYLD_LIBRARY_PATH
+typeset -U DYLD_FALLBACK_LIBRARY_PATH
