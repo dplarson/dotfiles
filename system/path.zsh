@@ -33,7 +33,7 @@ if [ $(uname -s) = "Darwin" ] ; then
 
   # add if CUDNN is installed (required for compiling Caffe)
   if [ -d /usr/local/cuda/cudnn ] ; then
-    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/cuda/lib:$HOME/anaconda/lib:/usr/local/lib:/usr/lib
+    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/cudnn/lib:/usr/local/lib:/usr/lib
   fi
 
 fi
