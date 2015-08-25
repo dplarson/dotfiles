@@ -36,6 +36,9 @@ if [ $(uname -s) = "Darwin" ] ; then
     export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/cudnn/lib:/usr/local/lib:/usr/lib
   fi
 
+  # caffe python code
+  export PYTHONPATH=$HOME/projects/caffe/python
+
 fi
 
 # OS-independent settings
@@ -49,3 +52,4 @@ export PATH
 typeset -U PATH
 typeset -U MANPATH
 typeset -U DYLD_FALLBACK_LIBRARY_PATH
+typeset -U PYTHONPATH
