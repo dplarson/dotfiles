@@ -174,7 +174,7 @@ au BufRead,BufRead *.cr1 set filetype=crbasic
 Bundle "godlygeek/tabular"
 
 " Faster file opening
-Bundle "kien/ctrlp.vim"
+Bundle "ctrlpvim/ctrlp.vim"
 silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
 
 " == ignore project-specific folders (that contain huge amounts of images)
