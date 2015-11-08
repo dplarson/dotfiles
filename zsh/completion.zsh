@@ -16,4 +16,4 @@ zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:processes' command 'ps x -o pid,pcpu,tt,args'
 
 # ignore non-text files for e, vi(m), vim
-zstyle ':completion:*:(e|vi|vim|mvim):*' ignored-patterns '*.(o|a|so|aux|dvi|log|swp|spl|fig|bib|bbl|blg|bst|fls|fdb_latexmk|idx|ind|out|toc|class|nlo|nls|snm|nav|pdf|ps|eps|pyc|jpg|jpeg|tiff|png|gif)'
+zstyle ':completion:*:(e|vi|vim|mvim):*' ignored-patterns '*.(o|a|so|aux|dvi|log|swp|spl|fig|bib|bbl|blg|bst|fls|fdb_latexmk|idx|ind|out|toc|class|nlo|nls|snm|nav|synctex.gz|pdf|ps|eps|pyc|jpg|jpeg|tiff|png|gif)'
