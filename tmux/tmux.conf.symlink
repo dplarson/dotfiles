@@ -19,10 +19,7 @@ setw -g mode-keys vi
 # 3. set action to "Send Hex Codes: 0x0C" (hex code for Ctrl-L)
 
 # enable mouse actions
-set -g mode-mouse on
-set -g mouse-resize-pan on
-setw -g mouse-select-pane on
-setw -g mouse-select-window on
+if-shell "uname | grep -q Darwin" "set -g mouse-utf8 on; set -g mouse on"
 
 # enable copy-paste
 set-option -g default-command 'command -v reattach-to-user-namespace >/dev/null && exec reattach-to-user-namespace -l "$SHELL" || exec "$SHELL"'
