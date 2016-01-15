@@ -11,7 +11,6 @@ if [ $(uname -s) = "Darwin" ] ; then
     /usr/local/sbin
     $path
     /usr/texbin
-    /usr/local/Cellar/gems/1.8/bin
     /usr/sbin
     $HOME/anaconda/bin
     $GOPATH/bin
