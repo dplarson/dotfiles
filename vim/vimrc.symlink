@@ -144,13 +144,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " LaTeX
-Bundle "LaTeX-Box-Team/LaTeX-Box"
-let g:LatexBox_latexmk_options = "-pv"
-let g:LatexBox_output_type = "pdf"
-let g:LatexBox_viewer = "Preview"
-let g:LatexBox_autojump = 1
-let g:LatexBox_quickfix = 2
-let g:LatexBox_ignore_warnings = ["LaTeX Font Warning"]
+Bundle "lervag/vimtex"
 
 " Markdown
 Bundle "Markdown"
