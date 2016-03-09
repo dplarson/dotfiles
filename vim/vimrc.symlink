@@ -145,6 +145,7 @@ Bundle 'gmarik/vundle'
 
 " LaTeX
 Bundle "lervag/vimtex"
+let g:vimtex_view_general_viewer = '/Applications/TeX/TeXShop.app/Contents/MacOS/TeXShop'
 
 " Markdown
 Bundle "Markdown"
