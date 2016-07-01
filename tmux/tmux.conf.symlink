@@ -23,7 +23,7 @@ setw -g mode-keys vi
 # NOTE: tmux mouse options changed between 1.x and 2.x
 #
 if-shell "tmux -V | grep -q '2.[0-9]'" \
-  "set -g mouse-utf8 on; set -g mouse on" \
+  "set -g mouse on" \
   "set -g mode-mouse on; set -g mouse-resize-pane on; setw -g mouse-select-pane on; setw -g mouse-select-window on"
 
 # enable copy-paste
@@ -59,9 +59,6 @@ bind r source-file $HOME/.tmux.conf \; display-message "Config reloaded..."
 #-----------------------------------------------------------------------------
 # STATUS BAR
 #-----------------------------------------------------------------------------
-
-# enable UTF-8
-set -g status-utf8 on
 
 # set refresh interval
 set -g status-interval 30
