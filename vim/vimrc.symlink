@@ -24,6 +24,7 @@ set t_ti= t_te=
 
 " ignore files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.m~,*.o.DSYM*
+set wildignore+=*.aux
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.pdf
 
 "--------------------------------------------------------------
