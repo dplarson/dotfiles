@@ -6,8 +6,8 @@ export HOMEBREW_NO_EMOJI=1
 # check if any pkgs are outdated
 brew_check_outdated () {
   if [ ! "$(brew outdated)" = "" ] ; then
-    #echo -e "\e[0;34m==>\e[1m Outdated \e[0m" && brew outdated
-    echo "\033[0;34m==>\e[1m Outdated \033[0m" && brew outdated
+    #echo -e "\e[0;34m==>\e[1m Outdated  Formulae\e[0m" && brew outdated
+    echo "\033[0;34m==>\e[1m Outdated  Formulae\033[0m" && brew outdated
   fi
 }
 
