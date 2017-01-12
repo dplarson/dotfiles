@@ -28,7 +28,7 @@ fi
 
 # initialize autocomplete
 autoload -Uz compinit
-compinit -ui
+compinit -i
 
 # load completion files after autocomplete
 for file in ${(M)config_files:#*/completion.zsh} ; do
