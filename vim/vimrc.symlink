@@ -149,7 +149,9 @@ Bundle 'gmarik/vundle'
 Bundle "lervag/vimtex"
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
-let g:vimtex_latexmk_callback = 0
+let g:vimtex_compiler_latexmk = {}
+let g:vimtex_compiler_latexmk.callback = 0  " disable callback (which requires vim with +clientserver)
+
 
 " This adds a callback hook that updates Skim after compilation
 let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
