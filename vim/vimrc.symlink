@@ -210,7 +210,11 @@ Bundle "tpope/vim-fugitive"
 
 " All-inclusive syntax checker
 Bundle "scrooloose/syntastic"
-let g:syntastic_python_flake8_args = '--ignore=E501,C0301'
+let g:syntastic_python_checkers = ['flake8', 'python']
+let g:syntastic_python_flake8_args = '--ignore=E501,C0301,E265,E266,E201,E202'
+" profile start syntastic.log
+" profile! file */syntastic/*
+
 
 "--------------------------------------------------------------
 " STATUSLINE
