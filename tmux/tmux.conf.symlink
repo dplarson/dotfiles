@@ -9,8 +9,6 @@ bind ^A select-pane -t :.+
 
 set -g history-limit 3000
 
-set -g quiet on
-
 setw -g mode-keys vi
 
 # clear history with CMD-K (Mac default) using iTerm2 and hex codes
