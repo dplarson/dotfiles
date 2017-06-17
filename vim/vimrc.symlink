@@ -211,6 +211,7 @@ Bundle "tpope/vim-fugitive"
 " Asynchornous Line Engine (ALE)
 Bundle "w0rp/ale"
 let &runtimepath.=',~/.vim/bundle/ale'
+let g:ale_linters = {'python': ['flake8']}
 
 " asynchronous command execution
 Bundle "tpope/vim-dispatch"
