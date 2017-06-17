@@ -212,6 +212,7 @@ Bundle "tpope/vim-fugitive"
 Bundle "w0rp/ale"
 let &runtimepath.=',~/.vim/bundle/ale'
 let g:ale_linters = {'python': ['flake8']}
+let g:ale_python_flake8_options = '--ignore E265,E266,E501'
 
 " asynchronous command execution
 Bundle "tpope/vim-dispatch"
