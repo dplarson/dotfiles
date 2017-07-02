@@ -88,6 +88,7 @@ __brew_common_commands() {
     'doctor:audits your installation for common issues'
     'edit:edit a formula'
     'fetch:download formula resources to the cache'
+    'formula:the path for a formula'
     'gist-logs:generate a gist of the full build logs'
     'home:visit the homepage of a formula or the brew project'
     'info:information about a formula'
@@ -202,14 +203,6 @@ _brew_audit() {
     '--display-cop-names[include RuboCop cop name for each violation in the output]' \
     '--display-filename[prefix every line of output with the name of the file or formula being audited]' \
     '*:formula:__brew_formulae'
-}
-
-# brew boneyard-formula-pr [--dry-run] [--local]  formula-name
-_brew_boneyard_formula_pr() {
-  _arguments \
-    '--dry-run[print what would be done rather than doing it]' \
-    '--local[perform only local operations(i.e. don''t push or create PR)]' \
-    ':formula:__brew_formulae'
 }
 
 # brew bottle [--verbose] [--no-rebuild] [--keep-old] [--skip-relocation] [--root-url=root_url]
@@ -364,6 +357,11 @@ _brew_fetch() {
     '(--force-bottle)--build-from-source[download the source rather than a bottle]' \
     '(--build-from-source)--force-bottle[download a bottle if it exists for the current version of OS X, even if it would not be used during installation]' \
     '*:formula:__brew_formulae'
+}
+
+# brew formula formula:
+_brew_formula() {
+  __brew_formulae
 }
 
 # brew gist-logs [--new-issue|-n] formula
@@ -678,8 +676,7 @@ _brew_test_bot() {
 }
 
 # brew tests [-v] [--coverage] [--generic] [--no-compat]
-#   [--only=test_script/test_method] [--seed seed] [--trace] [--online]
-#   [--official-cmd-taps]:
+#   [--only=test_script:test_method] [--seed seed] [--trace] [--online]:
 _brew_tests() {
   _arguments \
   '(-v)-v' \
@@ -689,8 +686,7 @@ _brew_tests() {
   '(--only)--only=-:test_method: ' \
   '(--seed)--seed:seed: ' \
   '(--trace)--trace' \
-  '(--online)--online' \
-  '(--official-cmd-taps)--official-cmd-taps'
+  '(--online)--online'
 }
 
 # brew uninstall, rm, remove [--force] formula:
