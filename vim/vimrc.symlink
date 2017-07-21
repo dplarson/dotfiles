@@ -186,7 +186,7 @@ Bundle "fatih/vim-go"
 au BufRead,BufNewFile *.go set filetype=go
 
 " Julia
-Bundle 'JuliaLang/julia-vim'
+Bundle 'JuliaEditorSupport/julia-vim'
 au BufRead,BufNewFile *.jl set filetype=julia
 
 " CRBasic
