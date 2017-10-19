@@ -37,3 +37,5 @@ done
 
 # remove config_files variable now that we're done
 unset config_files
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

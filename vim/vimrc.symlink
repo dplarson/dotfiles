@@ -195,9 +195,10 @@ au BufRead,BufRead *.cr1 set filetype=crbasic
 " Tab alignment (helpful for vim-puppet)
 Bundle "godlygeek/tabular"
 
-" Faster file opening
-Bundle "ctrlpvim/ctrlp.vim"
-silent! nnoremap <unique> <silent> <leader>t :CtrlP<CR>
+" Fuzzy file search using fzf (installed via Homebrew)
+set rtp+=/usr/local/opt/fzf
+Bundle "junegunn/fzf.vim"
+silent! nnoremap <unique> <silent> <leader>t :Files<CR>
 
 " == ignore project-specific folders (that contain huge amounts of images)
 let g:ctrlp_custom_ignore = {'dir': '\v[\/](images|ocr)$'}
