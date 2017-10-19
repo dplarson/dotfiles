@@ -199,6 +199,8 @@ Bundle "godlygeek/tabular"
 set rtp+=/usr/local/opt/fzf
 Bundle "junegunn/fzf.vim"
 silent! nnoremap <unique> <silent> <leader>t :Files<CR>
+let g:fzf_files_options = '--preview "cat {}"'
+
 
 " == ignore project-specific folders (that contain huge amounts of images)
 let g:ctrlp_custom_ignore = {'dir': '\v[\/](images|ocr)$'}
