@@ -1,0 +1,21 @@
+#!/bin/sh
+
+SESSION="upgrades"
+
+# Homebrew
+tmux -2 new-session -d -s $SESSION -n 'brew'
+tmux send-keys "bru" C-m
+
+# TeX Live Manager
+tmux new-window -t $SESSION:2 -n 'tex'
+tmux send-keys "tlmgr update --self && tlmgr update --all" C-m
+
+# Vim
+tmux new-window -t $SESSION:3 -n 'vim'
+tmux send-keys "vim +BundleInstall! +qall" C-m
+
+# set default window
+tmux select-window -t $SESSION:1
+
+# attach to session
+tmux -2 attach-session -t $SESSION
