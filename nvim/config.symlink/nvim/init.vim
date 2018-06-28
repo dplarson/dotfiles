@@ -17,6 +17,16 @@ set ruler
 set mouse=a
 set colorcolumn=80
 
+" status line with solarized colors: bg=base03, fg=base00
+set laststatus=2
+hi StatusLine ctermbg=0 ctermfg=11 guibg=#002b36 guifg=#657b83
+set statusline=%<                       " truncation point
+set statusline+=%f                      " file name
+set statusline+=\ %y                    " (file type)
+set statusline+=%m                      " [+] if modified
+set statusline+=%=                      " switch to right side
+set statusline+=%-14(%3l,%02c\ 0x%02B%) " line #, column #  hex-value
+
 "--------------------------------------------------
 " COLORS
 "--------------------------------------------------
@@ -58,6 +68,23 @@ nnoremap <leader><leader> <c-^>
 " clear search buffer
 nmap <silent> <leader>/ :nohlsearch<CR>
 
+" sane movement with wrap turned on
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" strip whitespace
+function! StripWhitespace ()
+  exec ':%s/ \+$//gc'
+endfunction
+map <leader><space> :call StripWhitespace()<CR>
 
 "--------------------------------------------------
 " PLUGINS
