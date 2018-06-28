@@ -78,5 +78,14 @@ command! -bang -nargs=? -complete=dir Files
 " async linter engine (ALE)
 Plug 'w0rp/ale'
 
+" Tab completion
+Plug 'ervandew/supertab'
+
+" asynchronous command execution
+Plug 'tpope/vim-dispatch'
+nnoremap <leader>r :Dispatch<CR>
+autocmd FileType python let b:dispatch = 'python %'
+autocmd FileType julia let b:dispatch = 'julia %'
+
 " Initialize plugin system
 call plug#end()
