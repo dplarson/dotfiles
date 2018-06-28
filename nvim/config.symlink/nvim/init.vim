@@ -32,7 +32,7 @@ set statusline+=%-14(%3l,%02c\ 0x%02B%) " line #, column #  hex-value
 "--------------------------------------------------
 syntax on
 set background=dark
-colorscheme solarized8_flat
+colorscheme solarized8
 set guifont=Inconsolata:h14
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
