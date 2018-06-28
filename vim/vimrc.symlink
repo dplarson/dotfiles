@@ -205,6 +205,9 @@ silent! nnoremap <unique> <silent> <leader>t :Files<CR>
 let g:fzf_files_options =
   \ '--preview "(highlight -O ansi -l {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
+" better syntax highlighting
+Bundle "vim-python/python-syntax"
+let g:python_highlight_all = 1
 
 " Tab completion
 Bundle "ervandew/supertab"
