@@ -14,27 +14,8 @@ set cursorline
 set incsearch
 set number
 set ruler
-
-if has('mouse')
-    set mouse=a
-    set mousemodel=popup_setpos
-    set mousehide
-endif
-
-"--------------------------------------------------
-" TEXT FORMATTING
-"--------------------------------------------------
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-set expandtab
-set nosmarttab
-set nofoldenable
-
-let mapleader=","
-let maplocalleader=","
-nnoremap ; :
+set mouse=a
+set colorcolumn=80
 
 "--------------------------------------------------
 " COLORS
@@ -49,10 +30,40 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 "--------------------------------------------------
+" TEXT FORMATTING
+"--------------------------------------------------
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+set expandtab
+set nosmarttab
+set nofoldenable
+
+"--------------------------------------------------
+" COMMAND REMAPS
+"--------------------------------------------------
+let mapleader=","
+let maplocalleader=","
+nnoremap ; :
+
+" copy/paste to global register (i.e. system clipboard)
+map <leader>y "+y
+map <leader>p "+p
+map <leader>P "+P
+
+" switch between last two files
+nnoremap <leader><leader> <c-^>
+
+" clear search buffer
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+
+"--------------------------------------------------
 " PLUGINS
 "--------------------------------------------------
 
-" Specify a directory for plugins
+" vim-plug (
 call plug#begin('~/.config/nvim/plugged')
 
 " Plugin outside ~/.vim/plugged with post-update hook
@@ -63,6 +74,9 @@ silent! nnoremap <unique> <silent> <leader>t :Files<CR>
 " show preview window
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" async linter engine (ALE)
+Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
