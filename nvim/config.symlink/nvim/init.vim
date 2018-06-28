@@ -108,6 +108,11 @@ Plug 'w0rp/ale'
 " Tab completion
 Plug 'ervandew/supertab'
 
+" LaTeX (async)
+Plug 'lervag/vimtex'
+let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
 " asynchronous command execution
 Plug 'tpope/vim-dispatch'
 nnoremap <leader>r :Dispatch<CR>
