@@ -44,7 +44,7 @@ bind | split-window -h
 bind - split-window -v
 
 # set correct terminal
-set -g default-terminal "screen-256color"
+set -g default-terminal "xterm-256color"
 set -ga terminal-overrides ",xterm-256color:Tc"
 
 # don't auto name windows

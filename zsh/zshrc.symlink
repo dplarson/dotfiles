@@ -5,7 +5,7 @@ export DOTFILES=$HOME/.dotfiles
 export PROJECTS=$HOME/projects
 
 # set terminal
-export TERM="xterm-256color"
+export TERM="screen-256color"
 
 # get all zsh files
 config_files=($DOTFILES/**/*.zsh)
