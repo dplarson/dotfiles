@@ -14,8 +14,10 @@ exists () {
 # set editor based on what is installed
 #if exists mvim ; then
 #  export EDITOR='mvim'
-if exists vim ; then
+if exists nvim; then
+  export EDITOR='nvim'
+  export GITEDITOR='nvim'
+elif exists vim; then
   export EDITOR='vim'
+  export GITEDITOR='vim'
 fi
-
-export GIT_EDITOR='vim'
