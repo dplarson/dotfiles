@@ -4,9 +4,6 @@ export DOTFILES=$HOME/.dotfiles
 # set project folder so we can 'c [tab]' to it
 export PROJECTS=$HOME/projects
 
-# set terminal
-export TERM="screen-256color"
-
 # get all zsh files
 config_files=($DOTFILES/**/*.zsh)
 typeset -U config_files
