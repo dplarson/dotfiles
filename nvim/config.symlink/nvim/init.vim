@@ -6,6 +6,7 @@ set nobackup
 set noswapfile
 set encoding=utf-8
 set backspace=indent,eol,start
+set ignorecase
 
 "--------------------------------------------------
 " UI
