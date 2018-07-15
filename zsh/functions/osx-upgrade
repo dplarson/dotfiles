@@ -11,8 +11,8 @@ tmux new-window -t $SESSION:2 -n 'tex'
 tmux send-keys "tlmgr update --self && tlmgr update --all" C-m
 
 # Vim
-tmux new-window -t $SESSION:3 -n 'vim'
-tmux send-keys "vim +BundleInstall! +qall" C-m
+tmux new-window -t $SESSION:3 -n 'neovim'
+tmux send-keys "nvim +PlugUpdate ! +qall" C-m
 
 # set default window
 tmux select-window -t $SESSION:1
