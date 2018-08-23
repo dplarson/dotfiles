@@ -19,8 +19,8 @@ alias gd='git diff'
 alias ga='git add'
 
 # commit
-alias gc='git commit'
-alias gca='git commit -a'
+alias gc='git commit -v'
+alias gca='git commit -a -v'
 
 # branches
 alias gb='git branch'
