@@ -113,6 +113,7 @@ Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
+autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 " asynchronous command execution
 Plug 'tpope/vim-dispatch'
