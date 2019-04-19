@@ -31,7 +31,6 @@ set statusline+=%-14(%3l,%02c\ 0x%02B%) " line #, column #  hex-value
 "--------------------------------------------------
 " COLORS
 "--------------------------------------------------
-syntax on
 set background=dark
 colorscheme solarized8
 set guifont=Inconsolata:h14
@@ -123,3 +122,5 @@ autocmd FileType julia let b:dispatch = 'julia %'
 
 " Initialize plugin system
 call plug#end()
+
+syntax on
