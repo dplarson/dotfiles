@@ -5,6 +5,7 @@ alias g='git'
 
 # fetch
 alias gf='git f && git wtf'
+alias gfa='git fetch --all -v && git wtf'
 
 # push 
 alias gp='git push origin HEAD'
