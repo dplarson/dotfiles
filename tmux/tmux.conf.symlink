@@ -20,7 +20,7 @@ setw -g mode-keys vi
 #
 # NOTE: tmux mouse options changed between 1.x and 2.x
 #
-if-shell "tmux -V | grep -q '2.[0-9]'" \
+if-shell "tmux -V | grep -q '[2-3].[0-9]'" \
   "set -g mouse on" \
   "set -g mode-mouse on; set -g mouse-resize-pane on; setw -g mouse-select-pane on; setw -g mouse-select-window on"
 
