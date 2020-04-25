@@ -108,6 +108,9 @@ Plug 'w0rp/ale'
 " Tab completion
 Plug 'ervandew/supertab'
 
+" Syntax
+Plug 'sheerun/vim-polyglot'
+
 " LaTeX (async)
 Plug 'lervag/vimtex'
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
