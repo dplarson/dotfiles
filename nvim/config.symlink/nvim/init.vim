@@ -108,9 +108,6 @@ Plug 'w0rp/ale'
 " Tab completion
 Plug 'ervandew/supertab'
 
-" Syntax
-Plug 'sheerun/vim-polyglot'
-
 " LaTeX (async)
 Plug 'lervag/vimtex'
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
@@ -120,6 +117,7 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 " asynchronous command execution
 Plug 'tpope/vim-dispatch'
 nnoremap <leader>r :Dispatch<CR>
+nnoremap <leader>o :Copen<cr>
 autocmd FileType python let b:dispatch = 'python %'
 autocmd FileType julia let b:dispatch = 'julia %'
 
