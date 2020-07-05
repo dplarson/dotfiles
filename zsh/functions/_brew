@@ -33,33 +33,31 @@ __brew_list_aliases() {
 }
 
 __brew_formulae_or_ruby_files() {
-  local -a formulae
-  formulae=($(brew search))
   _alternative 'formulae::__brew_formulae' \
-    'files:files:{_files -g *.rb}'
+    'files:files:{_files -g "*.rb"}'
 }
 
 # completions remain in cache until any tap has new commits
 __brew_completion_caching_policy() {
-  # rebuild cache if no cache file exists (anyway we cannot proceed further down)
-  ! [[ -f "$1" ]] && return 0
-  # cache file modification date (seconds since epoch)
-  local -i cache_mtime=$(date -r "$1" +%s)
-  # latest modified homebrew tap index file
-  local latest_modified_git_index=(${HOMEBREW_REPOSITORY:-/usr/local/Homebrew}/Library/Taps/*/*/.git/index(om[1]))
-  local -i commit_mtime=$(date -r "$latest_modified_git_index" +%s)
-  (( $cache_mtime < $commit_mtime ))
+  local -a tmp
+
+  # invalidate if cache file is missing or >=2 weeks old
+  tmp=( $1(mw-2N) )
+  (( $#tmp )) || return 0
+
+  # otherwise, invalidate if latest tap index file is missing or newer than cache file
+  tmp=( ${HOMEBREW_REPOSITORY:-/usr/local/Homebrew}/Library/Taps/*/*/.git/index(om[1]N) )
+  [[ -z $tmp || $tmp -nt $1 ]]
 }
 
 __brew_formulae() {
-  zstyle ":completion:${curcontext}:" cache-policy __brew_completion_caching_policy
-  local -a formulae
+  local -a list
   local comp_cachename=brew_formulae
-  if _cache_invalid $comp_cachename || ! _retrieve_cache $comp_cachename; then
-    formulae=($(brew search))
-    _store_cache $comp_cachename formulae
+  if ! _retrieve_cache $comp_cachename; then
+    list=( $(brew search) )
+    _store_cache $comp_cachename list
   fi
-  _describe -t formulae 'all formulae' formulae
+  _describe -t formulae 'all formulae' list
 }
 
 __brew_installed_formulae() {
@@ -120,7 +118,6 @@ __brew_common_commands() {
     'outdated:list formulae for which a newer version is available'
     'pin:pin specified formulae'
     'postinstall:perform post_install for a given formula'
-    'prune:remove dead links'
     'remove:remove a formula'
     'search:search for a formula or cask (/regex/ or string)'
     'switch:switch between different versions of a formula'
@@ -147,14 +144,17 @@ __brew_common_commands() {
 }
 
 __brew_all_commands() {
-  zstyle ":completion:${curcontext}:" cache-policy __brew_completion_caching_policy
-  local -a commands
+  local -a list
   local comp_cachename=brew_all_commands
-  if _cache_invalid $comp_cachename || ! _retrieve_cache $comp_cachename; then
-    commands=($(_call_program brew brew commands --quiet --include-aliases))
-    _store_cache $comp_cachename commands
+  if ! _retrieve_cache $comp_cachename; then
+    local cache_dir=$(brew --cache)
+    [[ -f $cache_dir/all_commands_list.txt ]] &&
+      list=( $(<$cache_dir/all_commands_list.txt) ) ||
+      list=( $(<$(brew --repo)/completions/internal_commands_list.txt) )
+    list=( ${list:#*instal} ) # Exclude instal, uninstal, etc.
+    _store_cache $comp_cachename list
   fi
-  _describe -t all-commands 'all commands' commands
+  _describe -t all-commands 'all commands' list
 }
 
 __brew_commands() {
@@ -219,10 +219,10 @@ _brew_audit() {
   _arguments \
     '(--new-formula)--strict[run additional checks including RuboCop style checks]' \
     '(--new-formula)--online[run slower checks that require a network connection]' \
-    '(--online --strict)--new-formula[check if a new formula is eligable for Homebrew. Implies --strict and --online]' \
+    '(--online --strict)--new-formula[check if a new formula is eligible for Homebrew. Implies --strict and --online]' \
     '--display-cop-names[include RuboCop cop name for each violation in the output]' \
     '--display-filename[prefix every line of output with the name of the file or formula being audited]' \
-    '*:formula:__brew_formulae'
+    '*:formula:__brew_formulae_or_ruby_files'
 }
 
 # brew bottle [--verbose] [--no-rebuild] [--keep-old] [--skip-relocation] [--root-url=root_url]
@@ -253,11 +253,19 @@ _brew_bump_formula_pr() {
     - set1 \
       '--url=-[new url]:url:_urls' \
       '--sha256=-[new sha256 checksum]:sha256: ' \
-      ': :__brew_formulae' \
+      ': :__brew_formulae_or_ruby_files' \
     - set2 \
       '--tag=-[new tag]: ' \
       '--revision=-[new revision]: ' \
-      ': :__brew_formulae'
+      ': :__brew_formulae_or_ruby_files'
+}
+
+# brew bump-revision [--dry-run] [--message] formula
+_brew_bump_revision() {
+  _arguments \
+      '--dry-run[print what would be done rather than doing it]' \
+      '--message[append message to the default commit message]:message: ' \
+      ': :__brew_formulae_or_ruby_files'
 }
 
 # brew cat formula
@@ -368,20 +376,22 @@ _brew_doctor() {
 # brew edit formulae
 _brew_edit() {
   _arguments \
-    '*:: :__brew_formulae'
+    '*:: :__brew_formulae_or_ruby_files'
 }
 
-# brew fetch [--force] [--retry] [-v] [--devel|--HEAD] [--deps] [--build-from-source|--force-bottle] formulae
+# brew fetch [--force] [--retry] [-v] [--devel|--HEAD] [--deps]
+#   [--build-from-source|--build-bottle|--force-bottle] formulae
 _brew_fetch() {
   _arguments \
-    '--force[remove previously cached version and re-fetch]' \
+    '(--force -f)'{--force,-f}'[remove previously cached version and re-fetch]' \
     '--retry[retry if a download fails or re-download if the checksum of a previously cached version no longer matches]' \
-    '-v[verbose VCS checkout]' \
+    '(--verbose -v)'{--verbose,-v}'[verbose VCS checkout]' \
     '(--HEAD)--devel[fetch devel version instead of stable]' \
     '(--devel)--HEAD[fetch HEAD version instead of stable]' \
     '--deps[also download dependencies for any listed formulae]' \
-    '(--force-bottle)--build-from-source[download the source rather than a bottle]' \
-    '(--build-from-source)--force-bottle[download a bottle if it exists for the current version of OS X, even if it would not be used during installation]' \
+    '(--build-from-source -s --force-bottle --build-bottle)'{--build-from-source,-s}'[download the source rather than a bottle]' \
+    '(--build-from-source -s --force-bottle)--build-bottle[download the source (for eventual bottling) rather than a bottle]' \
+    '(--build-from-source -s --build-bottle)--force-bottle[download a bottle if it exists for the current version of OS X, even if it would not be used during installation]' \
     '*:formula:__brew_formulae'
 }
 
@@ -425,9 +435,10 @@ _brew_info() {
       '(--all --installed)*: :__brew_formulae'
 }
 
-# brew install [--debug] [--env=std|super] [--ignore-dependencies]
-#   [--only-dependencies] [--cc=compiler] [--build-from-source]
-#   [--devel|--HEAD] [--keep-tmp] formulae
+# brew install [--debug] [--env=std|super]
+#   [--ignore-dependencies|--only-dependencies] [--include-test]
+#   [--cc=compiler] [--build-from-source|--build-bottle|--force-fottle]
+#   [--devel|--HEAD] [--fetch-HEAD] [--bottle-arch=architecture] [--keep-tmp] formulae
 # brew install --interactive [--git] formula
 _brew_install() {
   local state
@@ -435,11 +446,16 @@ _brew_install() {
     - normal-install \
       '--debug[if brewing fails, open an interactive debugging session]' \
       -'-env=-[use standard or super environment]:environment:(std super)' \
-      '--ignore-dependencies[skip installing any dependencies of any kind]' \
-      '--only-dependencies[install the dependencies but do not install the specified formula]' \
+      '(--only-dependencies)--ignore-dependencies[skip installing any dependencies of any kind]' \
+      '(--ignore-dependencies)--only-dependencies[install the dependencies but do not install the specified formula]' \
       '--cc=-[attempt to compile using compiler]:compiler: ' \
-      '(--build-from-source -s)'{--build-from-source,-s}'[compile the specified formula from source even if a bottle is provided]' \
+      '(--build-from-source -s --force-bottle --build-bottle)'{--build-from-source,-s}'[compile the specified formula from source even if a bottle is provided]' \
+      '(--build-from-source -s --force-bottle)--build-bottle[prepare the formula for eventual bottling during installation, skipping any post-install steps]' \
+      '(--build-from-source -s --build-bottle)--force-bottle[install from a bottle if it exists for the current version of OS X, even if it would not normally be used for installation]' \
+      '--include-test[install testing dependencies]' \
       '(--devel --HEAD)'{--devel,--HEAD}'[install the development / HEAD version]' \
+      '--fetch-HEAD[fetch the upstream repository to detect if the HEAD installation of the formula is outdated]' \
+      '--bottle-arch=-[optimise bottles for the specified architecture]:architecture: ' \
       '--keep-tmp[don''t delete temporary files created during installation]' \
       '--display-times[display installation times at end of run]' \
       '*: : __brew_formulae' \
@@ -548,12 +564,6 @@ _brew_postinstall() {
     '*:: :__brew_formulae'
 }
 
-# brew prune [--dry-run]:
-_brew_prune() {
-  _arguments \
-    '(--dry-run -n)'{--dry-run,-n}'[show what would be removed, but do not actually remove anything]'
-}
-
 # pull [--bottle] [--bump] [--clean] [--ignore-whitespace] [--resolve]
 #   [--branch-okay] [--no-pbcopy] [--no-publish] patch-source [patch-source]
 _brew_pull() {
@@ -569,16 +579,42 @@ _brew_pull() {
     '*:patch source: '
 }
 
+# brew pr-pull [--no-upload|--no-publish] [--dry-run] [--clean] [--branch-okay]
+#   [--resolve] [--workflow] [--artifact] [--bintray-org] [--tap] pull_request
+_brew_pr_pull() {
+  _arguments \
+    '(--no-upload)--no-publish[download the bottles, apply the bottle commit, and upload the bottles to Bintray, but don''t publish them]' \
+    '(--no-publish)--no-upload[download the bottles and apply the bottle commit, but don''t upload to Bintray]' \
+    '--dry-run[print what would be done rather than doing it]' \
+    '--clean[do not amend the commits from pull requests]' \
+    '--branch-okay[do not warn if pulling to a branch besides master (useful for testing)]' \
+    '--resolve[when a patch fails to apply, leave in progress and allow user to resolve, instead of aborting]' \
+    '--workflow[retrieve artifacts from the specified workflow (default: tests.yml)]' \
+    '--artifact[download artifacts with the specified name (default: bottles)]' \
+    '--bintray-org[upload to the specified Bintray organisation (default: homebrew)]' \
+    '--tap[target repository tap (default: homebrew/core)]' \
+    '*:pull_request: '
+}
+
 # brew readall [tap]:
 _brew_readall() {
   __brew_installed_taps
 }
 
 # brew reinstall formulae:
+# mostly copy from brew install
 _brew_reinstall() {
   _arguments \
-    '--display-times[display installation times at end of run]' \
-    '*::formula:__brew_installed_formulae'
+    - normal-install \
+      '--debug[if brewing fails, open an interactive debugging session]' \
+      '(--build-from-source -s --force-bottle)'{--build-from-source,-s}'[compile the specified formula from source even if a bottle is provided]' \
+      '(--build-from-source -s)--force-bottle[install from a bottle if it exists for the current version of OS X, even if it would not normally be used for installation]' \
+      '--keep-tmp[don''t delete temporary files created during installation]' \
+      '--display-times[display installation times at end of run]' \
+      '*::formula:__brew_installed_formulae' \
+    - interactive-install \
+      '--interactive[download and patch formula, then open a shell]' \
+      '::formula:__brew_installed_formulae'
 }
 
 # brew search, -S:
@@ -667,7 +703,7 @@ _brew_test() {
     '(--devel --HEAD)'{--devel,--HEAD}'[use the development / head version of the formula]' \
     '--debug[launch an interactive debugger if test fails]' \
     '--keep-tmp[don''t delete temporary files]' \
-    '*:formula:__brew_formulae'
+    '*:formula:__brew_formulae_or_ruby_files'
 }
 
 # brew test-bot [options]  url|formula:
@@ -773,7 +809,8 @@ _brew_upgrade() {
     '--ignore-dependencies[skip installing any dependencies of any kind]' \
     '--only-dependencies[install the dependencies but do not install the specified formula]' \
     '--cc=-[attempt to compile using compiler]:compiler: ' \
-    '(--build-from-source -s)'{--build-from-source,-s}'[compile the specified formula from source even if a bottle is provided]' \
+    '(--build-from-source -s --force-bottle)'{--build-from-source,-s}'[compile the specified formula from source even if a bottle is provided]' \
+    '(--build-from-source -s)--force-bottle[install from a bottle if it exists for the current version of OS X, even if it would not normally be used for installation]' \
     '(--devel --HEAD)'{--devel,--HEAD}'[install the development / HEAD version]' \
     '--keep-tmp[don''t delete temporary files created during installation]' \
     '--display-times[display installation times at end of run]' \
@@ -808,7 +845,7 @@ _brew_vendor_install() {
 # the main completion function
 _brew() {
   local curcontext="$curcontext" state state_descr line expl
-  local ret=1
+  local tmp ret=1
 
   _arguments -C : \
     '(-v)-v[verbose]' \
@@ -816,7 +853,15 @@ _brew() {
     '*::options:->options' && return 0
 
   case "$state" in
-    command) __brew_commands && return 0 ;;
+    command)
+      # set default cache policy
+      zstyle -s ":completion:${curcontext%:*}:*" cache-policy tmp ||
+         zstyle ":completion:${curcontext%:*}:*" cache-policy __brew_completion_caching_policy
+      zstyle -s ":completion:${curcontext%:*}:*" use-cache tmp ||
+         zstyle ":completion:${curcontext%:*}:*" use-cache true
+
+      __brew_commands && return 0
+      ;;
     options)
       local command_or_alias command
       local -A aliases
@@ -827,7 +872,14 @@ _brew() {
       command="${aliases[$command_or_alias]:-$command_or_alias}"
 
       # change context to e.g. brew-list
-      curcontext="${curcontext%:*:*}:brew-${command}"
+      curcontext="${curcontext%:*}-${command}:${curcontext##*:}"
+
+      # set default cache policy (we repeat this dance because the context
+      # service differs from above)
+      zstyle -s ":completion:${curcontext%:*}:*" cache-policy tmp ||
+         zstyle ":completion:${curcontext%:*}:*" cache-policy __brew_completion_caching_policy
+      zstyle -s ":completion:${curcontext%:*}:*" use-cache tmp ||
+         zstyle ":completion:${curcontext%:*}:*" use-cache true
 
       # call completion for named command e.g. _brew_list
       local completion_func="_brew_${command//-/_}"
