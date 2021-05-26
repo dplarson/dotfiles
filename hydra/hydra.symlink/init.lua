@@ -50,30 +50,9 @@ function movewindow_wide()
     win:setframe(newframe)
 end
 
--- move the window to the top half of the screen
-function movewindow_tophalf()
-    local win = window.focusedwindow()
-    local newframe = win:screen():frame_without_dock_or_menu()
-    newframe.h = newframe.h / 2
-    win:setframe(newframe)
-end
-
-
--- move the window to the top half of the screen
-function movewindow_bottomhalf()
-    local win = window.focusedwindow()
-    local newframe = win:screen():frame_without_dock_or_menu()
-    newframe.h = newframe.h / 2
-    newframe.y = newframe.h
-    win:setframe(newframe)
-end
-
-
 
 -- shortcuts
 hotkey.new({"alt"}, "1", movewindow_lefthalf):enable()
 hotkey.new({"alt"}, "2", movewindow_righthalf):enable()
 hotkey.new({"alt"}, "3", movewindow_center):enable()
 hotkey.new({"alt"}, "4", movewindow_wide):enable()
-hotkey.new({"alt"}, "=", movewindow_tophalf):enable()
-hotkey.new({"alt"}, "-", movewindow_bottomhalf):enable()
