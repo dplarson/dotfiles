@@ -62,6 +62,9 @@ map <leader>y "+y
 map <leader>p "+p
 map <leader>P "+P
 
+" revert to Y is yank entire line
+nnoremap Y yy
+
 " switch between last two files
 nnoremap <leader><leader> <c-^>
 
