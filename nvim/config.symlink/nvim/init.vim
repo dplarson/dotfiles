@@ -106,7 +106,7 @@ command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " async linter engine (ALE)
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Tab completion
 Plug 'ervandew/supertab'
