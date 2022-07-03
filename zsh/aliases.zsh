@@ -43,3 +43,6 @@ alias reload='. $HOME/.zshrc' # reload zsh settings
 # IP addresses
 alias localip="ipconfig getifaddr en1"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
+# Terraform
+alias tf="terraform"
