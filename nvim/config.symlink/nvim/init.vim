@@ -125,6 +125,10 @@ nnoremap <leader>o :Copen<cr>
 autocmd FileType python let b:dispatch = 'python %'
 autocmd FileType julia let b:dispatch = 'julia %'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+let g:terraform_ftm_on_save = 1
+
 " Initialize plugin system
 call plug#end()
 
