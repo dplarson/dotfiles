@@ -31,13 +31,13 @@ set statusline+=%-14(%3l,%02c\ 0x%02B%) " line #, column #  hex-value
 "--------------------------------------------------
 " COLORS
 "--------------------------------------------------
+set termguicolors
 set background=dark
 colorscheme solarized8
 set guifont=Inconsolata:h14
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 
 "--------------------------------------------------
 " TEXT FORMATTING
