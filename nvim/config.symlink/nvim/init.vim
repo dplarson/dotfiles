@@ -124,6 +124,7 @@ nnoremap <leader>r :Dispatch<CR>
 nnoremap <leader>o :Copen<cr>
 autocmd FileType python let b:dispatch = 'python %'
 autocmd FileType julia let b:dispatch = 'julia %'
+let $PYTHONUNBUFFERED=1
 
 " Terraform
 Plug 'hashivim/vim-terraform'
