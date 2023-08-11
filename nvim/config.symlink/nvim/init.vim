@@ -107,6 +107,7 @@ command! -bang -nargs=? -complete=dir Files
 
 " async linter engine (ALE)
 Plug 'dense-analysis/ale'
+let g:ale_virtualtext_cursor = 'current'
 
 " Tab completion
 Plug 'ervandew/supertab'
