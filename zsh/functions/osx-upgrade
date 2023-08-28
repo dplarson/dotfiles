@@ -6,12 +6,8 @@ SESSION="upgrades"
 tmux -2 new-session -d -s $SESSION -n 'brew'
 tmux send-keys "bru" C-m
 
-# TeX Live Manager
-tmux new-window -t $SESSION:2 -n 'tex'
-tmux send-keys "tlmgr update --self && tlmgr update --all" C-m
-
-# Vim
-tmux new-window -t $SESSION:3 -n 'neovim'
+# Neovim
+tmux new-window -t $SESSION:2 -n 'neovim'
 tmux send-keys "nvim +PlugUpgrade +PlugUpdate ! +qall" C-m
 
 # set default window
