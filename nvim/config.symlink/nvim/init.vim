@@ -133,6 +133,7 @@ let g:terraform_fmt_on_save=1
 
 " file-specific tab/spaces
 autocmd BufRead,BufNewFile *.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufRead *.gms setf gams
 
 " Initialize plugin system
 call plug#end()
