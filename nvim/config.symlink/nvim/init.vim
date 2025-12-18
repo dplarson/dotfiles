@@ -109,8 +109,22 @@ command! -bang -nargs=? -complete=dir Files
 Plug 'dense-analysis/ale'
 let g:ale_virtualtext_cursor = 'current'
 
+" better syntax highlight
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'folke/tokyonight.nvim'
+" Plug 'maxmx03/solarized.nvim'
+" Plug 'craftzdog/solarized-osaka.nvim'
+
 " Tab completion
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+let g:coq_settings = { 'auto_start': v:true }
+
+" 9000+ Snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+" Colorschemes
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " LaTeX (async)
 Plug 'lervag/vimtex'
@@ -139,3 +153,4 @@ au BufNewFile,BufRead *.gms setf gams
 call plug#end()
 
 syntax on
+
